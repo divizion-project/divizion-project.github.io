@@ -1,464 +1,131 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoCube</title>
-    <link rel="icon" href="./assets/favicon/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="./assets/favicon/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="./assets/favicon/site.webmanifest">
-    <link rel="preload" href="./assets/fonts/FFFLauta.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/simple-animations.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="./js/main.js" defer></script>
-    <script src="./js/simple-scroll-animations.js" defer></script>
-    <script src="js/parallax-cards.js" defer></script>
-    <script src="./js/scroll-animations.js" defer></script>
-
-</head>
-<body>
-    <div class="custom-cursor"></div>
-    
-    <div id="loading-screen">
-        <div class="loading-container">
-            <div class="loading-cube">
-                <div class="cube-face cube-front">
-                    <div class="cube-pixel" style="top: 20px; left: 30px"></div>
-                    <div class="cube-pixel" style="top: 40px; left: 50px"></div>
-                    <div class="cube-pixel" style="top: 10px; left: 60px"></div>
-                </div>
-                <div class="cube-face cube-back">
-                    <div class="cube-pixel" style="top: 30px; left: 20px"></div>
-                    <div class="cube-pixel" style="top: 50px; left: 40px"></div>
-                    <div class="cube-pixel" style="top: 15px; left: 10px"></div>
-                </div>
-                <div class="cube-face cube-right">
-                    <div class="cube-pixel" style="top: 10px; left: 10px"></div>
-                    <div class="cube-pixel" style="top: 30px; left: 50px"></div>
-                    <div class="cube-pixel" style="top: 60px; left: 30px"></div>
-                </div>
-                <div class="cube-face cube-left">
-                    <div class="cube-pixel" style="top: 40px; left: 10px"></div>
-                    <div class="cube-pixel" style="top: 20px; left: 40px"></div>
-                    <div class="cube-pixel" style="top: 50px; left: 60px"></div>
-                </div>
-                <div class="cube-face cube-top">
-                    <div class="cube-pixel" style="top: 20px; left: 20px"></div>
-                    <div class="cube-pixel" style="top: 40px; left: 40px"></div>
-                    <div class="cube-pixel" style="top: 20px; left: 60px"></div>
-                </div>
-                <div class="cube-face cube-bottom">
-                    <div class="cube-pixel" style="top: 30px; left: 10px"></div>
-                    <div class="cube-pixel" style="top: 10px; left: 30px"></div>
-                    <div class="cube-pixel" style="top: 50px; left: 50px"></div>
-                </div>
-            </div>
-            <div class="loading-text">Chargement de NeoCube...</div>
-
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Divizion — Site en cours de création</title>
+    <meta name="description" content="Divizion (anciennement NeoCube) — Projet Minecraft ambitieux, site en cours de création. Rejoignez notre Discord pour les annonces et mises à jour." />
+    <meta property="og:title" content="Divizion — Prochainement" />
+    <meta property="og:description" content="Projet Minecraft ambitieux. Le site arrive bientôt. Rejoignez notre Discord pour suivre l'avancée." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta name="theme-color" content="#111827" />
+    <style>
+      :root {
+        --bg: #0b0f1a;
+        --bg-2: #0f172a;
+        --card: #111827;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #7c3aed; /* purple-600 */
+        --accent-2: #22c55e; /* green-500 */
+        --border: #1f2937;
+        --shadow: 0 10px 30px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.02);
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        color: var(--text);
+        background: radial-gradient(1200px 800px at 20% 10%, rgba(124,58,237,.14), transparent 60%),
+                    radial-gradient(1000px 700px at 80% 20%, rgba(34,197,94,.12), transparent 55%),
+                    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+        font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+      .wrap { width: 100%; max-width: 880px; }
+      header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+      .brand { display: flex; align-items: baseline; gap: 10px; }
+      .brand h1 { margin: 0; font-weight: 800; letter-spacing: .4px; font-size: clamp(24px, 4vw, 36px); }
+      .brand small { color: var(--muted); font-size: 14px; letter-spacing: .3px; }
+      .badge {
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,.03);
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .card {
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
+        backdrop-filter: saturate(120%) blur(2px);
+        border-radius: 16px;
+        box-shadow: var(--shadow);
+        padding: clamp(20px, 3vw, 28px);
+      }
+      .title { font-size: clamp(22px, 3.2vw, 28px); margin: 0 0 6px; font-weight: 700; }
+      .lead { color: var(--muted); margin: 0 0 18px; }
+      .grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+      @media (min-width: 760px) { .grid { grid-template-columns: 1.2fr .8fr; } }
+      .panel { border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: rgba(17,24,39,.45); }
+      .panel h3 { margin: 0 0 8px; font-size: 14px; color: #d1d5db; letter-spacing: .3px; }
+      .panel p, .panel li { color: #c7cdd6; margin: 0; font-size: 14px; }
+      .panel ul { margin: 8px 0 0 16px; padding: 0; }
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border-radius: 12px;
+        border: 1px solid color-mix(in oklab, var(--accent) 35%, #ffffff 0%);
+        background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 22%, #000 85%), color-mix(in oklab, var(--accent) 12%, #000 95%));
+        color: white; text-decoration: none; font-weight: 600;
+        padding: 12px 14px; box-shadow: 0 8px 18px rgba(124,58,237,.25);
+        transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+      }
+      .cta:hover { transform: translateY(-1px); filter: brightness(1.05); box-shadow: 0 10px 22px rgba(124,58,237,.32); }
+      .cta svg { width: 18px; height: 18px; }
+      footer { margin-top: 14px; color: var(--muted); font-size: 13px; display: flex; gap: 10px; align-items: center; }
+      .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 0 rgba(34,197,94,.9); animation: pulse 2s infinite; }
+      @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34,197,94,.7);} 70% { box-shadow: 0 0 0 14px rgba(34,197,94,0);} 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0);} }
+      .spacer { height: 10px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <h1>Divizion</h1>
+          <small>anciennement NeoCube</small>
         </div>
-    </div>
+        <span class="badge">Site en cours de création</span>
+      </header>
 
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <img src="./assets/images/LogoWith Size.png" alt="NeoCube Logo">
-            </div>
-            <ul class="nav-links">
-                <div class="nav-items-group">
-                    <li class="nav-item-small"><a href="#howItWorks">Comment ça fonctionne</a></li>
-                    <li class="nav-item-small"><a href="#communaute">Communauté</a></li>
-                </div>
-                <div class="nav-download">
-                    <li class="download-btn-small"><a href="#download"><i class="fas fa-download"></i> Télécharger</a></li>
-                </div>
+      <section class="card">
+        <h2 class="title">On construit quelque chose de solide.</h2>
+        <p class="lead">Divizion est un projet Minecraft ambitieux et très poussé techniquement. Le site officiel arrive bientôt — revenez un peu plus tard.</p>
+
+        <div class="grid">
+          <div class="panel">
+            <h3>Dernière info</h3>
+            <ul>
+              <li>Le projet NeoCube devient <strong>Divizion</strong>.</li>
+              <li>Pas d’ouverture publique immédiate : on pose les bases.</li>
+              <li>L’ancien launcher NeoCube est <strong>obsolète</strong> — pensez à le désinstaller.</li>
+              <li>Un nouveau launcher adapté à Divizion arrive bientôt.</li>
             </ul>
+          </div>
+          <div class="panel">
+            <h3>Restez informés</h3>
+            <p>Rejoignez notre Discord pour suivre les annonces et l’avancée du projet.</p>
+            <div class="spacer"></div>
+            <a class="cta" href="https://discord.gg/CrfM2WVKYh" target="_blank" rel="noopener noreferrer" aria-label="Rejoindre le Discord Divizion">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" role="img">
+                <path d="M20.317 4.369A19.79 19.79 0 0 0 16.557 3c-.2.36-.43.85-.59 1.23a18.27 18.27 0 0 0-4.934 0A8.77 8.77 0 0 0 9.943 3a19.8 19.8 0 0 0-3.76 1.37C3.2 7.316 2.44 10.167 2.7 12.973c1.58 1.176 3.107 1.89 4.597 2.36.37-.51.7-1.06.99-1.64-.55-.21-1.07-.47-1.57-.77.13-.1.26-.21.38-.32 3 1.4 6.25 1.4 9.22 0 .13.11.25.22.38.32-.5.3-1.02.56-1.57.77.29.58.62 1.13.99 1.64 1.49-.47 3.02-1.19 4.6-2.36.38-3.97-.64-6.79-3.38-8.604ZM9.68 12.56c-.89 0-1.62-.82-1.62-1.83 0-1.01.71-1.83 1.62-1.83.91 0 1.64.82 1.62 1.83 0 1.01-.71 1.83-1.62 1.83Zm4.64 0c-.89 0-1.62-.82-1.62-1.83 0-1.01.71-1.83 1.62-1.83.91 0 1.64.82 1.62 1.83 0 1.01-.71 1.83-1.62 1.83Z"/>
+              </svg>
+              Rejoindre le Discord
+            </a>
+          </div>
         </div>
-    </nav>
-
-    <header class="hero">
-        <div class="grid-bg"></div>
-        <div class="light-effect green-light"></div>
-        <div class="light-effect small-light green-light small-light-4"></div>
-        <div class="light-effect tiny-light green-light tiny-light-1"></div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>NeoCube</h1>
-                    <h4>Site en développement</h4>
-                    <p>La page que vous consultez est toujours en développement. Certaines informations peuvent ne pas correspondre.</p>
-                    <a href="#download" class="download-btn shine-effect"><i class="fas fa-download"></i> Télécharger</a>
-                </div>
-                <div class="hero-video-container">
-                    <video class="hero-video" autoplay loop muted playsinline>
-                        <source src="./assets/images/tempimagefromessential.webm" type="video/webm">
-                    </video>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <section id="fonctionnalites" class="features section-blue animate-section">
-        <div class="grid-bg"></div>
-        <div class="light-effect blue-light"></div>
-        <div class="light-effect small-light blue-light small-light-1"></div>
-        <div class="light-effect small-light blue-light small-light-2"></div>
-        <div class="light-effect small-light blue-light small-light-4"></div>
-        <div class="light-effect small-light blue-light small-light-5"></div>
-        <div class="light-effect tiny-light blue-light tiny-light-2"></div>
-        <div class="container">
-            <h2>Fonctionnalités</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="card-glow"></div>
-                    <i class="fas fa-tools pixel-icon"></i>
-                    <div class="feature-content">
-                        <h3>Craft avancé</h3>
-                        <p class="overflow-text">Découvrez plus de 150 nouveaux crafts qui changent complètement votre façon de jouer et construire dans Minecraft.</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="card-glow"></div>
-                    <i class="fas fa-sword pixel-icon"></i>
-                    <div class="feature-content">
-                        <h3>Combat Décimation</h3>
-                        <p class="overflow-text">Affrontez des zombies et d'autres joueurs dans un système de combat entièrement repensé inspiré du mode Decimation.</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="card-glow"></div>
-                    <i class="fas fa-flag pixel-icon"></i>
-                    <div class="feature-content">
-                        <h3>Système de Nations</h3>
-                        <p class="overflow-text">Créez votre nation, établissez des alliances et menez des guerres territoriales comme dans NationGlory avec une touche d'innovation.</p>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="card-glow"></div>
-                    <i class="fas fa-cube pixel-icon"></i>
-                    <div class="feature-content">
-                        <h3>Mods Exclusifs</h3>
-                        <p class="overflow-text">Notre launcher intègre automatiquement plus de 45 mods spécialement configurés pour une expérience de jeu optimale et unique.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="howItWorks" class="how-it-works section-green animate-section">
-        <div class="grid-bg"></div>
-        <div class="light-effect green-light"></div>
-        <div class="light-effect small-light green-light small-light-1"></div>
-        <div class="light-effect small-light green-light small-light-2"></div>
-        <div class="light-effect small-light green-light small-light-3"></div>
-        <div class="light-effect tiny-light green-light tiny-light-1"></div>
-        <div class="light-effect small-light green-light small-light-4"></div>
-        <div class="container">
-            <h2>Comment<br>ça fonctionne ?</h2>
-            <div class="how-content">
-                <div class="steps-container">
-                    <div class="how-step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Téléchargez le launcher</h3>
-                            <p>Vous devez posséder un compte Minecraft Premium Java pour accéder au serveur NeoCube.</p>
-                        </div>
-                    </div>
-                    <div class="how-step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Installez et connectez-vous</h3>
-                            <p>Installez le launcher sur votre ordinateur et connectez-vous avec vos identifiants Minecraft pour rejoindre le serveur.</p>
-                        </div>
-                    </div>
-                    <div class="how-step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Lancez et jouez</h3>
-                            <p>Cliquez simplement sur le bouton "Jouer" et le jeu se lancera automatiquement avec tous les mods nécessaires.</p>
-                        </div>
-                    </div>
-                    <div class="steps-download">
-                        <a href="#download" class="download-btn"><i class="fas fa-download"></i> Télécharger le Launcher</a>
-                    </div>
-                </div>
-                <div class="launcher-preview">
-                    <img src="./assets/images/launcher/launcher-preview1.png" alt="NeoCube Launcher">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="communaute" class="social section-light-theme animate-section">
-        <div class="grid-bg"></div>
-        <div class="light-effect white-light"></div>
-        <div class="light-effect small-light white-light small-light-1"></div>
-        <div class="light-effect small-light white-light small-light-3"></div>
-        <div class="light-effect small-light white-light small-light-4"></div>
-        <div class="light-effect tiny-light white-light tiny-light-1"></div>
-        <div class="container">
-            <h2>Rejoignez notre communauté</h2>
-            <div class="social-links">
-                <a href="#" class="social-card shine-effect">
-                    <div class="card-glow"></div>
-                    <i class="fab fa-discord pixel-icon"></i>
-                    <span>Discord</span>
-                    <p class="social-desc">Rejoignez notre serveur Discord pour discuter avec les joueurs et l'équipe de développement.</p>
-                </a>
-                <a href="#" class="social-card shine-effect">
-                    <div class="card-glow"></div>
-                    <i class="fab fa-twitter pixel-icon"></i>
-                    <span>Twitter</span>
-                    <p class="social-desc">Suivez-nous pour les dernières annonces et mises à jour du serveur NeoCube.</p>
-                </a>
-                <a href="#" class="social-card shine-effect">
-                    <div class="card-glow"></div>
-                    <i class="fab fa-youtube pixel-icon"></i>
-                    <span>YouTube</span>
-                    <p class="social-desc">Regardez nos vidéos de gameplay et les tutoriels pour les nouveaux joueurs.</p>
-                </a>
-                <a href="#" class="social-card shine-effect">
-                    <div class="card-glow"></div>
-                    <i class="fab fa-reddit pixel-icon"></i>
-                    <span>Reddit</span>
-                    <p class="social-desc">Partagez vos créations et participez aux discussions de la communauté.</p>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="blog" class="blog section-green animate-section">
-        <div class="grid-bg"></div>
-        <div class="light-effect green-light"></div>
-        <div class="light-effect small-light green-light small-light-2"></div>
-        <div class="light-effect small-light green-light small-light-3"></div>
-        <div class="light-effect tiny-light green-light tiny-light-1"></div>
-        <div class="light-effect small-light green-light small-light-4"></div>
-        <div class="container">
-            <h2>Développement et Mises à Jour</h2>
-            <div class="blog-posts">
-                <div class="blog-post">
-                    <div class="card-glow"></div>
-                    <div class="post-date">5 Janvier 2025</div>
-                    <h3>Lancement Early Access confirmé</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget felis nec magna interdum convallis. Phasellus viverra metus eget magna porttitor.</p>
-                    <a href="#" class="read-more">Lire plus</a>
-                </div>
-                <div class="blog-post">
-                    <div class="card-glow"></div>
-                    <div class="post-date">28 Décembre 2024</div>
-                    <h3>Nouveaux mods intégrés</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu risus id nisi faucibus scelerisque. Donec efficitur sapien vel ligula semper.</p>
-                    <a href="#" class="read-more">Lire plus</a>
-                </div>
-                <div class="blog-post">
-                    <div class="card-glow"></div>
-                    <div class="post-date">10 Décembre 2024</div>
-                    <h3>Système de Nations dévoilé</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ultrices egestas turpis, in tempus nunc ultricies vitae. Cras facilisis.</p>
-                    <a href="#" class="read-more">Lire plus</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" class="faq section-red animate-section">
-        <div class="grid-bg"></div>
-        <div class="light-effect red-light"></div>
-        <div class="light-effect small-light red-light small-light-1"></div>
-        <div class="light-effect small-light red-light small-light-3"></div>
-        <div class="light-effect small-light red-light small-light-4"></div>
-        <div class="light-effect tiny-light red-light tiny-light-2"></div>
-        <div class="container">
-            <h2>Questions Fréquentes</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="card-glow"></div>
-                    <h3>Comment jouer sur NeoCube ?</h3>
-                    <p>Téléchargez notre launcher personnalisé, créez un compte et laissez-le installer automatiquement tous les mods nécessaires.</p>
-                </div>
-                <div class="faq-item">
-                    <div class="card-glow"></div>
-                    <h3>Quelle est la configuration minimale requise ?</h3>
-                    <p>Nous recommandons 8GB de RAM, un processeur i5 ou équivalent, et au moins 5GB d'espace disque pour une expérience optimale.</p>
-                </div>
-                <div class="faq-item">
-                    <div class="card-glow"></div>
-                    <h3>Quelle version de Minecraft est supportée ?</h3>
-                    <p>NeoCube fonctionne sur Minecraft 1.20.1 avec notre sélection personnalisée de mods préinstallés via notre launcher.</p>
-                </div>
-                <div class="faq-item">
-                    <div class="card-glow"></div>
-                    <h3>Quand sera la sortie officielle ?</h3>
-                    <p>L'Early Access débutera en Juin 2025. Une date de sortie complète sera annoncée après la période de test et d'équilibrage.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="download" class="download section-green animate-section">
-        <div class="grid-bg"></div>
-        <div class="light-effect green-light"></div>
-        <div class="light-effect small-light green-light small-light-2"></div>
-        <div class="light-effect small-light green-light small-light-1"></div>
-        <div class="light-effect tiny-light green-light tiny-light-2"></div>
-        <div class="light-effect small-light green-light small-light-5"></div>
-        <div class="container">
-            <h2>Télécharger NeoCube</h2>
-            <p>Rejoignez l'aventure dès l'Early Access et aidez-nous à façonner l'avenir de NeoCube</p>
-            <div class="download-options">
-                <a href="#" class="download-btn"><i class="fas fa-download"></i>Installer le lanceur sur votre ordinateur</a>
-                <a href="#" class="version-link">Consulter la roadmap</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer section-light-theme">
-        <div class="grid-bg"></div>
-        <div class="light-effect white-light"></div>
-        <div class="light-effect small-light white-light small-light-1"></div>
-        <div class="light-effect small-light white-light small-light-3"></div>
-        <div class="light-effect tiny-light white-light tiny-light-1"></div>
-        <div class="light-effect small-light white-light small-light-5"></div>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="./assets/images/logoblack.png" alt="NeoCube Logo">
-                    <p>© 2025 NeoCube. Tous droits réservés.</p>
-                </div>
-                <div class="footer-links">
-                    <ul>
-                        <li><a href="#fonctionnalites">Fonctionnalités</a></li>
-                        <li><a href="#communaute">Communauté</a></li>
-                        <li><a href="#blog">Développement</a></li>
-                        <li><a href="#faq">FAQ</li>
-                        <li><a href="#download">Télécharger</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>NeoCube - Serveur Minecraft Version 1.20.1</p>
-                <p>Fix 3.1.4</p>
-            </div>
-        </div>
-    </footer>
-    
-    <div id="download-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <h2>Télécharger NeoCube</h2>
-            <p>Choisissez la version correspondant à votre système d'exploitation</p>
-            <div class="download-options-grid">
-                <a href="#" class="download-option">
-                    <i class="fab fa-windows"></i>
-                    <span>Windows</span>
-                    <small>Windows 10/11 - 64 bits</small>
-                </a>
-                <a href="#" class="download-option">
-                    <i class="fab fa-apple"></i>
-                    <span>Mac (Apple Silicon)</span>
-                    <small>macOS 11+ ARM</small>
-                </a>
-                <a href="#" class="download-option">
-                    <i class="fab fa-apple"></i>
-                    <span>Mac (Intel)</span>
-                    <small>macOS 10.15+ x64</small>
-                </a>
-            </div>
-            <div class="modal-footer">
-                <p class="modal-note">En téléchargeant, vous acceptez les <a href="#">Conditions d'utilisation</a> et la <a href="#">Politique de confidentialité</a></p>
-            </div>
-        </div>
+        <footer>
+          <span class="dot" aria-hidden="true"></span>
+          <span>Travaux en cours • © 2025 Divizion</span>
+        </footer>
+      </section>
     </div>
+  </body>
+  </html>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.feature-card, .social-card, .blog-post, .faq-item');
-            
-            cards.forEach(card => {
-                card.classList.add('hover-enabled');
-            });
-            
-            const howSteps = document.querySelectorAll('.how-step');
-            howSteps.forEach((step, index) => {
-                step.style.setProperty('--step-index', index);
-            });
-        });
-    </script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('download-modal');
-            const modalBtns = document.querySelectorAll('.download-btn');
-            const closeBtn = document.querySelector('.modal-close');
-            const downloadOptions = document.querySelectorAll('.download-option');
-            const cursor = document.querySelector('.custom-cursor');
-            
-            modalBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    modal.style.display = 'block';
-                    setTimeout(() => {
-                        modal.classList.add('active');
-                    }, 10);
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-            
-            function closeModal() {
-                modal.classList.remove('active');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 500);
-                document.body.style.overflow = '';
-            }
-            
-            closeBtn.addEventListener('click', closeModal);
-            
-            window.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-            
-            downloadOptions.forEach(option => {
-                option.addEventListener('mouseenter', function() {
-                    this.querySelector('i').style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                    this.querySelector('i').style.transform = 'scale(1.2)';
-                    if (cursor) cursor.classList.add('hover-card');
-                });
-                
-                option.addEventListener('mouseleave', function() {
-                    this.querySelector('i').style.transform = 'scale(1)';
-                    if (cursor) cursor.classList.remove('hover-card');
-                });
-                
-                option.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    this.classList.add('downloading');
-                    
-                    setTimeout(() => {
-                        this.classList.remove('downloading');
-                        console.log("Téléchargement de", this.querySelector('span').textContent);
-                    }, 1500);
-                });
-            });
-            
-            if (closeBtn && cursor) {
-                closeBtn.addEventListener('mouseenter', function() {
-                    cursor.classList.add('hover-button');
-                });
-                
-                closeBtn.addEventListener('mouseleave', function() {
-                    cursor.classList.remove('hover-button');
-                });
-            }
-        });
-    </script>
-    
-    <script src="./js/scroll-animations.js"></script>
-</body>
-</html>
