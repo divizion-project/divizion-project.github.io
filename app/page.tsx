@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { DISCORD_LINK } from "@/lib/constants";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 type InternalPath = "/" | "/news" | "/launcher" | "/roadmap";
 
@@ -14,37 +17,36 @@ type CardDefinition = {
   disabled?: boolean;
 };
 
-const CARDS: CardDefinition[] = [
-  {
-    key: "play",
-    icon: "🚀",
-    title: "Jouer au serveur",
-    description:
-      "Téléchargez le launcher Divizion, synchronisez votre profil et rejoignez Divizion.",
-    internalHref: "/launcher",
-    buttonLabel: "Télécharger",
-  },
-  {
-    key: "discord",
-    icon: "💬",
-    title: "Discord communautaire",
-    description:
-      "Rejoignez le Discord officiel pour les mises à jour et l'entraide.",
-    externalHref: DISCORD_LINK,
-    buttonLabel: "Rejoindre Discord",
-  },
-  {
-    key: "support",
-    icon: "📋",
-    title: "Roadmap Divizion",
-    description:
-      "Découvrez la roadmap pour suivre chaque phase de développement et ce qui arrive ensuite.",
-    internalHref: "/roadmap",
-    buttonLabel: "Voir la roadmap",
-  },
-] as const;
-
 export default function HomePage() {
+  const { t } = useLanguage();
+
+  const CARDS: CardDefinition[] = [
+    {
+      key: "play",
+      icon: "🚀",
+      title: t("home.cards.play.title"),
+      description: t("home.cards.play.description"),
+      internalHref: "/launcher",
+      buttonLabel: t("home.cards.play.button"),
+    },
+    {
+      key: "discord",
+      icon: "💬",
+      title: t("home.cards.discord.title"),
+      description: t("home.cards.discord.description"),
+      externalHref: DISCORD_LINK,
+      buttonLabel: t("home.cards.discord.button"),
+    },
+    {
+      key: "support",
+      icon: "📋",
+      title: t("home.cards.roadmap.title"),
+      description: t("home.cards.roadmap.description"),
+      internalHref: "/roadmap",
+      buttonLabel: t("home.cards.roadmap.button"),
+    },
+  ];
+
   return (
     <div className="space-y-16 pb-20">
       <section className="relative isolate overflow-hidden bg-[#1a1a1a] py-20">
@@ -60,14 +62,13 @@ export default function HomePage() {
 
         <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-6 px-6 text-center">
           <p className="text-xs uppercase tracking-[0.5em] text-[#ff6b35]">
-            Bientôt
+            {t("home.soon_badge")}
           </p>
           <h1 className="text-5xl font-black leading-tight text-[#d0d0d0] md:text-6xl">
-            Bienvenue sur Divizion
+            {t("home.title")}
           </h1>
           <p className="max-w-2xl text-lg text-[#999]">
-            Divizion est un serveur Minecraft géopolitique sur une carte
-            mondiale. Construisez, collaborez et jouez dans un monde persistant.
+            {t("home.description")}
           </p>
           <div className="h-1 w-16 bg-[#ff6b35]" />
         </div>
