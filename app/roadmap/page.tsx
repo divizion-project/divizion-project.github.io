@@ -1,8 +1,9 @@
 "use client";
 
-import clsx from "clsx";
-import { useLayoutEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import { DISCORD_LINK } from "@/lib/constants";
+import { ArrowRight, Sparkles, Check } from "lucide-react";
 
 type PhaseStatus = "in_progress" | "upcoming";
 type PhaseKey =
@@ -482,310 +483,251 @@ const FUTURE_VISION_CONTENT = {
   ],
 };
 
-const CTA_CONTENT = {
-  title: "Envie de façonner l'avenir de Divizion ?",
-  description:
-    "Rejoignez notre communauté Discord, participez aux discussions et suivez la roadmap en direct. Vos retours façonnent le projet.",
-  buttonLabel: "Rejoindre Discord",
-  subtitle: "Les testeurs sont toujours les bienvenus",
-};
-
-const ROADMAP_INFO = {
-  title: "Roadmap en développement",
-  description:
-    "Divizion est un projet ambitieux en cours de construction. Cette feuille de route présente notre vision et nos jalons. Les dates, les mécaniques et les priorités peuvent évoluer selon nos découvertes, les retours de la communauté et les défis techniques. Cette transparence fait partie de notre ADN.",
-  disclaimer: "Cette roadmap est mise à jour régulièrement. Restez connectés pour les dernières nouvelles !",
-};
-
-const INTRO_SECTION = {
-  title: "L'évolution de Divizion",
-  description:
-    "Des premières fondations à une version stable ambitieuse, Divizion progresse étape par étape. Découvrez comment nous bâtissons un univers post-apocalyptique planétaire révolutionnaire.",
-};
-
 export default function RoadmapPage() {
+  const [expandedPhase, setExpandedPhase] = useState<number>(0);
+
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12">
-      <RoadmapInfo {...ROADMAP_INFO} />
-
-      <IntroSection {...INTRO_SECTION} />
-      <PhasesAccordion phases={PHASES} />
-
-      <FutureVision {...FUTURE_VISION_CONTENT} />
-
-      <JoinCTA {...CTA_CONTENT} />
-    </div>
-  );
-}
-
-type RoadmapInfoProps = {
-  title: string;
-  description: string;
-  disclaimer: string;
-};
-
-function RoadmapInfo({ title, description, disclaimer }: RoadmapInfoProps) {
-  return (
-    <div className="bg-[#2a2a2a] border border-[#ff6b35] border-opacity-40 p-6 rounded mb-12">
-      <div className="flex gap-4">
-        <span className="text-3xl">📋</span>
-        <div>
-          <h3 className="text-[#ff6b35] font-bold text-lg mb-2">{title}</h3>
-          <p className="text-[#999] text-sm leading-relaxed">{description}</p>
-          <p className="text-[#999] text-xs mt-3 opacity-80">💡 {disclaimer}</p>
-        </div>
+    <div className="relative bg-[#1a1a1a] min-h-screen">
+      {/* Background effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#ff6b35]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-40 right-1/4 w-96 h-96 bg-[#ff6b35]/5 rounded-full blur-3xl" />
       </div>
-    </div>
-  );
-}
 
-type IntroSectionProps = {
-  title: string;
-  description: string;
-};
+      <div className="relative max-w-6xl mx-auto px-6 py-12">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 rounded border border-[#ff6b35]/30 bg-[#ff6b35]/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#ff6b35] mb-6">
+            <Sparkles className="h-3 w-3" />
+            <span>Feuille de Route</span>
+          </div>
+          <h1 className="text-5xl md:text-6xl font-black text-[#d0d0d0] mb-6 leading-tight">
+            L'évolution de <span className="text-[#ff6b35]">Divizion</span>
+          </h1>
+          <p className="text-lg text-[#999] max-w-3xl mx-auto leading-relaxed">
+            Des premières fondations à une version stable ambitieuse, Divizion progresse étape par étape.
+            Découvrez comment nous bâtissons un univers post-apocalyptique planétaire révolutionnaire.
+          </p>
+          <div className="mx-auto mt-6 h-1 w-16 bg-[#ff6b35]" />
+        </motion.div>
 
-function IntroSection({ title, description }: IntroSectionProps) {
-  return (
-    <section className="mb-16 text-center">
-      <h1 className="text-5xl md:text-6xl font-black text-[#d0d0d0] mb-6 leading-tight">{title}</h1>
-      <p className="text-lg text-[#999] max-w-3xl mx-auto leading-relaxed mb-8">{description}</p>
-      <div className="w-16 h-1 bg-[#ff6b35] mx-auto" />
-    </section>
-  );
-}
-
-type PhasesAccordionProps = {
-  phases: PhaseViewModel[];
-};
-
-function PhasesAccordion({ phases }: PhasesAccordionProps) {
-  const [openPhase, setOpenPhase] = useState(0);
-
-  return (
-    <div className="space-y-10 mb-16">
-      {phases.map((phase, index) => (
-        <PhaseAccordion
-          key={phase.id}
-          phase={phase}
-          isOpen={openPhase === index}
-          onToggle={() => setOpenPhase(openPhase === index ? -1 : index)}
-          isLast={index === phases.length - 1}
-        />
-      ))}
-    </div>
-  );
-}
-
-type PhaseAccordionProps = {
-  phase: PhaseViewModel;
-  isOpen: boolean;
-  onToggle: () => void;
-  isLast: boolean;
-};
-
-function PhaseAccordion({ phase, isOpen, onToggle, isLast }: PhaseAccordionProps) {
-  const statusClass =
-    phase.status === "in_progress"
-      ? "text-[#00d4ff] bg-[#00d4ff] bg-opacity-10"
-      : "text-[#ff6b35] bg-[#ff6b35] bg-opacity-10";
-
-  const markerClass =
-    phase.status === "in_progress"
-      ? "bg-[#00d4ff] text-[#0a1618] ring-2 ring-[#00d4ff]/50"
-      : "bg-[#3a3a3a] text-white";
-
-  const contentRef = useRef<HTMLDivElement>(null);
-  const observerRef = useRef<ResizeObserver | null>(null);
-  const [contentHeight, setContentHeight] = useState(0);
-
-  useLayoutEffect(() => {
-    const element = contentRef.current;
-    if (!element) {
-      return;
-    }
-
-    if (isOpen) {
-      const updateHeight = () => setContentHeight(element.scrollHeight);
-      updateHeight();
-
-      if (typeof ResizeObserver !== "undefined") {
-        const observer = new ResizeObserver(() => {
-          if (!contentRef.current) {
-            return;
-          }
-          setContentHeight(contentRef.current.scrollHeight);
-        });
-        observer.observe(element);
-        observerRef.current = observer;
-        return () => {
-          observer.disconnect();
-          observerRef.current = null;
-        };
-      }
-      return;
-    }
-
-    observerRef.current?.disconnect();
-    observerRef.current = null;
-
-    const currentHeight = element.scrollHeight;
-    setContentHeight(currentHeight);
-    const frame = requestAnimationFrame(() => setContentHeight(0));
-    return () => cancelAnimationFrame(frame);
-  }, [isOpen]);
-
-  return (
-    <div className="flex gap-6">
-      <div className="flex flex-col items-center min-w-[3rem]">
-        <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold ${markerClass}`}>
-          {phase.position}
-        </div>
-        {!isLast && <div className="flex-1 w-px bg-[#3a3a3a] mt-2" />}
-      </div>
-      <div className="flex-1">
-        <div className="bg-[#2a2a2a] border border-[#3a3a3a] rounded overflow-hidden hover:border-[#ff6b35] hover:border-opacity-50 transition-all">
-          <button
-            onClick={onToggle}
-            className="w-full px-8 py-6 flex items-start justify-between hover:bg-[#3a3a3a] transition-colors"
-          >
-            <div className="flex gap-4 text-left flex-grow">
-              <div className="flex flex-col items-center">
-                <span className="text-4xl mb-2">{phase.icon}</span>
-                <span className="text-xs font-bold text-[#666] uppercase">{phase.number}</span>
-              </div>
-              <div className="flex-grow">
-                <div className="flex items-center gap-3 mb-2 flex-wrap">
-                  <h3 className="text-xl font-bold text-[#d0d0d0]">{phase.title}</h3>
-                  <span
-                    className={`inline-block px-3 py-1 rounded text-xs font-bold uppercase tracking-wide ${statusClass}`}
-                  >
-                    {phase.statusLabel}
-                  </span>
-                </div>
-                <p className="text-[#999] text-sm">{phase.objective}</p>
-              </div>
-            </div>
-            <span
-              className={`text-[#ff6b35] text-2xl transition-transform duration-300 flex-shrink-0 ml-4 ${
-                isOpen ? "rotate-180" : ""
-              }`}
-            >
-              ▼
-            </span>
-          </button>
-          <div className="overflow-hidden transition-[height] duration-500 ease-in-out" style={{ height: `${contentHeight}px` }}>
-            <div
-              ref={contentRef}
-              className={clsx(
-                "border-t border-[#3a3a3a] bg-[#1a1a1a] px-8 py-8",
-                "transition-opacity duration-400 ease-in-out",
-                isOpen ? "opacity-100" : "opacity-0"
-              )}
-            >
-              <PhaseContent heading={phase.cardsHeading} cards={phase.cards} note={phase.note} footer={phase.footer} />
+        {/* Info Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="rounded border border-[#ff6b35]/30 bg-[#2a2a2a] p-6 mb-16 overflow-hidden relative"
+        >
+          <div className="absolute top-0 right-0 w-48 h-48 bg-[#ff6b35]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10 flex gap-4">
+            <span className="text-3xl">📋</span>
+            <div>
+              <h3 className="text-[#ff6b35] font-bold text-lg mb-2">Roadmap en développement</h3>
+              <p className="text-[#999] text-sm leading-relaxed">
+                Divizion est un projet ambitieux en cours de construction. Cette feuille de route présente notre vision et nos jalons.
+                Les dates, les mécaniques et les priorités peuvent évoluer selon nos découvertes, les retours de la communauté et les défis techniques.
+              </p>
+              <p className="text-[#999] text-xs mt-3 opacity-80">💡 Cette roadmap est mise à jour régulièrement. Restez connectés pour les dernières nouvelles !</p>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+        </motion.div>
 
-type PhaseContentProps = {
-  heading: string;
-  cards: PhaseCard[];
-  note?: string;
-  footer?: string;
-};
+        {/* Timeline */}
+        <div className="relative mb-16">
+          {PHASES.map((phase, index) => (
+            <motion.div
+              key={phase.id}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative flex gap-6 mb-8"
+            >
+              {/* Timeline Line & Marker */}
+              <div className="flex flex-col items-center min-w-[4rem] relative">
+                {/* Marker */}
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className={`w-16 h-16 rounded flex items-center justify-center font-bold text-lg relative z-10 ${phase.status === "in_progress"
+                      ? "bg-[#ff6b35] text-white shadow-lg shadow-[#ff6b35]/50"
+                      : "bg-[#2a2a2a] border border-[#3a3a3a] text-[#d0d0d0]"
+                    }`}
+                >
+                  {phase.status === "in_progress" ? <Check className="h-6 w-6" /> : phase.position}
+                </motion.div>
 
-function PhaseContent({ heading, cards, note, footer }: PhaseContentProps) {
-  return (
-    <div className="space-y-6">
-      <div>
-        <h4 className="text-[#ff6b35] font-bold text-lg mb-3">{heading}</h4>
-        <div className="space-y-3">
-          {cards.map((card) => (
-            <div key={card.title} className="bg-[#2a2a2a] p-4 rounded border border-[#3a3a3a]">
-              <p className="text-[#ff6b35] font-semibold mb-2">
-                {card.icon} {card.title}
-              </p>
-              <ul className="text-[#999] text-sm space-y-1">
-                {card.bullets.map((bullet, bulletIndex) => (
-                  <li key={`${card.title}-${bulletIndex}`}>• {bullet}</li>
-                ))}
-              </ul>
-            </div>
+                {/* Connecting Line */}
+                {index < PHASES.length - 1 && (
+                  <div className="flex-1 w-0.5 bg-gradient-to-b from-[#3a3a3a] to-transparent mt-2 min-h-[80px]" />
+                )}
+              </div>
+
+              {/* Phase Card */}
+              <div className="flex-1 pb-8">
+                <motion.div
+                  whileHover={{ y: -2 }}
+                  className="rounded border border-[#3a3a3a] bg-[#2a2a2a] overflow-hidden transition-all hover:border-[#ff6b35]/50 hover:shadow-lg hover:shadow-[#ff6b35]/10"
+                >
+                  {/* Header */}
+                  <button
+                    onClick={() => setExpandedPhase(expandedPhase === index ? -1 : index)}
+                    className="w-full p-6 flex items-start justify-between hover:bg-[#2a2a2a]/50 transition-colors text-left"
+                  >
+                    <div className="flex gap-4 flex-1">
+                      <span className="text-4xl">{phase.icon}</span>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2 flex-wrap">
+                          <h3 className="text-xl font-bold text-[#d0d0d0]">{phase.title}</h3>
+                          <span
+                            className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-bold uppercase tracking-widest ${phase.status === "in_progress"
+                                ? "bg-[#ff6b35]/20 text-[#ff6b35]"
+                                : "bg-[#3a3a3a] text-[#999]"
+                              }`}
+                          >
+                            {phase.statusLabel}
+                          </span>
+                        </div>
+                        <p className="text-[#999] text-sm">{phase.objective}</p>
+                      </div>
+                    </div>
+                    <motion.div
+                      animate={{ rotate: expandedPhase === index ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-[#ff6b35] ml-4"
+                    >
+                      <ArrowRight className="h-5 w-5 rotate-90" />
+                    </motion.div>
+                  </button>
+
+                  {/* Expanded Content */}
+                  <AnimatePresence>
+                    {expandedPhase === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="border-t border-[#3a3a3a] bg-[#1a1a1a] p-6">
+                          <h4 className="text-[#ff6b35] font-bold text-sm uppercase tracking-widest mb-4">
+                            {phase.cardsHeading}
+                          </h4>
+
+                          <div className="space-y-3 mb-4">
+                            {phase.cards.map((card, cardIndex) => (
+                              <motion.div
+                                key={card.title}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: cardIndex * 0.1 }}
+                                className="bg-[#2a2a2a] p-4 rounded border border-[#3a3a3a]"
+                              >
+                                <p className="text-[#ff6b35] font-semibold mb-2 text-sm">
+                                  {card.icon} {card.title}
+                                </p>
+                                <ul className="text-[#999] text-sm space-y-1">
+                                  {card.bullets.map((bullet, bulletIndex) => (
+                                    <li key={bulletIndex} className="flex gap-2">
+                                      <span className="text-[#ff6b35] flex-shrink-0">•</span>
+                                      <span>{bullet}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </motion.div>
+                            ))}
+                          </div>
+
+                          {phase.note && (
+                            <div className="bg-[#2a2a2a] border border-[#ff6b35]/20 p-4 rounded mb-4">
+                              <p className="text-[#999] text-sm">
+                                <strong className="text-[#ff6b35]">Note:</strong> {phase.note}
+                              </p>
+                            </div>
+                          )}
+
+                          {phase.footer && (
+                            <div className="pt-4 border-t border-[#3a3a3a]">
+                              <p className="text-[#999] text-sm italic">{phase.footer}</p>
+                            </div>
+                          )}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              </div>
+            </motion.div>
           ))}
         </div>
-      </div>
-      {note && (
-        <div className="bg-[#2a2a2a] border border-[#ff6b35] border-opacity-20 p-4 rounded">
-          <p className="text-[#999] text-sm">
-            <strong className="text-[#ff6b35]">Note:</strong> {note}
-          </p>
-        </div>
-      )}
-      {footer && (
-        <div className="pt-4 border-t border-[#3a3a3a]">
-          <p className="text-[#999] text-sm italic">{footer}</p>
-        </div>
-      )}
-    </div>
-  );
-}
 
-type FutureVisionProps = {
-  title: string;
-  description: string;
-  cards: { icon: string; title: string; description: string }[];
-};
-
-function FutureVision({ title, description, cards }: FutureVisionProps) {
-  return (
-    <section className="mb-16 pt-16 border-t border-[#3a3a3a]">
-      <h2 className="text-3xl font-bold text-[#d0d0d0] mb-8">{title}</h2>
-      <p className="text-[#999] mb-8 leading-relaxed">{description}</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {cards.map((card, index) => (
-          <div
-            key={card.title}
-            className={`bg-[#2a2a2a] border border-[#3a3a3a] p-6 rounded hover:border-[#ff6b35] transition-all ${
-              index === cards.length - 1 ? "md:col-span-2" : ""
-            }`}
-          >
-            <div className="text-3xl mb-3">{card.icon}</div>
-            <h3 className="text-[#ff6b35] font-bold mb-2">{card.title}</h3>
-            <p className="text-[#999] text-sm">{card.description}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-type JoinCTAProps = {
-  title: string;
-  description: string;
-  buttonLabel: string;
-  subtitle: string;
-};
-
-function JoinCTA({ title, description, buttonLabel, subtitle }: JoinCTAProps) {
-  return (
-    <section className="mt-16 pt-12 border-t border-[#3a3a3a]">
-      <div className="bg-gradient-to-r from-[#2a2a2a] to-[#1a1a1a] border border-[#ff6b35] border-opacity-50 p-12 rounded text-center">
-        <h2 className="text-3xl font-bold text-[#d0d0d0] mb-4">{title}</h2>
-        <p className="text-[#999] max-w-2xl mx-auto mb-8 leading-relaxed">{description}</p>
-        <a
-          href={DISCORD_LINK}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-block bg-[#ff6b35] text-white px-8 py-3 rounded font-bold hover:bg-[#e74c3c] transition-colors"
+        {/* Future Vision */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16 pt-16 border-t border-[#3a3a3a]"
         >
-          {buttonLabel} →
-        </a>
-        <p className="text-[#666] text-sm mt-6">{subtitle}</p>
+          <h2 className="text-3xl font-bold text-[#d0d0d0] mb-4">{FUTURE_VISION_CONTENT.title}</h2>
+          <p className="text-[#999] mb-8 leading-relaxed">{FUTURE_VISION_CONTENT.description}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {FUTURE_VISION_CONTENT.cards.map((card, index) => (
+              <motion.div
+                key={card.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -4 }}
+                className={`bg-[#2a2a2a] border border-[#3a3a3a] p-6 rounded transition-colors hover:border-[#ff6b35]/50 hover:shadow-lg hover:shadow-[#ff6b35]/10 ${index === FUTURE_VISION_CONTENT.cards.length - 1 ? "md:col-span-2" : ""
+                  }`}
+              >
+                <div className="text-3xl mb-3">{card.icon}</div>
+                <h3 className="text-[#ff6b35] font-bold mb-2">{card.title}</h3>
+                <p className="text-[#999] text-sm">{card.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* CTA */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="pt-12 border-t border-[#3a3a3a]"
+        >
+          <div className="rounded border border-[#ff6b35]/30 bg-[#2a2a2a] p-12 text-center overflow-hidden relative">
+            {/* Background effects */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#ff6b35]/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#ff6b35]/5 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="relative z-10">
+              <h2 className="text-3xl font-bold text-[#d0d0d0] mb-4">Envie de façonner l'avenir de Divizion ?</h2>
+              <p className="text-[#999] max-w-2xl mx-auto mb-8 leading-relaxed">
+                Rejoignez notre communauté Discord, participez aux discussions et suivez la roadmap en direct.
+                Vos retours façonnent le projet.
+              </p>
+              <a
+                href={DISCORD_LINK}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded bg-[#ff6b35] px-6 py-3 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#e74c3c]"
+              >
+                Rejoindre Discord
+                <ArrowRight className="h-4 w-4" />
+              </a>
+              <p className="text-[#666] text-sm mt-6">Les testeurs sont toujours les bienvenus</p>
+            </div>
+          </div>
+        </motion.section>
       </div>
-    </section>
+    </div>
   );
 }
