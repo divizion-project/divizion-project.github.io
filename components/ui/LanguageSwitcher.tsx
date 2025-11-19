@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import clsx from "clsx";
 
 export default function LanguageSwitcher() {
-    const { language, setLanguage } = useLanguage();
+    const { language, setLanguage, t } = useLanguage();
     const [isOpen, setIsOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [mounted, setMounted] = useState(false);
@@ -120,7 +120,7 @@ export default function LanguageSwitcher() {
                                     <div className="border-b border-[#3a3a3a] p-4">
                                         <div className="flex items-center justify-between mb-4">
                                             <h2 className="text-lg font-bold text-white">
-                                                Choisir une langue / Choose a language
+                                                {t("language_switcher.title")}
                                             </h2>
                                             <button
                                                 onClick={() => setIsOpen(false)}
@@ -136,7 +136,7 @@ export default function LanguageSwitcher() {
                                             />
                                             <input
                                                 type="text"
-                                                placeholder="Rechercher / Search..."
+                                                placeholder={t("language_switcher.search")}
                                                 value={searchQuery}
                                                 onChange={(e) => setSearchQuery(e.target.value)}
                                                 className="w-full rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] py-2.5 pl-10 pr-4 text-sm text-white placeholder-[#666] focus:border-[#ff6b35] focus:outline-none"
@@ -181,7 +181,7 @@ export default function LanguageSwitcher() {
                                             ))}
                                             {filteredLanguages.length === 0 && (
                                                 <div className="py-8 text-center text-[#666]">
-                                                    Aucune langue trouvée / No language found
+                                                    {t("language_switcher.no_results")}
                                                 </div>
                                             )}
                                         </div>

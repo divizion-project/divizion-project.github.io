@@ -26,16 +26,15 @@ export default function HomePage() {
         <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-8 px-6 text-center">
           <div className="inline-flex items-center gap-2 rounded border border-[#ff6b35]/30 bg-[#ff6b35]/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#ff6b35]">
             <Sparkles className="h-3 w-3" />
-            <span>Serveur Survie Post-Apocalyptique</span>
+            <span>{t("home.hero.badge")}</span>
           </div>
 
           <h1 className="text-6xl font-black leading-tight text-[#d0d0d0] md:text-7xl lg:text-8xl">
-            Bienvenue sur <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b35] to-[#e74c3c]">Divizion</span>
+            {t("home.hero.title_prefix")} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff6b35] to-[#e74c3c]">Divizion</span>
           </h1>
 
           <p className="max-w-3xl text-xl leading-relaxed text-[#999]">
-            Un monde Minecraft post-apocalyptique où chaque ressource compte, chaque décision a du poids,
-            et où votre survie dépend autant de votre stratégie que de vos alliances.
+            {t("home.hero.description")}
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
@@ -43,7 +42,7 @@ export default function HomePage() {
               href="/launcher"
               className="inline-flex items-center gap-2 rounded bg-[#ff6b35] px-6 py-3 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#e74c3c]"
             >
-              Commencer l'aventure
+              {t("common.start_adventure")}
               <ArrowRight className="h-4 w-4" />
             </Link>
             <a
@@ -52,7 +51,7 @@ export default function HomePage() {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded border border-[#3a3a3a] bg-[#2a2a2a] px-6 py-3 text-sm font-bold uppercase tracking-widest text-[#d0d0d0] transition-colors hover:border-[#ff6b35]"
             >
-              Rejoindre Discord
+              {t("common.join_discord")}
             </a>
           </div>
         </div>
@@ -64,7 +63,7 @@ export default function HomePage() {
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#1a1a1a] to-transparent pointer-events-none" />
 
         <div className="relative text-center mb-12">
-          <h2 className="text-4xl font-bold text-[#d0d0d0] mb-4">Qu'est-ce que Divizion ?</h2>
+          <h2 className="text-4xl font-bold text-[#d0d0d0] mb-4">{t("home.about.title")}</h2>
           <div className="mx-auto h-1 w-20 bg-[#ff6b35]" />
         </div>
 
@@ -73,11 +72,9 @@ export default function HomePage() {
             <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded bg-[#ff6b35]/20 text-[#ff6b35]">
               <Globe className="h-8 w-8" />
             </div>
-            <h3 className="mb-4 text-2xl font-bold text-[#d0d0d0]">Une Terre Post-Apocalyptique</h3>
+            <h3 className="mb-4 text-2xl font-bold text-[#d0d0d0]">{t("home.about.cards.world.title")}</h3>
             <p className="leading-relaxed text-[#999]">
-              Explorez un monde fidèle à la Terre réelle, parsemé de mégalopoles ravagées,
-              de campagnes dévastées et de ruines dangereuses. Chaque région raconte une histoire,
-              chaque bâtiment cache des secrets... et des dangers.
+              {t("home.about.cards.world.description")}
             </p>
           </div>
 
@@ -85,11 +82,9 @@ export default function HomePage() {
             <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded bg-[#ff6b35]/20 text-[#ff6b35]">
               <Zap className="h-8 w-8" />
             </div>
-            <h3 className="mb-4 text-2xl font-bold text-[#d0d0d0]">Survie Hardcore & Stratégique</h3>
+            <h3 className="mb-4 text-2xl font-bold text-[#d0d0d0]">{t("home.about.cards.survival.title")}</h3>
             <p className="leading-relaxed text-[#999]">
-              Les ressources sont rares et contrôlées par un système dynamique. Il n'y a jamais assez
-              pour tout le monde. Vous devrez piller, commercer, négocier ou conquérir pour survivre.
-              La difficulté est réelle, les choix le sont encore plus.
+              {t("home.about.cards.survival.description")}
             </p>
           </div>
 
@@ -97,11 +92,9 @@ export default function HomePage() {
             <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded bg-[#ff6b35]/20 text-[#ff6b35]">
               <Users className="h-8 w-8" />
             </div>
-            <h3 className="mb-4 text-2xl font-bold text-[#d0d0d0]">Joueurs & Factions</h3>
+            <h3 className="mb-4 text-2xl font-bold text-[#d0d0d0]">{t("home.about.cards.factions.title")}</h3>
             <p className="leading-relaxed text-[#999]">
-              Formez des alliances, créez des factions, bâtissez des empires ou vivez en solitaire.
-              Le système de spawn tactique vous permet de choisir où apparaître sur le globe 3D.
-              Chaque zone a ses avantages et ses risques.
+              {t("home.about.cards.factions.description")}
             </p>
           </div>
 
@@ -109,11 +102,9 @@ export default function HomePage() {
             <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded bg-[#ff6b35]/20 text-[#ff6b35]">
               <Map className="h-8 w-8" />
             </div>
-            <h3 className="mb-4 text-2xl font-bold text-[#d0d0d0]">Monde Dynamique & Vivant</h3>
+            <h3 className="mb-4 text-2xl font-bold text-[#d0d0d0]">{t("home.about.cards.dynamic.title")}</h3>
             <p className="leading-relaxed text-[#999]">
-              Les vivres réapparaissent toutes les 24h dans des lieux crédibles. Les villes offrent
-              plus de loot mais grouillent de mutants mortels. La campagne est plus calme mais se
-              recharge lentement. Chaque région impose une stratégie différente.
+              {t("home.about.cards.dynamic.description")}
             </p>
           </div>
         </div>
@@ -129,7 +120,7 @@ export default function HomePage() {
 
         <div className="relative mx-auto max-w-6xl px-6">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-[#d0d0d0] mb-4">Ce qui rend Divizion unique</h2>
+            <h2 className="text-4xl font-bold text-[#d0d0d0] mb-4">{t("home.features.title")}</h2>
             <div className="mx-auto h-1 w-20 bg-[#ff6b35]" />
           </div>
 
@@ -142,11 +133,9 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-[#d0d0d0] mb-3">Globe 3D interactif dans le launcher</h3>
+                  <h3 className="text-2xl font-bold text-[#d0d0d0] mb-3">{t("home.features.globe.title")}</h3>
                   <p className="text-[#999] leading-relaxed">
-                    Avant même de vous connecter, visualisez le monde entier en 3D. Voyez les zones chaudes (guerres, sièges),
-                    les régions calmes, et les opportunités. Un système de hotpoints en direct vous montre où se joue l'action.
-                    Choisissez votre spawn stratégiquement : près d'une ville dangereuse mais riche, ou dans une campagne isolée ?
+                    {t("home.features.globe.description")}
                   </p>
                 </div>
               </div>
@@ -160,11 +149,9 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-[#d0d0d0] mb-3">Rareté organisée & tension permanente</h3>
+                  <h3 className="text-2xl font-bold text-[#d0d0d0] mb-3">{t("home.features.rarity.title")}</h3>
                   <p className="text-[#999] leading-relaxed">
-                    Un système de spawn de vivres dynamique garantit qu'il y a toujours un peu moins de nourriture que nécessaire.
-                    Les ressources apparaissent dans des lieux crédibles (frigos, dépôts, boutiques) toutes les 24h. Cette rareté
-                    force la coopération, le commerce... ou la guerre. Chaque choix compte.
+                    {t("home.features.rarity.description")}
                   </p>
                 </div>
               </div>
@@ -178,11 +165,9 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-[#d0d0d0] mb-3">Saisons & événements globaux</h3>
+                  <h3 className="text-2xl font-bold text-[#d0d0d0] mb-3">{t("home.features.events.title")}</h3>
                   <p className="text-[#999] leading-relaxed">
-                    Des météorites s'écrasent, apportant des minerais rares mais attirant tous les joueurs. Des épidémies ravagent
-                    des régions entières. Des caravanes de ravitaillement traversent le monde. Chaque saison transforme le monde,
-                    redistribue les cartes et crée des opportunités uniques.
+                    {t("home.features.events.description")}
                   </p>
                 </div>
               </div>
@@ -204,10 +189,9 @@ export default function HomePage() {
             <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded bg-[#ff6b35]/20 text-[#ff6b35]">
               <Sparkles className="h-10 w-10" />
             </div>
-            <h2 className="text-3xl font-bold text-[#d0d0d0] mb-4">Prêt à survivre ?</h2>
+            <h2 className="text-3xl font-bold text-[#d0d0d0] mb-4">{t("home.cta.title")}</h2>
             <p className="text-lg text-[#999] mb-8 max-w-2xl mx-auto">
-              Divizion est en développement actif. La Phase 1 (Fondations de l'univers) est en cours.
-              Rejoignez notre Discord pour suivre les avancées, participer aux tests et façonner l'avenir du serveur.
+              {t("home.cta.description")}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <a
@@ -216,14 +200,14 @@ export default function HomePage() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded bg-[#ff6b35] px-6 py-3 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#e74c3c]"
               >
-                Discord
+                {t("common.discord")}
                 <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/roadmap"
                 className="inline-flex items-center gap-2 rounded border border-[#3a3a3a] bg-[#2a2a2a] px-6 py-3 text-sm font-bold uppercase tracking-widest text-[#d0d0d0] transition-colors hover:border-[#ff6b35]"
               >
-                Voir la Roadmap
+                {t("common.view_roadmap")}
               </Link>
             </div>
           </div>

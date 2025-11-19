@@ -1,0 +1,516 @@
+export const FR = {
+    common: {
+        discord: "Discord",
+        download: "Télécharger",
+        close: "Fermer",
+        soon: "Bientôt...",
+        join_discord: "Rejoindre Discord",
+        support_discord: "Support Discord",
+        view_roadmap: "Voir la Roadmap",
+        start_adventure: "Commencer l'aventure",
+        download_for: "Télécharger pour {os}",
+        downloading: "Téléchargement en cours...",
+        select_arch: "Sélectionnez votre architecture",
+        intel_amd: "Intel / AMD",
+        apple_silicon: "Apple Silicon",
+        good_game: "Bon jeu sur Divizion !",
+        download_auto: "Le téléchargement devrait démarrer automatiquement.",
+        previous_versions: "Versions précédentes",
+        days: "Jours",
+        hours: "Heures",
+        minutes: "Minutes",
+        seconds: "Secondes"
+    },
+    navbar: {
+        home: "Accueil",
+        news: "Actualités",
+        launcher: "Launcher",
+        roadmap: "Roadmap",
+        soon: "Bientôt...",
+    },
+    home: {
+        hero: {
+            badge: "Serveur Survie Post-Apocalyptique",
+            title_prefix: "Bienvenue sur",
+            description: "Un monde Minecraft post-apocalyptique où chaque ressource compte, chaque décision a du poids, et où votre survie dépend autant de votre stratégie que de vos alliances."
+        },
+        about: {
+            title: "Qu'est-ce que Divizion ?",
+            cards: {
+                world: {
+                    title: "Une Terre Post-Apocalyptique",
+                    description: "Explorez un monde fidèle à la Terre réelle, parsemé de mégalopoles ravagées, de campagnes dévastées et de ruines dangereuses. Chaque région raconte une histoire, chaque bâtiment cache des secrets... et des dangers."
+                },
+                survival: {
+                    title: "Survie Hardcore & Stratégique",
+                    description: "Les ressources sont rares et contrôlées par un système dynamique. Il n'y a jamais assez pour tout le monde. Vous devrez piller, commercer, négocier ou conquérir pour survivre. La difficulté est réelle, les choix le sont encore plus."
+                },
+                factions: {
+                    title: "Joueurs & Factions",
+                    description: "Formez des alliances, créez des factions, bâtissez des empires ou vivez en solitaire. Le système de spawn tactique vous permet de choisir où apparaître sur le globe 3D. Chaque zone a ses avantages et ses risques."
+                },
+                dynamic: {
+                    title: "Monde Dynamique & Vivant",
+                    description: "Les vivres réapparaissent toutes les 24h dans des lieux crédibles. Les villes offrent plus de loot mais grouillent de mutants mortels. La campagne est plus calme mais se recharge lentement. Chaque région impose une stratégie différente."
+                }
+            }
+        },
+        features: {
+            title: "Ce qui rend Divizion unique",
+            globe: {
+                title: "Globe 3D interactif dans le launcher",
+                description: "Avant même de vous connecter, visualisez le monde entier en 3D. Voyez les zones chaudes (guerres, sièges), les régions calmes, et les opportunités. Un système de hotpoints en direct vous montre où se joue l'action. Choisissez votre spawn stratégiquement : près d'une ville dangereuse mais riche, ou dans une campagne isolée ?"
+            },
+            rarity: {
+                title: "Rareté organisée & tension permanente",
+                description: "Un système de spawn de vivres dynamique garantit qu'il y a toujours un peu moins de nourriture que nécessaire. Les ressources apparaissent dans des lieux crédibles (frigos, dépôts, boutiques) toutes les 24h. Cette rareté force la coopération, le commerce... ou la guerre. Chaque choix compte."
+            },
+            events: {
+                title: "Saisons & événements globaux",
+                description: "Des météorites s'écrasent, apportant des minerais rares mais attirant tous les joueurs. Des épidémies ravagent des régions entières. Des caravanes de ravitaillement traversent le monde. Chaque saison transforme le monde, redistribue les cartes et crée des opportunités uniques."
+            }
+        },
+        cta: {
+            title: "Prêt à survivre ?",
+            description: "Divizion est en développement actif. La Phase 1 (Fondations de l'univers) est en cours. Rejoignez notre Discord pour suivre les avancées, participer aux tests et façonner l'avenir du serveur."
+        }
+    },
+    launcher: {
+        hero: {
+            badge: "Bientôt Disponible • {version}",
+            title_prefix: "Launcher",
+            title_suffix: "Divizion",
+            description: "Une refonte complète. Plus simple, moins austère, avec des animations fluides et un design à couper le souffle.",
+            video_label: "Vidéo de reveal V3"
+        },
+        download: {
+            title: "Téléchargement",
+            subtitle: "Choisissez votre plateforme"
+        },
+        features: {
+            title: "Nouveautés Principales",
+            subtitle: "Découvrez ce qui change dans la V3",
+            preview: "Aperçu",
+            login: {
+                title: "Nouvel écran de login",
+                description: "Une interface de connexion repensée pour plus de fluidité et de sécurité."
+            },
+            transitions: {
+                title: "Nouveaux effets de transitions",
+                description: "Des animations fluides entre chaque menu pour une navigation agréable."
+            },
+            visuals: {
+                title: "Meilleurs effets visuels",
+                description: "Une refonte graphique complète pour un plaisir des yeux à chaque instant."
+            },
+            settings: {
+                title: "Refonte des paramètres",
+                description: "Un menu de configuration plus clair et plus complet."
+            }
+        },
+        smart_features: {
+            badge: "BETA",
+            title: "Fonctionnalités Intelligentes",
+            magiclamp: {
+                title: "MagicLamp (Beta)",
+                description: "Allocation intelligente de la RAM en fonction de votre machine et de l'instance."
+            },
+            autodebug: {
+                title: "Auto-Debug",
+                description: "Détection et résolution automatique des crashs et conflits de mods."
+            }
+        },
+        upcoming: {
+            title: "Bientôt Disponible",
+            description: "Nous travaillons sur le support des <strong>modpacks custom</strong> pour remplacer MultiMC et le launcher de base, ainsi qu'une gestion avancée des comptes unifiés."
+        }
+    },
+    news: {
+        soon: {
+            title: "Actualités bientôt disponibles",
+            description: "Les actualités et mises à jour de Divizion seront disponibles prochainement."
+        }
+    },
+    roadmap: {
+        header: {
+            badge: "Feuille de Route",
+            title: "L'évolution de",
+            description: "Des premières fondations à une version stable ambitieuse, Divizion progresse étape par étape. Découvrez comment nous bâtissons un univers post-apocalyptique planétaire révolutionnaire."
+        },
+        info: {
+            title: "Roadmap en développement",
+            description: "Divizion est un projet ambitieux en cours de construction. Cette feuille de route présente notre vision et nos jalons. Les dates, les mécaniques et les priorités peuvent évoluer selon nos découvertes, les retours de la communauté et les défis techniques.",
+            note: "💡 Cette roadmap est mise à jour régulièrement. Restez connectés pour les dernières nouvelles !"
+        },
+        status: {
+            in_progress: "En cours",
+            upcoming: "À venir"
+        },
+        cards_heading: "Ce que voient les joueurs",
+        phases: {
+            phase1: {
+                title: "Fondations de l'univers",
+                objective: "Offrir une portion jouable, stable et immersive avant d'agrandir le monde.",
+                footer: "Cette phase garantit une base solide et immersive avant d'ajouter plus de complexité.",
+                cards: {
+                    "0": {
+                        title: "Première carte de test",
+                        bullets: [
+                            "Un morceau de Terre mêlant campagne et mégalopole ravagée.",
+                            "Tours effondrées, végétation envahissante, ruines dangereuses.",
+                            "Ambiance immédiatement post-apocalyptique."
+                        ]
+                    },
+                    "1": {
+                        title: "Serveur survie hardcore jouable",
+                        bullets: [
+                            "Difficulté plus élevée que Minecraft classique.",
+                            "Ressources limitées et premières mécaniques de rareté.",
+                            "Systèmes dynamiques déjà présents en version simplifiée."
+                        ]
+                    },
+                    "2": {
+                        title: "Première ambiance Divizion",
+                        bullets: [
+                            "Packs de textures et shaders recommandés pour l'atmosphère.",
+                            "Tests de mutants, villes mortelles, exploration épique.",
+                            "Sensation d'être vraiment seul dans un monde abandonné."
+                        ]
+                    }
+                }
+            },
+            phase2: {
+                title: "Rareté organisée",
+                objective: "Créer une tension permanente grâce à un déficit maîtrisé des ressources.",
+                footer: "La rareté transforme la survie en planification longue durée et en drame social.",
+                cards: {
+                    "0": {
+                        title: "Spawn de vivres dynamique",
+                        bullets: [
+                            "Les vivres apparaissent toutes les 24h réelles dans des lieux crédibles.",
+                            "Frigos, garde-manger, dépôts, petites boutiques abandonnées.",
+                            "Le système s'adapte au nombre de joueurs mais garde toujours un léger déficit."
+                        ]
+                    },
+                    "1": {
+                        title: "Tension permanente",
+                        bullets: [
+                            "Il y a toujours un peu moins de nourriture que nécessaire.",
+                            "Les joueurs doivent piller, commercer, coopérer ou innover.",
+                            "Les premiers conflits et alliances émergent naturellement."
+                        ]
+                    },
+                    "2": {
+                        title: "Ville vs campagne",
+                        bullets: [
+                            "Les villes offrent plus de loot mais un danger extrême.",
+                            "La campagne est plus calme mais se recharge beaucoup plus lentement.",
+                            "Chaque région pousse à une stratégie différente."
+                        ]
+                    }
+                }
+            },
+            phase3: {
+                title: "Launcher Divizion v1",
+                objective: "Livrer un launcher custom qui supprime les frictions et prépare les vues avancées.",
+                footer: "Un launcher solide devient la colonne vertébrale des futures fonctionnalités.",
+                note: "Le globe 3D arrive plus tard : cette version se concentre sur la stabilité et les outils.",
+                cards: {
+                    "0": {
+                        title: "Launcher dédié Divizion",
+                        bullets: [
+                            "Interface brandée pensée pour le projet.",
+                            "Installe automatiquement packs, configs et mods nécessaires.",
+                            "Un bouton Jouer lance Minecraft avec le bon profil."
+                        ]
+                    },
+                    "1": {
+                        title: "Connexion simplifiée",
+                        bullets: [
+                            "Plus besoin de copier-coller l'IP.",
+                            "Le launcher gère l'authentification et la connexion au serveur.",
+                            "Expérience fluide, fiable et centrée sur l'onboarding."
+                        ]
+                    }
+                }
+            },
+            phase4: {
+                title: "Globe 3D et hotpoints",
+                objective: "Transformer le launcher en salle d'observation stratégique.",
+                footer: "Les joueurs obtiennent une vue stratégique avant même d'apparaître au sol.",
+                cards: {
+                    "0": {
+                        title: "Globe 3D interactif",
+                        bullets: [
+                            "Une Terre reconnaissable avec continents et océans.",
+                            "Rotation fluide, zoom et déplacement libre.",
+                            "C'est la porte d'entrée vers le monde Divizion."
+                        ]
+                    },
+                    "1": {
+                        title: "Hotpoints en direct",
+                        bullets: [
+                            "Vert = zones calmes.",
+                            "Jaune = activité moyenne.",
+                            "Rouge = guerres, sièges, forte densité.",
+                            "La heatmap reflète l'activité réelle du serveur."
+                        ]
+                    },
+                    "2": {
+                        title: "Lecture globale",
+                        bullets: [
+                            "Voir où se concentrent les joueurs avant de se connecter.",
+                            "Repérer les régions qui s'embrasent ou se calment.",
+                            "Identifier les zones désertes pleines d'opportunités."
+                        ]
+                    }
+                }
+            },
+            phase5: {
+                title: "Choix du spawn via le globe",
+                objective: "Rendre les spawns tactiques tout en restant cohérents géographiquement.",
+                footer: "Le choix du spawn devient une décision stratégique : alliés, ressources ou embuscades.",
+                cards: {
+                    "0": {
+                        title: "Première connexion libre",
+                        bullets: [
+                            "Zoom progressif de l'orbite jusqu'au niveau Minecraft.",
+                            "Cliquez exactement sur la zone voulue.",
+                            "Le launcher vous fait apparaître à l'endroit choisi."
+                        ]
+                    },
+                    "1": {
+                        title: "Logique de proximité ensuite",
+                        bullets: [
+                            "Les connexions suivantes se font dans un rayon d'environ 100 km.",
+                            "Empêche les sauts absurdes entre continents.",
+                            "Garde une flexibilité tactique sans casser l'immersion."
+                        ]
+                    },
+                    "2": {
+                        title: "Spawn intelligent",
+                        bullets: [
+                            "Le système évite les placements mortels (lave, vide, grands fonds).",
+                            "Pose toujours le joueur sur une surface logique proche de son choix."
+                        ]
+                    }
+                }
+            },
+            phase6: {
+                title: "Vue satellite et historique",
+                objective: "Offrir une intelligence orbitale synchronisée avec le passage de l'ISS.",
+                footer: "Le monde gagne une mémoire : les joueurs deviennent archivistes de leur univers.",
+                cards: {
+                    "0": {
+                        title: "Images satellite Minecraft",
+                        bullets: [
+                            "En zoomant, on bascule de la Terre à une vue orthographique de Minecraft.",
+                            "Observer bases, villes et mégastructures directement dans le launcher.",
+                            "Première cartographie accessible du serveur vivant."
+                        ]
+                    },
+                    "1": {
+                        title: "Actualisation synchronisée ISS",
+                        bullets: [
+                            "Les images ne sont pas en temps réel.",
+                            "Chaque zone s'actualise quand l'ISS simulée passe au-dessus.",
+                            "Exemple : Paris ne se met à jour que lors du passage de l'ISS."
+                        ]
+                    },
+                    "2": {
+                        title: "Historique des régions",
+                        bullets: [
+                            "Revoir l'état d'une zone à différents jours.",
+                            "Analyser guerres, sièges et destructions massives.",
+                            "Suivre l'évolution d'une colonie semaine après semaine."
+                        ]
+                    },
+                    "3": {
+                        title: "Lecture stratégique",
+                        bullets: [
+                            "Étudier l'expansion passée des nations rivales.",
+                            "Repérer bases abandonnées ou zones de staging.",
+                            "Comprendre les fronts historiques avant d'engager des forces."
+                        ]
+                    }
+                }
+            },
+            phase7: {
+                title: "Événements dynamiques",
+                objective: "Faire réagir la planète au contexte plutôt qu'à l'aléatoire.",
+                footer: "Chaque session est vivante sans sombrer dans le chaos.",
+                cards: {
+                    "0": {
+                        title: "Afflux de mutants et menaces",
+                        bullets: [
+                            "Des vagues surgissent autour des villes ou des zones militaires.",
+                            "Dangers spécifiques liés aux secteurs pollués.",
+                            "Les rencontres s'intensifient selon la tension locale."
+                        ]
+                    },
+                    "1": {
+                        title: "Anomalies météo extrêmes",
+                        bullets: [
+                            "Orages violents, tempêtes de sable, phénomènes lumineux.",
+                            "Impactent visibilité, cultures et certaines structures.",
+                            "Météo synchronisée avec les données réelles de chaque région."
+                        ]
+                    },
+                    "2": {
+                        title: "Pénuries localisées",
+                        bullets: [
+                            "Certaines zones subissent des crashs temporaires de ressources.",
+                            "Faut-il tenir, migrer, commercer ou attaquer ?",
+                            "Forcent alliances et déplacements massifs."
+                        ]
+                    },
+                    "3": {
+                        title: "Comportement par zone",
+                        bullets: [
+                            "Les mégalopoles abritent des crises violentes mais rémunératrices.",
+                            "La campagne propose des événements plus rares mais surprenants.",
+                            "Chaque biome développe sa signature."
+                        ]
+                    }
+                }
+            },
+            phase8: {
+                title: "Nations et géopolitique",
+                objective: "Introduire des structures sociales qui portent les grandes histoires.",
+                footer: "Divizion passe du chaos à un bac à sable géopolitique organisé.",
+                cards: {
+                    "0": {
+                        title: "Création de nations",
+                        bullets: [
+                            "Créer son groupe avec nom et bannière.",
+                            "Inviter des membres et définir des rôles.",
+                            "L'identité communautaire prend du poids."
+                        ]
+                    },
+                    "1": {
+                        title: "Capitales et territoires",
+                        bullets: [
+                            "Déclarer une base principale visible dans le launcher.",
+                            "Point de ralliement et marqueur de prestige.",
+                            "Prépare le futur système territorial."
+                        ]
+                    },
+                    "2": {
+                        title: "Jeu social et politique",
+                        bullets: [
+                            "Alliances et blocs émergent naturellement.",
+                            "Conflits autour des ressources et des villes.",
+                            "La diplomatie devient aussi importante que le combat."
+                        ]
+                    }
+                }
+            },
+            phase9: {
+                title: "Alpha puis bêta",
+                objective: "Stress-tester l'écosystème avant la sortie.",
+                note: "Les phases Alpha et Bêta s'appuient sur les retours de la communauté pour polir Divizion.",
+                cards: {
+                    "0": {
+                        title: "Alpha fermée",
+                        bullets: [
+                            "Un noyau restreint de testeurs motivés.",
+                            "Objectif : casser le jeu, trouver failles et déséquilibres.",
+                            "Attendez-vous à des wipes, resets et changements brutaux."
+                        ]
+                    },
+                    "1": {
+                        title: "Bêta élargie",
+                        bullets: [
+                            "Ouverture à davantage de joueurs pour des tests publics.",
+                            "Le monde rassemble la plupart des systèmes phares.",
+                            "Encore très évolutif mais jouable sur la durée."
+                        ]
+                    },
+                    "2": {
+                        title: "Itération rapide",
+                        bullets: [
+                            "Équilibrages, features et correctifs fréquents.",
+                            "Retours de la communauté intégrés quasi immédiatement.",
+                            "Prépare la transition vers une 1.0 stable."
+                        ]
+                    }
+                }
+            },
+            phase10: {
+                title: "Divizion 1.0",
+                objective: "Livrer la première version complète et durable.",
+                footer: "La 1.0 concrétise la vision et ouvre une nouvelle ère pour Minecraft.",
+                cards: {
+                    "0": {
+                        title: "Monde cohérent et persistant",
+                        bullets: [
+                            "Planète post-apo avec une rareté maîtrisée.",
+                            "Les nations existent et mènent des guerres organiques.",
+                            "Événements dynamiques rythment la vie du serveur.",
+                            "Version prête pour du jeu continu."
+                        ]
+                    },
+                    "1": {
+                        title: "Globe + satellite comme salle de contrôle",
+                        bullets: [
+                            "Le launcher devient la war room du joueur.",
+                            "Suivi des hotpoints presque en temps réel.",
+                            "Analyse des passages satellites archivés.",
+                            "Choix précis des spawns selon la stratégie."
+                        ]
+                    },
+                    "2": {
+                        title: "Identité Divizion claire",
+                        bullets: [
+                            "Rien à voir avec une survie ou une faction classique.",
+                            "Ce n'est pas juste du PvP, ni juste du RP.",
+                            "Un simulateur géopolitique apocalyptique pensé pour Minecraft.",
+                            "Chaque décision laisse une trace visible sur la planète."
+                        ]
+                    }
+                }
+            }
+        },
+        future: {
+            title: "Et après Divizion 1.0 ?",
+            description: "Divizion est pensé comme un projet vivant. Une fois la 1.0 stabilisée, voici les pistes que nous souhaitons explorer :",
+            cards: {
+                depollution: {
+                    title: "Systèmes avancés de dépollution",
+                    description: "Arbres technologiques pour purifier les sols et restaurer des écosystèmes."
+                },
+                tech: {
+                    title: "Développement technologique",
+                    description: "Automatisation, énergie, filtration, défenses industrielles et nouvelles logistiques."
+                },
+                diplomacy: {
+                    title: "Diplomatie poussée",
+                    description: "Traités formels, alliances reconnues, mécaniques de casus belli."
+                },
+                events: {
+                    title: "Événements mondiaux temporaires",
+                    description: "Saisons, catastrophes globales et événements épiques qui touchent tout le serveur."
+                },
+                modes: {
+                    title: "Modes alternatifs",
+                    description: "Modes spécifiques sur certaines régions du globe et opérations narratives dirigées."
+                }
+            }
+        },
+        cta: {
+            title: "Envie de façonner l'avenir de Divizion ?",
+            description: "Rejoignez notre communauté Discord, participez aux discussions et suivez la roadmap en direct. Vos retours façonnent le projet.",
+            testers: "Les testeurs sont toujours les bienvenus"
+        }
+    },
+    footer: {
+        copyright: "@Divizion 2025 – Site officiel",
+        version: "Version v{version}",
+        support: "Support Divizion"
+    },
+    language_switcher: {
+        title: "Choisir une langue",
+        search: "Rechercher...",
+        no_results: "Aucune langue trouvée"
+    }
+};

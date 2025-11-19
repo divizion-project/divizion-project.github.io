@@ -1,18 +1,21 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { LANGUAGES, TRANSLATIONS, Language } from "@/lib/translations";
+import { LANGUAGES, LOADERS, Language } from "@/lib/translations";
+import { FR } from "@/lib/locales/fr";
 
 type LanguageContextType = {
     language: Language;
     setLanguage: (lang: Language) => void;
-    t: (key: string) => string;
+    t: (key: string, defaultValue?: string) => string;
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
     const [language, setLanguage] = useState<Language>("fr");
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [translations, setTranslations] = useState<any>(FR);
 
     // Load language from local storage on mount
     useEffect(() => {
@@ -28,18 +31,62 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         }
     }, []);
 
+    // Load translations and update html lang when language changes
+    useEffect(() => {
+        // Update HTML lang attribute
+        document.documentElement.lang = language;
+
+        async function loadTranslations() {
+            if (language === "fr") {
+                setTranslations(FR);
+                return;
+            }
+
+            try {
+                const loaded = await LOADERS[language]();
+                setTranslations(loaded);
+            } catch (error) {
+                console.error(`Failed to load translations for ${language}`, error);
+            }
+        }
+        loadTranslations();
+    }, [language]);
+
     const handleSetLanguage = (lang: Language) => {
         setLanguage(lang);
         localStorage.setItem("language", lang);
     };
 
-    const t = (path: string) => {
+    const t = (path: string, defaultValue?: string) => {
         const keys = path.split(".");
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let current: any = TRANSLATIONS[language];
+        let current: any = translations;
+
+        // Fallback to FR if translations are not loaded yet
+        if (!current) {
+            current = FR;
+        }
+
         for (const key of keys) {
             if (current[key] === undefined) {
-                console.warn(`Translation missing for key: ${path} in language: ${language}`);
+                // Try fallback to FR
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                let fallback: any = FR;
+                for (const k of keys) {
+                    if (fallback && fallback[k] !== undefined) {
+                        fallback = fallback[k];
+                    } else {
+                        fallback = undefined;
+                        break;
+                    }
+                }
+                if (fallback !== undefined) return fallback as string;
+
+                if (defaultValue !== undefined) return defaultValue;
+
+                console.warn(
+                    `Translation missing for key: ${path} in language: ${language}`
+                );
                 return path;
             }
             current = current[key];

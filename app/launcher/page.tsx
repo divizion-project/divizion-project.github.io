@@ -18,6 +18,7 @@ import {
 import { FaWindows, FaApple, FaLinux } from "react-icons/fa";
 import Portal from "@/components/ui/Portal";
 import { DISCORD_LINK, LAUNCHER_VERSION, LAUNCHER_RELEASES_LINK } from "@/lib/constants";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const TARGET_DATE = 1766167200 * 1000; // Timestamp in milliseconds
 
@@ -42,43 +43,8 @@ const DOWNLOADS = [
   { os: "Linux", Icon: LinuxIcon, hasArch: false },
 ] as const;
 
-const FEATURES = [
-  {
-    title: "Nouvel écran de login",
-    description: "Une interface de connexion repensée pour plus de fluidité et de sécurité.",
-    icon: <UserCircle className="h-6 w-6" />,
-  },
-  {
-    title: "Nouveaux effets de transitions",
-    description: "Des animations fluides entre chaque menu pour une navigation agréable.",
-    icon: <Sparkles className="h-6 w-6" />,
-  },
-  {
-    title: "Meilleurs effets visuels",
-    description: "Une refonte graphique complète pour un plaisir des yeux à chaque instant.",
-    icon: <Monitor className="h-6 w-6" />,
-  },
-  {
-    title: "Refonte des paramètres",
-    description: "Un menu de configuration plus clair et plus complet.",
-    icon: <Settings className="h-6 w-6" />,
-  },
-];
-
-const SMART_FEATURES = [
-  {
-    title: "MagicLamp (Beta)",
-    description: "Allocation intelligente de la RAM en fonction de votre machine et de l'instance.",
-    icon: <Cpu className="h-8 w-8 text-[#ff6b35]" />,
-  },
-  {
-    title: "Auto-Debug",
-    description: "Détection et résolution automatique des crashs et conflits de mods.",
-    icon: <Bug className="h-8 w-8 text-[#ff6b35]" />,
-  },
-];
-
 function Countdown() {
+  const { t } = useLanguage();
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
@@ -105,10 +71,10 @@ function Countdown() {
   return (
     <div className="grid grid-cols-4 gap-4 text-center">
       {[
-        { label: "Jours", value: timeLeft.days },
-        { label: "Heures", value: timeLeft.hours },
-        { label: "Minutes", value: timeLeft.minutes },
-        { label: "Secondes", value: timeLeft.seconds },
+        { label: t("common.days"), value: timeLeft.days },
+        { label: t("common.hours"), value: timeLeft.hours },
+        { label: t("common.minutes"), value: timeLeft.minutes },
+        { label: t("common.seconds"), value: timeLeft.seconds },
       ].map((item) => (
         <div key={item.label} className="flex flex-col items-center rounded border border-[#3a3a3a] bg-[#1a1a1a] p-4">
           <span className="text-3xl font-bold text-[#ff6b35] md:text-4xl">{item.value}</span>
@@ -125,7 +91,20 @@ type ModalState =
   | null;
 
 export default function LauncherPage() {
+  const { t } = useLanguage();
   const [modalState, setModalState] = useState<ModalState>(null);
+
+  const FEATURE_KEYS = [
+    { key: "login", icon: <UserCircle className="h-6 w-6" /> },
+    { key: "transitions", icon: <Sparkles className="h-6 w-6" /> },
+    { key: "visuals", icon: <Monitor className="h-6 w-6" /> },
+    { key: "settings", icon: <Settings className="h-6 w-6" /> },
+  ];
+
+  const SMART_FEATURE_KEYS = [
+    { key: "magiclamp", icon: <Cpu className="h-8 w-8 text-[#ff6b35]" /> },
+    { key: "autodebug", icon: <Bug className="h-8 w-8 text-[#ff6b35]" /> },
+  ];
 
   const handleOSClick = (os: OS, hasArch: boolean) => {
     if (hasArch) {
@@ -148,15 +127,16 @@ export default function LauncherPage() {
         <div className="space-y-4">
           <div className="inline-flex items-center gap-2 rounded border border-[#ff6b35]/30 bg-[#ff6b35]/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#ff6b35]">
             <Sparkles className="h-3 w-3" />
-            <span>Bientôt Disponible • {LAUNCHER_VERSION}</span>
+            <span>{t("launcher.hero.badge").replace("{version}", LAUNCHER_VERSION)}</span>
           </div>
 
           <h1 className="text-5xl font-black text-[#d0d0d0] md:text-7xl">
-            Launcher <span className="text-[#ff6b35]">Divizion</span>
+            {t("launcher.hero.title_prefix")}{" "}
+            <span className="text-[#ff6b35]">Divizion</span>
           </h1>
 
           <p className="mx-auto max-w-2xl text-lg text-[#999]">
-            Une refonte complète. Plus simple, moins austère, avec des animations fluides et un design à couper le souffle.
+            {t("launcher.hero.description")}
           </p>
         </div>
 
@@ -174,7 +154,7 @@ export default function LauncherPage() {
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
-              <p className="text-sm uppercase tracking-[0.2em] text-[#666]">Vidéo de reveal V3</p>
+              <p className="text-sm uppercase tracking-[0.2em] text-[#666]">{t("launcher.hero.video_label")}</p>
             </div>
           </div>
         </div>
@@ -183,8 +163,8 @@ export default function LauncherPage() {
       {/* Downloads Section */}
       <section className="relative space-y-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-[#d0d0d0]">Téléchargement</h2>
-          <p className="text-[#999]">Choisissez votre plateforme</p>
+          <h2 className="text-3xl font-bold text-[#d0d0d0]">{t("launcher.download.title")}</h2>
+          <p className="text-[#999]">{t("launcher.download.subtitle")}</p>
           <div className="mx-auto mt-4 h-1 w-16 bg-[#ff6b35]" />
         </div>
 
@@ -258,7 +238,7 @@ export default function LauncherPage() {
 
                   <motion.div layoutId={`title-${modalState.os}`}>
                     <h3 className="text-2xl font-bold text-[#d0d0d0]">
-                      {modalState.type === "selection" ? `Télécharger pour ${modalState.os}` : "Téléchargement en cours..."}
+                      {modalState.type === "selection" ? t("common.download_for").replace("{os}", modalState.os) : t("common.downloading")}
                     </h3>
                   </motion.div>
 
@@ -272,21 +252,21 @@ export default function LauncherPage() {
                         exit={{ opacity: 0, y: -20 }}
                         className="w-full"
                       >
-                        <p className="mb-6 text-[#999]">Sélectionnez votre architecture</p>
+                        <p className="mb-6 text-[#999]">{t("common.select_arch")}</p>
                         <div className="grid w-full grid-cols-2 gap-4">
                           <button
                             onClick={handleDownload}
                             className="flex flex-col items-center gap-2 rounded border border-[#3a3a3a] bg-[#1a1a1a] p-4 transition-colors hover:border-[#ff6b35] hover:bg-[#ff6b35]/10"
                           >
                             <span className="text-lg font-bold text-[#d0d0d0]">x64</span>
-                            <span className="text-xs text-[#666]">Intel / AMD</span>
+                            <span className="text-xs text-[#666]">{t("common.intel_amd")}</span>
                           </button>
                           <button
                             onClick={handleDownload}
                             className="flex flex-col items-center gap-2 rounded border border-[#3a3a3a] bg-[#1a1a1a] p-4 transition-colors hover:border-[#ff6b35] hover:bg-[#ff6b35]/10"
                           >
                             <span className="text-lg font-bold text-[#d0d0d0]">ARM</span>
-                            <span className="text-xs text-[#666]">Apple Silicon</span>
+                            <span className="text-xs text-[#666]">{t("common.apple_silicon")}</span>
                           </button>
                         </div>
                       </motion.div>
@@ -301,13 +281,13 @@ export default function LauncherPage() {
                         <div className="mb-4 rounded-full bg-[#ff6b35]/20 p-4 text-[#ff6b35]">
                           <Download className="h-12 w-12 animate-bounce" />
                         </div>
-                        <p className="text-lg text-[#ff6b35]">Bon jeu sur Divizion !</p>
-                        <p className="mt-2 text-sm text-[#999]">Le téléchargement devrait démarrer automatiquement.</p>
+                        <p className="text-lg text-[#ff6b35]">{t("common.good_game")}</p>
+                        <p className="mt-2 text-sm text-[#999]">{t("common.download_auto")}</p>
                         <button
                           onClick={() => setModalState(null)}
                           className="mt-6 rounded bg-[#3a3a3a] px-6 py-2 text-sm font-bold text-[#d0d0d0] hover:bg-[#4a4a4a]"
                         >
-                          Fermer
+                          {t("common.close")}
                         </button>
                       </motion.div>
                     )}
@@ -322,13 +302,13 @@ export default function LauncherPage() {
       {/* Main Features Grid */}
       <section className="space-y-8">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-[#d0d0d0]">Nouveautés Principales</h2>
-          <p className="text-[#999]">Découvrez ce qui change dans la V3</p>
+          <h2 className="text-3xl font-bold text-[#d0d0d0]">{t("launcher.features.title")}</h2>
+          <p className="text-[#999]">{t("launcher.features.subtitle")}</p>
           <div className="mx-auto mt-4 h-1 w-16 bg-[#ff6b35]" />
         </div>
 
         <div className="grid gap-8 md:grid-cols-2">
-          {FEATURES.map((feature, idx) => (
+          {FEATURE_KEYS.map((feature, idx) => (
             <div
               key={idx}
               className="group overflow-hidden rounded border border-[#3a3a3a] bg-[#2a2a2a] transition-all hover:border-[#ff6b35] hover:shadow-lg hover:shadow-[#ff6b35]/10"
@@ -338,7 +318,7 @@ export default function LauncherPage() {
                 <div className="absolute inset-0 flex items-center justify-center text-[#666]">
                   <div className="flex flex-col items-center gap-2">
                     <Layout className="h-8 w-8 opacity-50" />
-                    <span className="font-mono text-xs uppercase tracking-widest">Aperçu {feature.title}</span>
+                    <span className="font-mono text-xs uppercase tracking-widest">{t("launcher.features.preview")} {t(`launcher.features.${feature.key}.title`)}</span>
                   </div>
                 </div>
               </div>
@@ -346,9 +326,9 @@ export default function LauncherPage() {
               <div className="p-6">
                 <div className="mb-4 inline-flex items-center gap-2 text-[#ff6b35]">
                   {feature.icon}
-                  <h3 className="font-bold text-[#d0d0d0]">{feature.title}</h3>
+                  <h3 className="font-bold text-[#d0d0d0]">{t(`launcher.features.${feature.key}.title`)}</h3>
                 </div>
-                <p className="text-sm leading-relaxed text-[#999]">{feature.description}</p>
+                <p className="text-sm leading-relaxed text-[#999]">{t(`launcher.features.${feature.key}.description`)}</p>
               </div>
             </div>
           ))}
@@ -363,20 +343,20 @@ export default function LauncherPage() {
 
         <div className="relative z-10 space-y-8">
           <div className="flex items-center gap-4">
-            <span className="rounded bg-[#ff6b35] px-2 py-1 text-xs font-bold text-white">BETA</span>
-            <h2 className="text-2xl font-bold text-[#d0d0d0]">Fonctionnalités Intelligentes</h2>
+            <span className="rounded bg-[#ff6b35] px-2 py-1 text-xs font-bold text-white">{t("launcher.smart_features.badge")}</span>
+            <h2 className="text-2xl font-bold text-[#d0d0d0]">{t("launcher.smart_features.title")}</h2>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            {SMART_FEATURES.map((feature, idx) => (
+            {SMART_FEATURE_KEYS.map((feature, idx) => (
               <div
                 key={idx}
                 className="flex gap-4 rounded border border-[#3a3a3a] bg-[#1a1a1a]/50 p-6 backdrop-blur-sm transition-colors hover:border-[#ff6b35]/50"
               >
                 <div className="shrink-0 pt-1">{feature.icon}</div>
                 <div>
-                  <h3 className="mb-2 font-bold text-[#d0d0d0]">{feature.title}</h3>
-                  <p className="text-sm text-[#999]">{feature.description}</p>
+                  <h3 className="mb-2 font-bold text-[#d0d0d0]">{t(`launcher.smart_features.${feature.key}.title`)}</h3>
+                  <p className="text-sm text-[#999]">{t(`launcher.smart_features.${feature.key}.description`)}</p>
                 </div>
               </div>
             ))}
@@ -390,11 +370,8 @@ export default function LauncherPage() {
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#2a2a2a] text-[#999]">
             <Gamepad2 className="h-8 w-8" />
           </div>
-          <h2 className="text-2xl font-bold text-[#d0d0d0]">Bientôt Disponible</h2>
-          <p className="text-[#999]">
-            Nous travaillons sur le support des <strong>modpacks custom</strong> pour remplacer MultiMC et le launcher de base,
-            ainsi qu'une gestion avancée des comptes unifiés.
-          </p>
+          <h2 className="text-2xl font-bold text-[#d0d0d0]">{t("launcher.upcoming.title")}</h2>
+          <p className="text-[#999]" dangerouslySetInnerHTML={{ __html: t("launcher.upcoming.description") }} />
         </div>
       </section>
 
@@ -406,7 +383,7 @@ export default function LauncherPage() {
           rel="noreferrer"
           className="inline-flex items-center gap-2 rounded bg-[#ff6b35] px-6 py-3 text-sm font-bold uppercase tracking-widest text-white transition-colors hover:bg-[#e74c3c]"
         >
-          Support Discord
+          {t("common.support_discord")}
           <ArrowRight className="h-4 w-4" />
         </a>
         <a
@@ -415,7 +392,7 @@ export default function LauncherPage() {
           rel="noreferrer"
           className="inline-flex items-center gap-2 rounded border border-[#3a3a3a] bg-[#2a2a2a] px-6 py-3 text-sm font-bold uppercase tracking-widest text-[#d0d0d0] transition-colors hover:border-[#ff6b35]"
         >
-          Versions précédentes
+          {t("common.previous_versions")}
         </a>
       </div>
     </div>
