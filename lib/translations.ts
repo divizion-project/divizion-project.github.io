@@ -29,7 +29,9 @@ export const LANGUAGES: { code: Language; name: string; flag: string }[] = [
     { code: "tr", name: "Türkçe", flag: "🇹🇷" },
 ];
 
-export const LOADERS: Record<Language, () => Promise<any>> = {
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const LOADERS: Record<Language, () => Promise<Record<string, any>>> = {
     fr: () => import("./locales/fr").then((m) => m.FR),
     en: () => import("./locales/en").then((m) => m.EN),
     es: () => import("./locales/es").then((m) => m.ES),

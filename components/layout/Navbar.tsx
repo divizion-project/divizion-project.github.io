@@ -5,6 +5,7 @@ import Link from "next/link";
 import {
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
   type ReactNode,
@@ -32,12 +33,12 @@ export default function Navbar() {
     height: number;
   } | null>(null);
 
-  const NAV_LINKS: { href: NavRoute; label: string }[] = [
+  const NAV_LINKS: { href: NavRoute; label: string }[] = useMemo(() => [
     { href: "/", label: t("navbar.home") },
     { href: "/news", label: t("navbar.news") },
     { href: "/launcher", label: t("navbar.launcher") },
     { href: "/roadmap", label: t("navbar.roadmap") },
-  ];
+  ], [t]);
 
   const updateIndicator = useCallback(() => {
     const activeIndex = NAV_LINKS.findIndex((link) => link.href === pathname);

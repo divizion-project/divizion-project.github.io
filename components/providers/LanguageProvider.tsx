@@ -7,7 +7,8 @@ import { FR } from "@/lib/locales/fr";
 type LanguageContextType = {
     language: Language;
     setLanguage: (lang: Language) => void;
-    t: (key: string, defaultValue?: string) => string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    t: (key: string, defaultValue?: string) => any;
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -91,7 +92,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
             }
             current = current[key];
         }
-        return current as string;
+        return current;
     };
 
     return (
