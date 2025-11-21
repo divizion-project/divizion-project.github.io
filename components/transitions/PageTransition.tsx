@@ -9,7 +9,7 @@ type Props = {
   children: ReactNode;
 };
 
-const ORDERED_ROUTES = ["/", "/news", "/launcher", "/roadmap"] as const;
+const ORDERED_ROUTES = ["/", "/news", "/launcher", "/roadmap", "/docs"] as const;
 type OrderedRoute = (typeof ORDERED_ROUTES)[number];
 
 function normalizeRoute(pathname: string): string {

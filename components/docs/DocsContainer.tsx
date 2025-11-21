@@ -86,16 +86,16 @@ export default function DocsContainer() {
     });
 
     return (
-        <div className="min-h-screen bg-[#0a0a0a] text-white overflow-hidden flex flex-col">
-            {/* Top Bar (Search) - Always visible but morphs position? User said "en haut la barre de recherche" */}
+        <div className="min-h-screen bg-[#1a1a1a] text-[#d0d0d0] overflow-hidden flex flex-col">
+            {/* Top Bar (Search) */}
             <div className="w-full p-6 z-50">
                 <div className={`relative transition-all duration-500 ease-in-out ${selectedDoc ? 'max-w-xs' : 'max-w-2xl mx-auto'}`}>
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Search className="h-5 w-5 text-gray-500" />
+                        <Search className="h-5 w-5 text-[#666]" />
                     </div>
                     <input
                         type="text"
-                        className="block w-full pl-10 pr-3 py-3 border border-white/10 rounded-xl leading-5 bg-white/5 text-gray-300 placeholder-gray-500 focus:outline-none focus:bg-white/10 focus:ring-1 focus:ring-white/20 sm:text-sm transition-colors"
+                        className="block w-full pl-10 pr-3 py-3 border border-[#3a3a3a] rounded leading-5 bg-[#2a2a2a] text-[#d0d0d0] placeholder-[#666] focus:outline-none focus:border-[#ff6b35] focus:ring-1 focus:ring-[#ff6b35] sm:text-sm transition-colors"
                         placeholder="Search documentation..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
@@ -110,46 +110,46 @@ export default function DocsContainer() {
                     layout
                     className={`
             flex-shrink-0 overflow-y-auto custom-scrollbar p-6
-            ${selectedDoc ? 'w-80 border-r border-white/10' : 'w-full max-w-4xl mx-auto'}
+            ${selectedDoc ? 'w-80 border-r border-[#3a3a3a]' : 'w-full max-w-4xl mx-auto'}
           `}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                 >
                     {loading ? (
                         <div className="flex justify-center items-center h-64">
-                            <Loader2 className="animate-spin text-white/20" size={32} />
+                            <Loader2 className="animate-spin text-[#ff6b35]" size={32} />
                         </div>
                     ) : (
-                        <motion.div layout className={`grid gap-4 ${selectedDoc ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
-                            <AnimatePresence>
+                        <div className={`grid gap-4 ${selectedDoc ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
+                            <AnimatePresence mode="popLayout">
                                 {filteredDocs.map((doc) => (
                                     <motion.div
-                                        layout
                                         key={doc.file.path}
+                                        layout
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.9 }}
-                                        whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.05)' }}
+                                        whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                         onClick={() => handleSelectDoc(doc)}
                                         className={`
-                      cursor-pointer rounded-xl border p-5 transition-colors relative overflow-hidden group
+                      cursor-pointer rounded border p-5 transition-all relative overflow-hidden group
                       ${selectedDoc?.meta.id === doc.meta?.id
-                                                ? 'bg-white/10 border-white/30'
-                                                : 'bg-black/20 border-white/5 hover:border-white/20'}
+                                                ? 'bg-[#ff6b35]/10 border-[#ff6b35]'
+                                                : 'bg-[#2a2a2a] border-[#3a3a3a] hover:border-[#ff6b35] hover:shadow-lg hover:shadow-[#ff6b35]/10'}
                     `}
                                     >
                                         <div className="flex items-start justify-between">
                                             <div className="flex-1 min-w-0">
-                                                <h3 className={`font-semibold truncate ${selectedDoc ? 'text-sm' : 'text-lg'} text-white group-hover:text-blue-400 transition-colors`}>
+                                                <h3 className={`font-bold truncate ${selectedDoc ? 'text-sm' : 'text-lg'} text-[#d0d0d0] group-hover:text-[#ff6b35] transition-colors`}>
                                                     {doc.meta?.title || doc.file.name}
                                                 </h3>
-                                                <p className={`text-gray-500 mt-1 truncate ${selectedDoc ? 'text-xs' : 'text-sm'}`}>
+                                                <p className={`text-[#999] mt-1 truncate ${selectedDoc ? 'text-xs' : 'text-sm'}`}>
                                                     {doc.meta?.description || 'No description available'}
                                                 </p>
                                                 {!selectedDoc && doc.meta?.tags && (
                                                     <div className="flex gap-2 mt-3">
                                                         {doc.meta.tags.slice(0, 3).map(tag => (
-                                                            <span key={tag} className="px-2 py-0.5 rounded text-xs bg-white/5 text-gray-400 border border-white/5">
+                                                            <span key={tag} className="px-2 py-0.5 rounded text-xs bg-[#1a1a1a] text-[#666] border border-[#3a3a3a]">
                                                                 {tag}
                                                             </span>
                                                         ))}
@@ -157,20 +157,20 @@ export default function DocsContainer() {
                                                 )}
                                             </div>
                                             {selectedDoc?.meta.id === doc.meta?.id && (
-                                                <ChevronRight className="text-blue-400" size={16} />
+                                                <ChevronRight className="text-[#ff6b35]" size={16} />
                                             )}
                                         </div>
 
                                         {/* Loading state for individual item meta fetching */}
                                         {doc.loading && (
-                                            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                                                <Loader2 className="animate-spin text-white/20" size={16} />
+                                            <div className="absolute inset-0 bg-[#1a1a1a]/50 flex items-center justify-center">
+                                                <Loader2 className="animate-spin text-[#ff6b35]" size={16} />
                                             </div>
                                         )}
                                     </motion.div>
                                 ))}
                             </AnimatePresence>
-                        </motion.div>
+                        </div>
                     )}
                 </motion.div>
 
@@ -183,17 +183,17 @@ export default function DocsContainer() {
                             animate={{ opacity: 1, x: 0, width: 'auto' }}
                             exit={{ opacity: 0, x: 50, width: 0 }}
                             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                            className="flex-1 overflow-y-auto custom-scrollbar bg-[#0a0a0a]"
+                            className="flex-1 overflow-y-auto custom-scrollbar bg-[#1a1a1a]"
                         >
                             {loadingContent ? (
                                 <div className="h-full flex items-center justify-center">
-                                    <Loader2 className="animate-spin text-white/20" size={48} />
+                                    <Loader2 className="animate-spin text-[#ff6b35]" size={48} />
                                 </div>
                             ) : (
                                 <div className="p-8 md:p-12">
                                     <button
                                         onClick={() => setSelectedDoc(null)}
-                                        className="mb-6 md:hidden flex items-center gap-2 text-gray-400 hover:text-white"
+                                        className="mb-6 md:hidden flex items-center gap-2 text-[#999] hover:text-[#d0d0d0]"
                                     >
                                         <ChevronRight className="rotate-180" size={16} />
                                         Back to list

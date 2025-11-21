@@ -19,7 +19,7 @@ export interface DocFile {
 export async function getDocFiles(): Promise<DocFile[]> {
     try {
         const response = await fetch(
-            `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`,
+            `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/docs`,
             { next: { revalidate: 3600 } } // Cache for 1 hour
         );
 

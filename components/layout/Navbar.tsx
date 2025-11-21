@@ -1,5 +1,7 @@
 "use client";
 
+import { FileText } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -38,7 +40,7 @@ export default function Navbar() {
     { href: "/news", label: t("navbar.news") },
     { href: "/launcher", label: t("navbar.launcher") },
     { href: "/roadmap", label: t("navbar.roadmap") },
-    { href: "/docs", label: "Documentation" },
+    { href: "/docs", label: "DOCS" },
   ], [t]);
 
   const updateIndicator = useCallback(() => {
@@ -127,7 +129,9 @@ export default function Navbar() {
             ))}
           </div>
 
-          <LanguageSwitcher />
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
     </nav>
@@ -141,17 +145,20 @@ type NavLinkProps = {
 };
 
 function NavLink({ href, children, active }: NavLinkProps) {
+  const isDocs = href === "/docs";
+
   return (
     <Link
       href={href}
       className={clsx(
-        "relative z-10 inline-flex items-center justify-center rounded-lg px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition-colors duration-300 text-[#d0d0d0]",
+        "relative z-10 inline-flex items-center justify-center rounded-lg text-xs font-semibold uppercase tracking-[0.3em] transition-colors duration-300 text-[#d0d0d0]",
+        isDocs ? "p-2" : "px-4 py-2",
         active
           ? "text-[#ff6b35]"
           : "hover:text-[#ff6b35] text-[#d0d0d0]"
       )}
     >
-      {children}
+      {isDocs ? <FileText size={20} /> : children}
     </Link>
   );
 }

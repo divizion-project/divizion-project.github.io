@@ -70,13 +70,21 @@ export interface AlertBlock {
     content: TextSegment[];
 }
 
+export interface CodeBlock {
+    type: 'code';
+    language: string;
+    content: string;
+    showCopyButton?: boolean;
+}
+
 export type DocBlock =
     | HeadingBlock
     | ParagraphBlock
     | ImageBlock
     | ButtonGroupBlock
     | StepListBlock
-    | AlertBlock;
+    | AlertBlock
+    | CodeBlock;
 
 export interface DocData {
     meta: DocMeta;
