@@ -90,16 +90,27 @@ export default function DocsContainer() {
             {/* Top Bar (Search) */}
             <div className="w-full p-6 z-50">
                 <div className={`relative transition-all duration-500 ease-in-out ${selectedDoc ? 'max-w-xs' : 'max-w-2xl mx-auto'}`}>
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Search className="h-5 w-5 text-[#666]" />
+                    {selectedDoc && (
+                        <button
+                            onClick={() => setSelectedDoc(null)}
+                            className="md:hidden absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-lg bg-[#2a2a2a] border border-[#3a3a3a] hover:border-[#ff6b35] hover:bg-[#ff6b35]/10 transition-all duration-200"
+                            aria-label="Retour à la liste"
+                        >
+                            <ChevronRight className="rotate-180 text-[#d0d0d0]" size={20} />
+                        </button>
+                    )}
+                    <div className={`relative ${selectedDoc ? 'ml-14 md:ml-0' : ''}`}>
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <Search className="h-5 w-5 text-[#666]" />
+                        </div>
+                        <input
+                            type="text"
+                            className="block w-full pl-10 pr-3 py-3 border border-[#3a3a3a] rounded leading-5 bg-[#2a2a2a] text-[#d0d0d0] placeholder-[#666] focus:outline-none focus:border-[#ff6b35] focus:ring-1 focus:ring-[#ff6b35] sm:text-sm transition-colors"
+                            placeholder="Search documentation..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
                     </div>
-                    <input
-                        type="text"
-                        className="block w-full pl-10 pr-3 py-3 border border-[#3a3a3a] rounded leading-5 bg-[#2a2a2a] text-[#d0d0d0] placeholder-[#666] focus:outline-none focus:border-[#ff6b35] focus:ring-1 focus:ring-[#ff6b35] sm:text-sm transition-colors"
-                        placeholder="Search documentation..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
                 </div>
             </div>
 
@@ -108,31 +119,44 @@ export default function DocsContainer() {
                 {/* Sidebar / Centered List */}
                 <motion.div
                     layout
+                    layoutRoot
                     className={`
-            flex-shrink-0 overflow-y-auto custom-scrollbar p-6
-            ${selectedDoc ? 'w-80 border-r border-[#3a3a3a]' : 'w-full max-w-4xl mx-auto'}
+            flex flex-col flex-shrink-0 overflow-y-auto custom-scrollbar p-6
+            ${selectedDoc ? 'hidden md:flex md:w-80 md:border-r border-[#3a3a3a]' : 'w-full max-w-4xl mx-auto'}
           `}
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    transition={{
+                        layout: { type: 'spring', stiffness: 300, damping: 30, mass: 0.8 }
+                    }}
                 >
                     {loading ? (
                         <div className="flex justify-center items-center h-64">
                             <Loader2 className="animate-spin text-[#ff6b35]" size={32} />
                         </div>
                     ) : (
-                        <div className={`grid gap-4 ${selectedDoc ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
-                            <AnimatePresence mode="popLayout">
+                        <motion.div
+                            layout
+                            className={`grid gap-4 ${selectedDoc ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}
+                            transition={{
+                                layout: { type: 'spring', stiffness: 300, damping: 30 }
+                            }}
+                        >
+                            <AnimatePresence initial={false}>
                                 {filteredDocs.map((doc) => (
                                     <motion.div
                                         key={doc.file.path}
-                                        layout
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 0.9 }}
-                                        whileHover={{ scale: 1.02 }}
-                                        whileTap={{ scale: 0.98 }}
+                                        layout="position"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -20 }}
+                                        transition={{
+                                            layout: { type: 'spring', stiffness: 350, damping: 30 },
+                                            opacity: { duration: 0.2 },
+                                            y: { duration: 0.2 }
+                                        }}
                                         onClick={() => handleSelectDoc(doc)}
                                         className={`
-                      cursor-pointer rounded border p-5 transition-all relative overflow-hidden group
+                      cursor-pointer rounded border p-5 relative overflow-hidden group
+                      transition-colors duration-200 ease-out
                       ${selectedDoc?.meta.id === doc.meta?.id
                                                 ? 'bg-[#ff6b35]/10 border-[#ff6b35]'
                                                 : 'bg-[#2a2a2a] border-[#3a3a3a] hover:border-[#ff6b35] hover:shadow-lg hover:shadow-[#ff6b35]/10'}
@@ -140,7 +164,7 @@ export default function DocsContainer() {
                                     >
                                         <div className="flex items-start justify-between">
                                             <div className="flex-1 min-w-0">
-                                                <h3 className={`font-bold truncate ${selectedDoc ? 'text-sm' : 'text-lg'} text-[#d0d0d0] group-hover:text-[#ff6b35] transition-colors`}>
+                                                <h3 className={`font-bold truncate ${selectedDoc ? 'text-sm' : 'text-lg'} text-[#d0d0d0] group-hover:text-[#ff6b35] transition-colors duration-200`}>
                                                     {doc.meta?.title || doc.file.name}
                                                 </h3>
                                                 <p className={`text-[#999] mt-1 truncate ${selectedDoc ? 'text-xs' : 'text-sm'}`}>
@@ -157,7 +181,7 @@ export default function DocsContainer() {
                                                 )}
                                             </div>
                                             {selectedDoc?.meta.id === doc.meta?.id && (
-                                                <ChevronRight className="text-[#ff6b35]" size={16} />
+                                                <ChevronRight className="text-[#ff6b35] flex-shrink-0" size={16} />
                                             )}
                                         </div>
 
@@ -170,7 +194,7 @@ export default function DocsContainer() {
                                     </motion.div>
                                 ))}
                             </AnimatePresence>
-                        </div>
+                        </motion.div>
                     )}
                 </motion.div>
 
@@ -191,13 +215,6 @@ export default function DocsContainer() {
                                 </div>
                             ) : (
                                 <div className="p-8 md:p-12">
-                                    <button
-                                        onClick={() => setSelectedDoc(null)}
-                                        className="mb-6 md:hidden flex items-center gap-2 text-[#999] hover:text-[#d0d0d0]"
-                                    >
-                                        <ChevronRight className="rotate-180" size={16} />
-                                        Back to list
-                                    </button>
                                     <DocRenderer data={selectedDoc} />
                                 </div>
                             )}
