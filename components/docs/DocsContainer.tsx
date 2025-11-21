@@ -122,7 +122,7 @@ export default function DocsContainer() {
                     layoutRoot
                     className={`
             flex flex-col flex-shrink-0 overflow-y-auto custom-scrollbar p-6
-            ${selectedDoc ? 'hidden md:flex md:w-80 md:border-r border-[#3a3a3a]' : 'w-full max-w-4xl mx-auto'}
+            ${selectedDoc ? 'hidden md:flex md:w-[420px] md:border-r border-[#3a3a3a]' : 'w-full max-w-4xl mx-auto'}
           `}
                     transition={{
                         layout: { type: 'spring', stiffness: 300, damping: 30, mass: 0.8 }
