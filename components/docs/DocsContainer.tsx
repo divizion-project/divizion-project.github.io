@@ -1,0 +1,211 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Search, ChevronRight, Loader2 } from 'lucide-react';
+import { DocData } from '@/types/documentation';
+import DocRenderer from './DocRenderer';
+import { getDocFiles, getDocContent, DocFile } from '@/lib/docs';
+
+interface DocPreview {
+    file: DocFile;
+    meta?: DocData['meta'];
+    loading: boolean;
+}
+
+export default function DocsContainer() {
+    const [docs, setDocs] = useState<DocPreview[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [selectedDoc, setSelectedDoc] = useState<DocData | null>(null);
+    const [loadingContent, setLoadingContent] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+
+    // Initial fetch of file list
+    useEffect(() => {
+        async function init() {
+            try {
+                const files = await getDocFiles();
+                // Initialize docs with filenames, we'll fetch metadata lazily or in parallel
+                const initialDocs: DocPreview[] = files.map(f => ({
+                    file: f,
+                    loading: true
+                }));
+                setDocs(initialDocs);
+                setLoading(false);
+
+                // Fetch metadata for all files to display titles
+                // We do this after setting the initial list to show something fast
+                files.forEach(async (file) => {
+                    const content = await getDocContent(file.download_url);
+                    if (content) {
+                        setDocs(prev => {
+                            const newDocs = [...prev];
+                            const docIndex = newDocs.findIndex(d => d.file.path === file.path);
+                            if (docIndex !== -1) {
+                                newDocs[docIndex] = {
+                                    ...newDocs[docIndex],
+                                    meta: content.meta,
+                                    loading: false
+                                };
+                            }
+                            return newDocs;
+                        });
+                    }
+                });
+
+            } catch (error) {
+                console.error('Failed to init docs:', error);
+                setLoading(false);
+            }
+        }
+        init();
+    }, []);
+
+    const handleSelectDoc = async (docPreview: DocPreview) => {
+        if (selectedDoc?.meta.id === docPreview.meta?.id) return;
+
+        setLoadingContent(true);
+        // If we already fetched metadata, we might have the full content if we stored it. 
+        // But currently we only stored meta. Let's fetch fresh content to be sure or if we optimized to only fetch meta.
+        // Actually, getDocContent returns the whole JSON, so we could have cached it. 
+        // For simplicity, I'll fetch again or use a cache if I implemented one. 
+        // Since I didn't implement a cache in state, I'll fetch.
+
+        const content = await getDocContent(docPreview.file.download_url);
+        if (content) {
+            setSelectedDoc(content);
+        }
+        setLoadingContent(false);
+    };
+
+    const filteredDocs = docs.filter(doc => {
+        const query = searchQuery.toLowerCase();
+        const title = doc.meta?.title?.toLowerCase() || doc.file.name.toLowerCase();
+        const desc = doc.meta?.description?.toLowerCase() || '';
+        return title.includes(query) || desc.includes(query);
+    });
+
+    return (
+        <div className="min-h-screen bg-[#0a0a0a] text-white overflow-hidden flex flex-col">
+            {/* Top Bar (Search) - Always visible but morphs position? User said "en haut la barre de recherche" */}
+            <div className="w-full p-6 z-50">
+                <div className={`relative transition-all duration-500 ease-in-out ${selectedDoc ? 'max-w-xs' : 'max-w-2xl mx-auto'}`}>
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <Search className="h-5 w-5 text-gray-500" />
+                    </div>
+                    <input
+                        type="text"
+                        className="block w-full pl-10 pr-3 py-3 border border-white/10 rounded-xl leading-5 bg-white/5 text-gray-300 placeholder-gray-500 focus:outline-none focus:bg-white/10 focus:ring-1 focus:ring-white/20 sm:text-sm transition-colors"
+                        placeholder="Search documentation..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                </div>
+            </div>
+
+            <div className="flex-1 relative flex overflow-hidden">
+
+                {/* Sidebar / Centered List */}
+                <motion.div
+                    layout
+                    className={`
+            flex-shrink-0 overflow-y-auto custom-scrollbar p-6
+            ${selectedDoc ? 'w-80 border-r border-white/10' : 'w-full max-w-4xl mx-auto'}
+          `}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                >
+                    {loading ? (
+                        <div className="flex justify-center items-center h-64">
+                            <Loader2 className="animate-spin text-white/20" size={32} />
+                        </div>
+                    ) : (
+                        <motion.div layout className={`grid gap-4 ${selectedDoc ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}>
+                            <AnimatePresence>
+                                {filteredDocs.map((doc) => (
+                                    <motion.div
+                                        layout
+                                        key={doc.file.path}
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.9 }}
+                                        whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.05)' }}
+                                        whileTap={{ scale: 0.98 }}
+                                        onClick={() => handleSelectDoc(doc)}
+                                        className={`
+                      cursor-pointer rounded-xl border p-5 transition-colors relative overflow-hidden group
+                      ${selectedDoc?.meta.id === doc.meta?.id
+                                                ? 'bg-white/10 border-white/30'
+                                                : 'bg-black/20 border-white/5 hover:border-white/20'}
+                    `}
+                                    >
+                                        <div className="flex items-start justify-between">
+                                            <div className="flex-1 min-w-0">
+                                                <h3 className={`font-semibold truncate ${selectedDoc ? 'text-sm' : 'text-lg'} text-white group-hover:text-blue-400 transition-colors`}>
+                                                    {doc.meta?.title || doc.file.name}
+                                                </h3>
+                                                <p className={`text-gray-500 mt-1 truncate ${selectedDoc ? 'text-xs' : 'text-sm'}`}>
+                                                    {doc.meta?.description || 'No description available'}
+                                                </p>
+                                                {!selectedDoc && doc.meta?.tags && (
+                                                    <div className="flex gap-2 mt-3">
+                                                        {doc.meta.tags.slice(0, 3).map(tag => (
+                                                            <span key={tag} className="px-2 py-0.5 rounded text-xs bg-white/5 text-gray-400 border border-white/5">
+                                                                {tag}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            {selectedDoc?.meta.id === doc.meta?.id && (
+                                                <ChevronRight className="text-blue-400" size={16} />
+                                            )}
+                                        </div>
+
+                                        {/* Loading state for individual item meta fetching */}
+                                        {doc.loading && (
+                                            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                                                <Loader2 className="animate-spin text-white/20" size={16} />
+                                            </div>
+                                        )}
+                                    </motion.div>
+                                ))}
+                            </AnimatePresence>
+                        </motion.div>
+                    )}
+                </motion.div>
+
+                {/* Main Content Area */}
+                <AnimatePresence mode="wait">
+                    {selectedDoc && (
+                        <motion.div
+                            key="content"
+                            initial={{ opacity: 0, x: 50, width: 0 }}
+                            animate={{ opacity: 1, x: 0, width: 'auto' }}
+                            exit={{ opacity: 0, x: 50, width: 0 }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                            className="flex-1 overflow-y-auto custom-scrollbar bg-[#0a0a0a]"
+                        >
+                            {loadingContent ? (
+                                <div className="h-full flex items-center justify-center">
+                                    <Loader2 className="animate-spin text-white/20" size={48} />
+                                </div>
+                            ) : (
+                                <div className="p-8 md:p-12">
+                                    <button
+                                        onClick={() => setSelectedDoc(null)}
+                                        className="mb-6 md:hidden flex items-center gap-2 text-gray-400 hover:text-white"
+                                    >
+                                        <ChevronRight className="rotate-180" size={16} />
+                                        Back to list
+                                    </button>
+                                    <DocRenderer data={selectedDoc} />
+                                </div>
+                            )}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+            </div>
+        </div>
+    );
+}

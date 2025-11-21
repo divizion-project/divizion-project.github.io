@@ -1,0 +1,150 @@
+{
+    "meta": {
+        "id": "specifications-documentation-v1",
+        "title": "Documentation du système de documentation de Divizion",
+        "subtitle": "Standardisation et protocoles de rédaction technique",
+        "description": "Ce document sert de référence pour l'ensemble des collaborateurs techniques. Il détaille les spécifications du format JSON propriétaire utilisé pour la gestion des connaissances et la documentation produit chez Divizion.",
+        "coverImage": "/assets/images/docs/cover-json-system.jpg",
+        "author": "Pôle Ingénierie Divizion",
+        "lastUpdated": "2023-11-21",
+        "tags": [
+            "interne",
+            "normes",
+            "protocole"
+        ]
+    },
+    "blocks": [
+        {
+            "type": "heading",
+            "level": 1,
+            "text": "Protocole de Rédaction"
+        },
+        {
+            "type": "paragraph",
+            "content": [
+                {
+                    "text": "L'adoption d'une structure de données stricte permet de découpler le contenu de sa présentation. Cette approche garantit une "
+                },
+                {
+                    "text": "uniformité visuelle",
+                    "bold": true
+                },
+                {
+                    "text": " et facilite l'intégration continue des mises à jour documentaires au sein de l'écosystème "
+                },
+                {
+                    "text": "Divizion",
+                    "italic": true
+                },
+                {
+                    "text": "."
+                }
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": [
+                {
+                    "text": "Les rédacteurs doivent utiliser les attributs de formatage avec parcimonie pour maintenir une lisibilité optimale. L'usage du "
+                },
+                {
+                    "text": "gras",
+                    "bold": true
+                },
+                {
+                    "text": " est réservé aux concepts clés, tandis que les "
+                },
+                {
+                    "text": "liens hypertextes",
+                    "link": "https://divizion.com/resources",
+                    "color": "#3b82f6"
+                },
+                {
+                    "text": " doivent pointer vers des ressources internes validées."
+                }
+            ]
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/docs/architecture-schema.png",
+            "alt": "Schéma de l'architecture documentaire",
+            "caption": "Figure 1 : Architecture du flux de données documentaire",
+            "width": "full"
+        },
+        {
+            "type": "heading",
+            "level": 2,
+            "text": "Éléments d'Interaction"
+        },
+        {
+            "type": "paragraph",
+            "content": [
+                {
+                    "text": "Les interfaces documentaires peuvent inclure des points d'entrée vers des outils internes ou des dépôts de code. Voici les composants d'action standardisés :"
+                }
+            ]
+        },
+        {
+            "type": "button_group",
+            "alignment": "left",
+            "buttons": [
+                {
+                    "type": "text",
+                    "label": "Accéder au Wiki Interne",
+                    "action": "/internal/wiki",
+                    "variant": "primary"
+                },
+                {
+                    "type": "text_icon",
+                    "label": "Télécharger les Spécifications",
+                    "icon": "download",
+                    "action": "/downloads/specs-v1.pdf",
+                    "variant": "outline"
+                },
+                {
+                    "type": "icon_only",
+                    "icon": "github",
+                    "action": "https://github.com/divizion",
+                    "variant": "ghost"
+                }
+            ]
+        },
+        {
+            "type": "heading",
+            "level": 2,
+            "text": "Workflow de Déploiement"
+        },
+        {
+            "type": "step_list",
+            "title": "Procédure de Mise en Production",
+            "description": "Le cycle de vie d'un document suit un processus de validation rigoureux avant sa publication.",
+            "steps": [
+                {
+                    "step_number": 1,
+                    "title": "Rédaction et Structuration",
+                    "description": "Le contenu est rédigé au format JSON en respectant scrupuleusement le schéma de validation en vigueur."
+                },
+                {
+                    "step_number": 2,
+                    "title": "Revue par les Pairs",
+                    "description": "Une Pull Request est soumise pour validation technique et orthographique par un membre senior de l'équipe."
+                },
+                {
+                    "step_number": 3,
+                    "title": "Intégration Continue (CI/CD)",
+                    "description": "La fusion de la branche déclenche automatiquement la régénération du portail de documentation via le pipeline DevOps."
+                }
+            ]
+        },
+        {
+            "type": "alert",
+            "variant": "warning",
+            "title": "Conformité",
+            "content": [
+                {
+                    "text": "Tout document ne respectant pas la structure définie ci-dessus sera automatiquement rejeté par le pipeline de validation."
+                }
+            ]
+        }
+    ]
+}

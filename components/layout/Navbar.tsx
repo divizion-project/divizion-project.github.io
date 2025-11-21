@@ -15,7 +15,7 @@ import clsx from "clsx";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
 import { useLanguage } from "../providers/LanguageProvider";
 
-type NavRoute = "/" | "/news" | "/launcher" | "/roadmap";
+type NavRoute = "/" | "/news" | "/launcher" | "/roadmap" | "/docs";
 
 const INDICATOR_TRANSITION =
   "left 0.5s cubic-bezier(0.22, 1, 0.36, 1), top 0.5s cubic-bezier(0.22, 1, 0.36, 1), width 0.5s cubic-bezier(0.22, 1, 0.36, 1), height 0.5s cubic-bezier(0.22, 1, 0.36, 1)";
@@ -38,6 +38,7 @@ export default function Navbar() {
     { href: "/news", label: t("navbar.news") },
     { href: "/launcher", label: t("navbar.launcher") },
     { href: "/roadmap", label: t("navbar.roadmap") },
+    { href: "/docs", label: "Documentation" },
   ], [t]);
 
   const updateIndicator = useCallback(() => {
