@@ -120,9 +120,21 @@ export const FR = {
                 description: "Détection et résolution automatique des crashs et conflits de mods."
             }
         },
+        eview: {
+            badge: "BETA",
+            title: "Earth-View",
+            description: "Les prémices de la carte qui sera au centre de votre aventure. Nous avons implémenté son moteur très tôt pour recueillir vos retours (refaire Google Earth, c'est compliqué !). C'est une fonction BETA : vous ne pouvez pas encore la manipuler, seules les animations sont visibles. Cette carte n'est pas encore connectée au serveur Minecraft, c'est une démo.",
+            loading: "Chargement de Earth-View..."
+        },
         upcoming: {
             title: "Bientôt Disponible",
             description: "Nous travaillons sur le support des <strong>modpacks custom</strong> pour remplacer MultiMC et le launcher de base, ainsi qu'une gestion avancée des comptes unifiés."
+        },
+        ltsc: {
+            title: "Divizion Launcher 3 LTSC",
+            description: "Une version alternative 'Stable First', compatible avec plus de systèmes. Ce launcher est visuellement basique et va à l'essentiel : aucune animation avancée, juste le nécessaire pour se connecter. Recommandé si le launcher standard ne fonctionne pas ou pour les très petites configurations (consommation minimale).",
+            download_windows: "Télécharger pour Windows",
+            coming_soon: "Mac OS (x64/ARM) et Linux bientôt disponibles"
         }
     },
     news: {

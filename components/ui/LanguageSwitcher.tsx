@@ -6,18 +6,29 @@ import { Search, X } from "lucide-react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 import { LANGUAGES } from "@/lib/translations";
 import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
 export default function LanguageSwitcher() {
     const { language, setLanguage, t } = useLanguage();
+    const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
+    const [isAnimating, setIsAnimating] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const [mounted, setMounted] = useState(false);
     const modalRef = useRef<HTMLDivElement>(null);
 
+    const layoutId = "language-switcher-modal";
+
     useEffect(() => {
         setMounted(true);
     }, []);
+
+    // Close modal when pathname changes
+    useEffect(() => {
+        setIsOpen(false);
+        setIsAnimating(false);
+    }, [pathname]);
 
     // Close modal when clicking outside
     useEffect(() => {
@@ -73,16 +84,26 @@ export default function LanguageSwitcher() {
 
                 {!isOpen && (
                     <motion.button
-                        layoutId="language-switcher-modal"
-                        onClick={() => setIsOpen(true)}
+                        layoutId={isAnimating ? layoutId : undefined}
+                        onMouseEnter={() => setIsAnimating(true)}
+                        onMouseLeave={() => setIsAnimating(false)}
+                        onClick={() => {
+                            setIsAnimating(true);
+                            setIsOpen(true);
+                        }}
+                        onLayoutAnimationComplete={() => {
+                            if (!isOpen) {
+                                setIsAnimating(false);
+                            }
+                        }}
                         className="absolute inset-0 flex items-center gap-2 rounded-lg border border-[#3a3a3a] bg-[#2a2a2a] px-3 py-2 text-sm font-medium text-[#d0d0d0] transition-colors hover:border-[#ff6b35] hover:text-white"
                         aria-label="Change language"
                     >
-                        <motion.span layoutId="language-flag" className="text-lg">
+                        <motion.span layoutId={isAnimating ? `${layoutId}-flag` : undefined} className="text-lg">
                             {currentLanguage?.flag}
                         </motion.span>
                         <motion.span
-                            layoutId="language-name"
+                            layoutId={isAnimating ? `${layoutId}-name` : undefined}
                             className="hidden sm:inline"
                         >
                             {currentLanguage?.name}
@@ -108,7 +129,7 @@ export default function LanguageSwitcher() {
 
                                 {/* Modal */}
                                 <motion.div
-                                    layoutId="language-switcher-modal"
+                                    layoutId={layoutId}
                                     ref={modalRef}
                                     className="relative w-full max-w-md overflow-hidden rounded-2xl border border-[#3a3a3a] bg-[#1a1a1a] shadow-2xl shadow-black/50"
                                     transition={{
