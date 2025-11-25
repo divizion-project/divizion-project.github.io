@@ -511,6 +511,7 @@ export const PL = {
     language_switcher: {
         title: "Wybierz język",
         search: "Szukaj...",
-        no_results: "Nie znaleziono języka"
+        no_results: "Nie znaleziono języka",
+        warning: "Ostrzeżenie: Nie wszystkie strony są przetłumaczone, a tłumaczenia są niekompletne. Na razie językami priorytetowymi są francuski i angielski."
     }
 };

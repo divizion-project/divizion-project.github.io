@@ -511,6 +511,7 @@ export const DE = {
     language_switcher: {
         title: "Wähle eine Sprache",
         search: "Suchen...",
-        no_results: "Keine Sprache gefunden"
+        no_results: "Keine Sprache gefunden",
+        warning: "Warnung: Nicht alle Seiten sind übersetzt und die Übersetzungen sind unvollständig. Vorerst sind Französisch und Englisch die Prioritätssprachen."
     }
 };

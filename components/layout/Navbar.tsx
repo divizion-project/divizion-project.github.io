@@ -1,6 +1,6 @@
 "use client";
 
-import { FileText } from "lucide-react";
+import { FileText, Menu, X } from "lucide-react";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -16,6 +16,7 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
 import { useLanguage } from "../providers/LanguageProvider";
+import { AnimatePresence, motion } from "framer-motion";
 
 type NavRoute = "/" | "/news" | "/launcher" | "/roadmap" | "/docs";
 
@@ -34,6 +35,7 @@ export default function Navbar() {
     width: number;
     height: number;
   } | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const NAV_LINKS: { href: NavRoute; label: string }[] = useMemo(() => [
     { href: "/", label: t("navbar.home") },
@@ -130,10 +132,50 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-4">
-            <LanguageSwitcher />
+            <div className="relative z-10">
+              <LanguageSwitcher />
+            </div>
+            <button
+              className="md:hidden text-[#d0d0d0] hover:text-[#ff6b35] transition-colors"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="absolute left-0 top-full w-full md:hidden border-b border-[#3a3a3a] bg-[#1a1a1a]/95 backdrop-blur-sm overflow-hidden"
+          >
+            <div className="flex flex-col p-6 space-y-4">
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={clsx(
+                    "text-sm font-semibold uppercase tracking-[0.2em] transition-colors duration-300",
+                    pathname === link.href
+                      ? "text-[#ff6b35]"
+                      : "text-[#d0d0d0] hover:text-[#ff6b35]"
+                  )}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

@@ -511,6 +511,7 @@ export const JA = {
     language_switcher: {
         title: "言語を選択",
         search: "検索...",
-        no_results: "言語が見つかりません"
+        no_results: "言語が見つかりません",
+        warning: "警告：すべてのページが翻訳されているわけではなく、翻訳は不完全です。今のところ、優先言語はフランス語と英語です。"
     }
 };

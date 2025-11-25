@@ -523,6 +523,7 @@ export const FR = {
     language_switcher: {
         title: "Choisir une langue",
         search: "Rechercher...",
-        no_results: "Aucune langue trouvée"
+        no_results: "Aucune langue trouvée",
+        warning: "Attention : Les pages ne sont pas toutes traduites, et les traductions sont incomplètes. Pour l'instant, les langues prioritaires sont le français et l'anglais."
     }
 };

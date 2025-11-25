@@ -511,6 +511,7 @@ export const IT = {
     language_switcher: {
         title: "Scegli una lingua",
         search: "Cerca...",
-        no_results: "Nessuna lingua trovata"
+        no_results: "Nessuna lingua trovata",
+        warning: "Attenzione: Non tutte le pagine sono tradotte e le traduzioni sono incomplete. Per ora, le lingue prioritarie sono il francese e l'inglese."
     }
 };

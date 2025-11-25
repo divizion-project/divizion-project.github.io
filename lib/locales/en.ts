@@ -511,6 +511,7 @@ export const EN = {
     language_switcher: {
         title: "Choose a language",
         search: "Search...",
-        no_results: "No language found"
+        no_results: "No language found",
+        warning: "Warning: Pages are not all translated, and translations are incomplete. For now, priority languages are French and English."
     }
 };

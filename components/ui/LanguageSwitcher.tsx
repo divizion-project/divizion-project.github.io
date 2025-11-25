@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { Search, X } from "lucide-react";
+import { Search, X, AlertTriangle } from "lucide-react";
 import { useLanguage } from "@/components/providers/LanguageProvider";
-import { LANGUAGES } from "@/lib/translations";
+import { LANGUAGES, LOADERS } from "@/lib/translations";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
@@ -19,6 +19,42 @@ export default function LanguageSwitcher() {
     const modalRef = useRef<HTMLDivElement>(null);
 
     const layoutId = "language-switcher-modal";
+
+    const [warnings, setWarnings] = useState<string[]>([]);
+    const [currentWarningIndex, setCurrentWarningIndex] = useState(0);
+
+    useEffect(() => {
+        let mounted = true;
+        const loadWarnings = async () => {
+            const results = await Promise.all(
+                LANGUAGES.map(async (lang) => {
+                    try {
+                        const loader = LOADERS[lang.code];
+                        const module = await loader();
+                        return module.language_switcher?.warning;
+                    } catch (err) {
+                        console.error(err);
+                        return null;
+                    }
+                })
+            );
+            if (mounted) {
+                setWarnings(results.filter((w): w is string => !!w));
+            }
+        };
+        loadWarnings();
+        return () => { mounted = false; };
+    }, []);
+
+    useEffect(() => {
+        if (warnings.length === 0) return;
+
+        const interval = setInterval(() => {
+            setCurrentWarningIndex((prev) => (prev + 1) % warnings.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [warnings]);
 
     useEffect(() => {
         setMounted(true);
@@ -138,6 +174,17 @@ export default function LanguageSwitcher() {
                                         damping: 30,
                                     }}
                                 >
+                                    <div className="bg-yellow-500/10 border-b border-yellow-500/20 h-28 flex flex-col justify-center relative overflow-hidden">
+                                        <div className="absolute top-0 left-0 w-full h-full p-4 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                                            <div className="flex gap-3">
+                                                <AlertTriangle className="text-yellow-500 shrink-0 mt-0.5" size={20} />
+                                                <p className="text-sm text-yellow-200/90 leading-relaxed font-mono">
+                                                    <Typewriter text={warnings.length > 0 ? warnings[currentWarningIndex] : t("language_switcher.warning")} />
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div className="border-b border-[#3a3a3a] p-4">
                                         <div className="flex items-center justify-between mb-4">
                                             <h2 className="text-lg font-bold text-white">
@@ -214,5 +261,30 @@ export default function LanguageSwitcher() {
                     document.body
                 )}
         </>
+    );
+}
+
+function Typewriter({ text }: { text: string }) {
+    const [displayedText, setDisplayedText] = useState("");
+
+    useEffect(() => {
+        setDisplayedText("");
+        let i = 0;
+        const timer = setInterval(() => {
+            if (i < text.length) {
+                setDisplayedText((prev) => prev + text.charAt(i));
+                i++;
+            } else {
+                clearInterval(timer);
+            }
+        }, 20);
+        return () => clearInterval(timer);
+    }, [text]);
+
+    return (
+        <span>
+            {displayedText}
+            <span className="animate-pulse ml-0.5 inline-block w-1.5 h-3.5 bg-yellow-500/50 align-middle" />
+        </span>
     );
 }

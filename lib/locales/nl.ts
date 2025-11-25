@@ -511,6 +511,7 @@ export const NL = {
     language_switcher: {
         title: "Kies een taal",
         search: "Zoeken...",
-        no_results: "Geen taal gevonden"
+        no_results: "Geen taal gevonden",
+        warning: "Waarschuwing: Niet alle pagina's zijn vertaald en de vertalingen zijn onvolledig. Voorlopig zijn Frans en Engels de prioriteitstalen."
     }
 };

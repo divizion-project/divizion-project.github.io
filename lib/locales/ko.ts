@@ -511,6 +511,7 @@ export const KO = {
     language_switcher: {
         title: "언어 선택",
         search: "검색...",
-        no_results: "언어를 찾을 수 없음"
+        no_results: "언어를 찾을 수 없음",
+        warning: "경고: 모든 페이지가 번역된 것은 아니며 번역이 불완전합니다. 현재 우선 언어는 프랑스어와 영어입니다."
     }
 };

@@ -511,6 +511,7 @@ export const ZH = {
     language_switcher: {
         title: "选择语言",
         search: "搜索...",
-        no_results: "未找到语言"
+        no_results: "未找到语言",
+        warning: "警告：并非所有页面都已翻译，翻译尚不完整。目前，优先语言是法语和英语。"
     }
 };

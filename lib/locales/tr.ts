@@ -511,6 +511,7 @@ export const TR = {
     language_switcher: {
         title: "Bir dil seçin",
         search: "Ara...",
-        no_results: "Dil bulunamadı"
+        no_results: "Dil bulunamadı",
+        warning: "Uyarı: Sayfaların hepsi çevrilmemiştir ve çeviriler eksiktir. Şimdilik öncelikli diller Fransızca ve İngilizcedir."
     }
 };
