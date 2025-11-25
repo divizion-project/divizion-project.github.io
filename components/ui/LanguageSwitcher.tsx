@@ -52,8 +52,8 @@ export default function LanguageSwitcher() {
                 LANGUAGES.map(async (lang) => {
                     try {
                         const loader = LOADERS[lang.code];
-                        const module = await loader();
-                        return module.language_switcher?.warning;
+                        const translationModule = await loader();
+                        return translationModule.language_switcher?.warning;
                     } catch (err) {
                         console.error(err);
                         return null;

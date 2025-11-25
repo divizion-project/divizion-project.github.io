@@ -4,7 +4,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import {
     DocData,
-    DocBlock,
     HeadingBlock,
     ParagraphBlock,
     ImageBlock,
@@ -14,8 +13,7 @@ import {
     TextSegment,
     CodeBlock
 } from '@/types/documentation';
-import { Download, Github, ExternalLink, AlertTriangle, CheckCircle, Info, XCircle, ChevronRight, Copy, Check } from 'lucide-react';
-import Link from 'next/link';
+import { Download, Github, AlertTriangle, CheckCircle, Info, XCircle, Copy, Check } from 'lucide-react';
 
 const TextRenderer = ({ content }: { content: TextSegment[] }) => {
     return (
