@@ -450,7 +450,7 @@ export default function LauncherPage() {
                   </div>
                 )}
                 <iframe
-                  src="https://divizion.fr/divizion-launcher-earth-view/"
+                  src="https://divizion.fr/earth-view/"
                   className="h-full w-full border-0"
                   onLoad={() => setIsEviewLoading(false)}
                 />
