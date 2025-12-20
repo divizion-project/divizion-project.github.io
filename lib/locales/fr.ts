@@ -77,7 +77,7 @@ export const FR = {
     },
     launcher: {
         hero: {
-            badge: "Bientôt Disponible • {version}",
+            badge: "Divizion {version} est maintenant disponible",
             title_prefix: "Launcher",
             title_suffix: "Divizion",
             description: "Une refonte complète. Plus simple, moins austère, avec des animations fluides et un design à couper le souffle.",

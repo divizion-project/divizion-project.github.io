@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Sparkles,
@@ -15,14 +15,15 @@ import {
   X,
   Download,
   Globe,
-  Shield
+  Shield,
+  Play
 } from "lucide-react";
 import { FaWindows, FaApple, FaLinux } from "react-icons/fa";
 import Portal from "@/components/ui/Portal";
 import { DISCORD_LINK, LAUNCHER_VERSION, LAUNCHER_RELEASES_LINK } from "@/lib/constants";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 
-const TARGET_DATE = 1766167200 * 1000; // Timestamp in milliseconds
+
 
 // OS Icons Components
 const WindowsIcon = ({ className }: { className?: string }) => (
@@ -45,51 +46,22 @@ const DOWNLOADS = [
   { os: "Linux", Icon: LinuxIcon, hasArch: false },
 ] as const;
 
-function Countdown() {
-  const { t } = useLanguage();
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+const DOWNLOAD_LINKS = {
+  WINDOWS: {
+    X64: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.0/Divizion.Launcher-setup-3.0.0.exe"
+  },
+  MACOS: {
+    X64: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.0/Divizion.Launcher-setup-3.0.0-x64.dmg",
+    ARM: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.0/Divizion.Launcher-setup-3.0.0-arm64.dmg"
+  }
+};
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = TARGET_DATE - now;
 
-      if (distance < 0) {
-        clearInterval(interval);
-        return;
-      }
-
-      setTimeLeft({
-        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((distance % (1000 * 60)) / 1000),
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="grid grid-cols-4 gap-4 text-center">
-      {[
-        { label: t("common.days"), value: timeLeft.days },
-        { label: t("common.hours"), value: timeLeft.hours },
-        { label: t("common.minutes"), value: timeLeft.minutes },
-        { label: t("common.seconds"), value: timeLeft.seconds },
-      ].map((item) => (
-        <div key={item.label} className="flex flex-col items-center rounded border border-[#3a3a3a] bg-[#1a1a1a] p-4">
-          <span className="text-3xl font-bold text-[#ff6b35] md:text-4xl">{item.value}</span>
-          <span className="text-xs uppercase tracking-widest text-[#666]">{item.label}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 type ModalState =
   | { type: "selection"; os: OS }
   | { type: "download"; os: OS }
+  | { type: "coming_soon"; os: OS }
   | null;
 
 export default function LauncherPage() {
@@ -112,6 +84,10 @@ export default function LauncherPage() {
   const [isEviewLoading, setIsEviewLoading] = useState(true);
 
   const handleOSClick = (os: OS, hasArch: boolean) => {
+    if (os === "Linux") {
+      setModalState({ type: "coming_soon", os });
+      return;
+    }
     if (hasArch) {
       setModalState({ type: "selection", os });
     } else {
@@ -119,10 +95,9 @@ export default function LauncherPage() {
     }
   };
 
-  const handleDownload = () => {
-    if (modalState) {
-      setModalState({ type: "download", os: modalState.os });
-    }
+  const startDownload = (url: string) => {
+    window.location.href = url;
+    setModalState((prev) => (prev ? { ...prev, type: "download" } : null));
   };
 
   return (
@@ -145,24 +120,26 @@ export default function LauncherPage() {
           </p>
         </div>
 
-        {/* Countdown */}
-        <div className="w-full max-w-2xl">
-          <Countdown />
-        </div>
 
-        {/* YouTube Placeholder */}
-        <div className="aspect-video w-full max-w-4xl overflow-hidden rounded border border-[#3a3a3a] bg-[#1a1a1a] shadow-2xl">
-          <div className="flex h-full w-full items-center justify-center bg-black/50">
-            <div className="flex flex-col items-center gap-4">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#ff6b35]/20 text-[#ff6b35]">
-                <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-              <p className="text-sm uppercase tracking-[0.2em] text-[#666]">{t("launcher.hero.video_label")}</p>
+
+        {/* YouTube Video Link */}
+        <a
+          href="https://www.youtube.com/watch?v=SkrTrm7W-0k"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative aspect-video w-full max-w-4xl overflow-hidden rounded-xl border border-[#3a3a3a] bg-[#1a1a1a] shadow-2xl"
+        >
+          <img
+            src="https://img.youtube.com/vi/SkrTrm7W-0k/maxresdefault.jpg"
+            alt="Divizion Trailer"
+            className="h-full w-full object-cover opacity-60 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100"
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#ff6b35]/90 text-white shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-[#ff6b35]">
+              <Play className="ml-1 h-8 w-8 fill-current" />
             </div>
           </div>
-        </div>
+        </a>
       </header>
 
       {/* Downloads Section */}
@@ -243,7 +220,11 @@ export default function LauncherPage() {
 
                   <motion.div layoutId={`title-${modalState.os}`}>
                     <h3 className="text-2xl font-bold text-[#d0d0d0]">
-                      {modalState.type === "selection" ? t("common.download_for").replace("{os}", modalState.os) : t("common.downloading")}
+                      {modalState.type === "selection"
+                        ? t("common.download_for").replace("{os}", modalState.os)
+                        : modalState.type === "coming_soon"
+                          ? t("common.soon")
+                          : t("common.downloading")}
                     </h3>
                   </motion.div>
 
@@ -260,20 +241,51 @@ export default function LauncherPage() {
                         <p className="mb-6 text-[#999]">{t("common.select_arch")}</p>
                         <div className="grid w-full grid-cols-2 gap-4">
                           <button
-                            onClick={handleDownload}
+                            onClick={() => startDownload(
+                              modalState.os === "Windows"
+                                ? DOWNLOAD_LINKS.WINDOWS.X64
+                                : DOWNLOAD_LINKS.MACOS.X64
+                            )}
                             className="flex flex-col items-center gap-2 rounded border border-[#3a3a3a] bg-[#1a1a1a] p-4 transition-colors hover:border-[#ff6b35] hover:bg-[#ff6b35]/10"
                           >
                             <span className="text-lg font-bold text-[#d0d0d0]">x64</span>
                             <span className="text-xs text-[#666]">{t("common.intel_amd")}</span>
                           </button>
                           <button
-                            onClick={handleDownload}
-                            className="flex flex-col items-center gap-2 rounded border border-[#3a3a3a] bg-[#1a1a1a] p-4 transition-colors hover:border-[#ff6b35] hover:bg-[#ff6b35]/10"
+                            onClick={() => {
+                              if (modalState.os === "Windows") return;
+                              startDownload(DOWNLOAD_LINKS.MACOS.ARM);
+                            }}
+                            disabled={modalState.os === "Windows"}
+                            className={`flex flex-col items-center gap-2 rounded border border-[#3a3a3a] bg-[#1a1a1a] p-4 transition-colors ${modalState.os === "Windows"
+                                ? "cursor-not-allowed opacity-50"
+                                : "hover:border-[#ff6b35] hover:bg-[#ff6b35]/10"
+                              }`}
                           >
                             <span className="text-lg font-bold text-[#d0d0d0]">ARM</span>
-                            <span className="text-xs text-[#666]">{t("common.apple_silicon")}</span>
+                            <span className="text-xs text-[#666]">
+                              {modalState.os === "Windows" ? t("common.soon") : t("common.apple_silicon")}
+                            </span>
                           </button>
                         </div>
+                      </motion.div>
+                    ) : modalState.type === "coming_soon" ? (
+                      <motion.div
+                        key="coming_soon"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.9 }}
+                        className="flex flex-col items-center"
+                      >
+                        <p className="text-center text-[#999]">
+                          La version Linux n'est pas encore disponible. Rejoignez notre Discord pour être informé de sa sortie !
+                        </p>
+                        <button
+                          onClick={() => setModalState(null)}
+                          className="mt-6 rounded bg-[#3a3a3a] px-6 py-2 text-sm font-bold text-[#d0d0d0] hover:bg-[#4a4a4a]"
+                        >
+                          {t("common.close")}
+                        </button>
                       </motion.div>
                     ) : (
                       <motion.div
@@ -300,12 +312,13 @@ export default function LauncherPage() {
                 </div>
               </motion.div>
             </div>
-          )}
-        </AnimatePresence>
-      </Portal>
+          )
+          }
+        </AnimatePresence >
+      </Portal >
 
       {/* Main Features Grid */}
-      <section className="space-y-8">
+      < section className="space-y-8" >
         <div className="text-center">
           <h2 className="text-3xl font-bold text-[#d0d0d0]">{t("launcher.features.title")}</h2>
           <p className="text-[#999]">{t("launcher.features.subtitle")}</p>
@@ -338,10 +351,10 @@ export default function LauncherPage() {
             </div>
           ))}
         </div>
-      </section>
+      </section >
 
       {/* Smart Features (Beta) */}
-      <section className="rounded border border-[#ff6b35]/30 bg-[#2a2a2a] p-8 md:p-12 relative overflow-hidden">
+      < section className="rounded border border-[#ff6b35]/30 bg-[#2a2a2a] p-8 md:p-12 relative overflow-hidden" >
         <div className="absolute top-0 right-0 p-4 opacity-10">
           <Cpu className="w-64 h-64 text-[#ff6b35]" />
         </div>
@@ -367,10 +380,10 @@ export default function LauncherPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* eView Section (Beta) - 3D Flip Card */}
-      <div className="group relative w-full" style={{ perspective: "1000px" }}>
+      < div className="group relative w-full" style={{ perspective: "1000px" }}>
         <motion.div
           animate={{ rotateY: isEviewFlipped ? 180 : 0 }}
           transition={{ duration: 0.8, type: "spring", stiffness: 60, damping: 12 }}
@@ -458,10 +471,10 @@ export default function LauncherPage() {
             )}
           </div>
         </motion.div>
-      </div>
+      </div >
 
       {/* Upcoming Features */}
-      <section className="rounded border border-dashed border-[#3a3a3a] p-8 text-center md:p-12">
+      < section className="rounded border border-dashed border-[#3a3a3a] p-8 text-center md:p-12" >
         <div className="mx-auto max-w-2xl space-y-6">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#2a2a2a] text-[#999]">
             <Gamepad2 className="h-8 w-8" />
@@ -469,10 +482,10 @@ export default function LauncherPage() {
           <h2 className="text-2xl font-bold text-[#d0d0d0]">{t("launcher.upcoming.title")}</h2>
           <p className="text-[#999]" dangerouslySetInnerHTML={{ __html: t("launcher.upcoming.description") }} />
         </div>
-      </section>
+      </section >
 
       {/* LTSC Launcher */}
-      <section className="rounded border border-[#3a3a3a] bg-[#1a1a1a] p-8 md:p-12">
+      < section className="rounded border border-[#3a3a3a] bg-[#1a1a1a] p-8 md:p-12" >
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div className="space-y-4 md:max-w-2xl">
             <div className="flex items-center gap-3">
@@ -492,10 +505,10 @@ export default function LauncherPage() {
             </a>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Footer Links */}
-      <div className="flex flex-wrap justify-center gap-4">
+      < div className="flex flex-wrap justify-center gap-4" >
         <a
           href={DISCORD_LINK}
           target="_blank"
@@ -513,7 +526,7 @@ export default function LauncherPage() {
         >
           {t("common.previous_versions")}
         </a>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
