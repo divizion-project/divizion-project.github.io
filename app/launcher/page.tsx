@@ -48,11 +48,14 @@ const DOWNLOADS = [
 
 const DOWNLOAD_LINKS = {
   WINDOWS: {
-    X64: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.0/Divizion.Launcher-setup-3.0.0.exe"
+    X64: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.2/Divizion.Launcher-setup-3.0.2.exe"
   },
   MACOS: {
-    X64: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.0/Divizion.Launcher-setup-3.0.0-x64.dmg",
-    ARM: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.0/Divizion.Launcher-setup-3.0.0-arm64.dmg"
+    X64: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.2/Divizion.Launcher-setup-3.0.2-x64.dmg",
+    ARM: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.2/Divizion.Launcher-setup-3.0.2-arm64.dmg"
+  },
+  LINUX: {
+    APPIMAGE: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.2/Divizion.Launcher-setup-3.0.2.AppImage"
   }
 };
 
@@ -85,7 +88,7 @@ export default function LauncherPage() {
 
   const handleOSClick = (os: OS, hasArch: boolean) => {
     if (os === "Linux") {
-      setModalState({ type: "coming_soon", os });
+      startDownload(DOWNLOAD_LINKS.LINUX.APPIMAGE);
       return;
     }
     if (hasArch) {
@@ -258,8 +261,8 @@ export default function LauncherPage() {
                             }}
                             disabled={modalState.os === "Windows"}
                             className={`flex flex-col items-center gap-2 rounded border border-[#3a3a3a] bg-[#1a1a1a] p-4 transition-colors ${modalState.os === "Windows"
-                                ? "cursor-not-allowed opacity-50"
-                                : "hover:border-[#ff6b35] hover:bg-[#ff6b35]/10"
+                              ? "cursor-not-allowed opacity-50"
+                              : "hover:border-[#ff6b35] hover:bg-[#ff6b35]/10"
                               }`}
                           >
                             <span className="text-lg font-bold text-[#d0d0d0]">ARM</span>
