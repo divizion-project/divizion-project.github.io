@@ -48,14 +48,14 @@ const DOWNLOADS = [
 
 const DOWNLOAD_LINKS = {
   WINDOWS: {
-    X64: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.2/Divizion.Launcher-setup-3.0.2.exe"
+    X64: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.3/Divizion.Launcher-setup-3.0.3.exe"
   },
   MACOS: {
-    X64: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.2/Divizion.Launcher-setup-3.0.2-x64.dmg",
-    ARM: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.2/Divizion.Launcher-setup-3.0.2-arm64.dmg"
+    X64: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.3/Divizion.Launcher-setup-3.0.3-x64.dmg",
+    ARM: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.3/Divizion.Launcher-setup-3.0.3-arm64.dmg"
   },
   LINUX: {
-    APPIMAGE: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.2/Divizion.Launcher-setup-3.0.2.AppImage"
+    APPIMAGE: "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.0.3/Divizion.Launcher-setup-3.0.3.AppImage"
   }
 };
 
