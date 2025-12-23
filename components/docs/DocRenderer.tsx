@@ -11,7 +11,8 @@ import {
     StepListBlock,
     AlertBlock,
     TextSegment,
-    CodeBlock
+    CodeBlock,
+    InlineImageBlock
 } from '@/types/documentation';
 import { Download, Github, AlertTriangle, CheckCircle, Info, XCircle, Copy, Check } from 'lucide-react';
 
@@ -83,6 +84,23 @@ const ImageRenderer = ({ block }: { block: ImageBlock }) => {
                 <p className="text-center text-sm text-[#666] mt-2 italic">{block.caption}</p>
             )}
         </div>
+    );
+};
+
+const InlineImageRenderer = ({ block }: { block: InlineImageBlock }) => {
+    return (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+            src={block.src}
+            alt={block.alt}
+            width={block.width}
+            height={block.height}
+            className="inline-block align-middle"
+            style={{
+                width: block.width ? `${block.width}px` : undefined,
+                height: block.height ? `${block.height}px` : undefined,
+            }}
+        />
     );
 };
 
@@ -225,6 +243,7 @@ export default function DocRenderer({ data }: { data: DocData }) {
                         {block.type === 'heading' && <HeadingRenderer block={block} />}
                         {block.type === 'paragraph' && <ParagraphRenderer block={block} />}
                         {block.type === 'image' && <ImageRenderer block={block} />}
+                        {block.type === 'inline_image' && <InlineImageRenderer block={block} />}
                         {block.type === 'button_group' && <ButtonGroupRenderer block={block} />}
                         {block.type === 'step_list' && <StepListRenderer block={block} />}
                         {block.type === 'alert' && <AlertRenderer block={block} />}

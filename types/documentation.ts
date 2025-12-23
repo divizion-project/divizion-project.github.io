@@ -77,6 +77,14 @@ export interface CodeBlock {
     showCopyButton?: boolean;
 }
 
+export interface InlineImageBlock {
+    type: 'inline_image';
+    src: string;
+    alt: string;
+    width?: number;
+    height?: number;
+}
+
 export type DocBlock =
     | HeadingBlock
     | ParagraphBlock
@@ -84,7 +92,8 @@ export type DocBlock =
     | ButtonGroupBlock
     | StepListBlock
     | AlertBlock
-    | CodeBlock;
+    | CodeBlock
+    | InlineImageBlock;
 
 export interface DocData {
     meta: DocMeta;
