@@ -79,10 +79,23 @@ export default function DocsContainer() {
     };
 
     const filteredDocs = docs.filter(doc => {
-        const query = searchQuery.toLowerCase();
+        const query = searchQuery.toLowerCase().trim();
+
+        // Tag search: if query starts with #
+        if (query.startsWith('#')) {
+            const tagQuery = query.slice(1).trim(); // Remove # and trim
+            if (!tagQuery) return true; // Show all if just "#"
+
+            const tags = doc.meta?.tags?.map(t => t.toLowerCase()) || [];
+            return tags.some(tag => tag.includes(tagQuery));
+        }
+
+        // Regular search: title, description, and tags
         const title = doc.meta?.title?.toLowerCase() || doc.file.name.toLowerCase();
         const desc = doc.meta?.description?.toLowerCase() || '';
-        return title.includes(query) || desc.includes(query);
+        const tags = doc.meta?.tags?.map(t => t.toLowerCase()) || [];
+
+        return title.includes(query) || desc.includes(query) || tags.some(tag => tag.includes(query));
     });
 
     return (
