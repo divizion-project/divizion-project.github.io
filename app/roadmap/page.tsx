@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { DISCORD_LINK } from "@/lib/constants";
 import { ArrowRight, Sparkles, Check } from "lucide-react";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useI18n } from "@/lib/i18n";
 
 type PhaseStatus = "in_progress" | "upcoming";
 
@@ -48,7 +48,7 @@ const FUTURE_ICONS: Record<string, string> = {
 };
 
 export default function RoadmapPage() {
-  const { t } = useLanguage();
+  const { t } = useI18n();
   const [expandedPhase, setExpandedPhase] = useState<number>(0);
 
   const phases = [
@@ -85,8 +85,8 @@ export default function RoadmapPage() {
       statusLabel: t(`roadmap.status.${STATUS_LABELS_KEYS[status]}`),
       cardsHeading: t("roadmap.cards_heading"),
       cards,
-      note: t(`roadmap.phases.${phaseId}.note`, ""), // Handle optional note
-      footer: t(`roadmap.phases.${phaseId}.footer`, ""), // Handle optional footer
+      note: t(`roadmap.phases.${phaseId}.note`) ?? "",
+      footer: t(`roadmap.phases.${phaseId}.footer`) ?? "",
       position: index + 1,
     };
   });
@@ -170,11 +170,10 @@ export default function RoadmapPage() {
                 {/* Marker */}
                 <motion.div
                   whileHover={{ scale: 1.1 }}
-                  className={`w-16 h-16 rounded flex items-center justify-center font-bold text-lg relative z-10 ${
-                    phase.status === "in_progress"
-                      ? "bg-[#ff6b35] text-white shadow-lg shadow-[#ff6b35]/50"
-                      : "bg-[#2a2a2a] border border-[#3a3a3a] text-[#d0d0d0]"
-                  }`}
+                  className={`w-16 h-16 rounded flex items-center justify-center font-bold text-lg relative z-10 ${phase.status === "in_progress"
+                    ? "bg-[#ff6b35] text-white shadow-lg shadow-[#ff6b35]/50"
+                    : "bg-[#2a2a2a] border border-[#3a3a3a] text-[#d0d0d0]"
+                    }`}
                 >
                   {phase.status === "in_progress" ? (
                     <Check className="h-6 w-6" />
@@ -210,11 +209,10 @@ export default function RoadmapPage() {
                             {phase.title}
                           </h3>
                           <span
-                            className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-bold uppercase tracking-widest ${
-                              phase.status === "in_progress"
-                                ? "bg-[#ff6b35]/20 text-[#ff6b35]"
-                                : "bg-[#3a3a3a] text-[#999]"
-                            }`}
+                            className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-bold uppercase tracking-widest ${phase.status === "in_progress"
+                              ? "bg-[#ff6b35]/20 text-[#ff6b35]"
+                              : "bg-[#3a3a3a] text-[#999]"
+                              }`}
                           >
                             {phase.statusLabel}
                           </span>
@@ -326,9 +324,8 @@ export default function RoadmapPage() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -4 }}
-                className={`bg-[#2a2a2a] border border-[#3a3a3a] p-6 rounded transition-colors hover:border-[#ff6b35]/50 hover:shadow-lg hover:shadow-[#ff6b35]/10 ${
-                  index === futureCards.length - 1 ? "md:col-span-2" : ""
-                }`}
+                className={`bg-[#2a2a2a] border border-[#3a3a3a] p-6 rounded transition-colors hover:border-[#ff6b35]/50 hover:shadow-lg hover:shadow-[#ff6b35]/10 ${index === futureCards.length - 1 ? "md:col-span-2" : ""
+                  }`}
               >
                 <div className="text-3xl mb-3">{card.icon}</div>
                 <h3 className="text-[#ff6b35] font-bold mb-2">{card.title}</h3>

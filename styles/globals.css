@@ -10,6 +10,84 @@
   --text-secondary: #999999;
   --accent-primary: #ff6b35;
   --accent-secondary: #00d4ff;
+  
+  /* OLED Theme */
+  --bg-oled: #000000;
+  --bg-oled-surface: #0a0a0a;
+  --bg-oled-elevated: #111111;
+  --border-oled: #1a1a1a;
+  --border-oled-hover: #2a2a2a;
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Scroll reveal animations */
+@keyframes scrollReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollRevealScale {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Glow animation */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.2);
+  }
+}
+
+/* Launcher-specific utilities */
+.launcher-card {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.launcher-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.launcher-card:active {
+  transform: translateY(-2px) scale(0.99);
+}
+
+.launcher-btn {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.launcher-btn:hover {
+  transform: scale(1.02);
+}
+
+.launcher-btn:active {
+  transform: scale(0.98);
 }
 
 @layer base {

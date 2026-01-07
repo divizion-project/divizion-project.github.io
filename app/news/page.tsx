@@ -1,9 +1,9 @@
 "use client";
 
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useI18n } from "@/lib/i18n";
 
 export default function NewsPage() {
-  const { t } = useLanguage();
+  const { t } = useI18n();
 
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center px-6 text-center">

@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Inter, Rajdhani } from "next/font/google";
 import SiteLayout from "@/components/layout/SiteLayout";
-import { LanguageProvider } from "@/components/providers/LanguageProvider";
+import { I18nProvider } from "@/lib/i18n";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -27,9 +27,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr" className={`${inter.variable} ${rajdhani.variable}`}>
       <body>
-        <LanguageProvider>
+        <I18nProvider>
           <SiteLayout>{children}</SiteLayout>
-        </LanguageProvider>
+        </I18nProvider>
       </body>
     </html>
   );

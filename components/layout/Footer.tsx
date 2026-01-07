@@ -2,13 +2,22 @@
 
 import packageJson from "@/package.json";
 import { DISCORD_LINK } from "@/lib/constants";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useI18n } from "@/lib/i18n";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t } = useI18n();
+  const pathname = usePathname();
+  const isLauncherPage = pathname === "/launcher";
 
   return (
-    <footer className="border-t border-[#3a3a3a] bg-[#1a1a1a] px-6 py-4 text-xs text-[#999]">
+    <footer className={clsx(
+      "border-t px-6 py-4 text-xs text-[#999]",
+      isLauncherPage
+        ? "border-[#1a1a1a] bg-black"
+        : "border-[#3a3a3a] bg-[#1a1a1a]"
+    )}>
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 md:flex-row md:items-center">
         <div className="flex flex-wrap gap-6 text-[11px] uppercase tracking-[0.3em] text-[#666]">
           <span>{t("footer.copyright")}</span>

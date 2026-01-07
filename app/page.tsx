@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { DISCORD_LINK } from "@/lib/constants";
-import { useLanguage } from "@/components/providers/LanguageProvider";
+import { useI18n } from "@/lib/i18n";
 import { Sparkles, Globe, Users, Zap, ArrowRight, Map, Swords, Calendar } from "lucide-react";
 
 export default function HomePage() {
-  const { t } = useLanguage();
+  const { t } = useI18n();
 
   return (
     <div className="relative bg-[#1a1a1a]">

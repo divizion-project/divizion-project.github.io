@@ -14,8 +14,8 @@ import {
 } from "react";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import LanguageSwitcher from "../ui/LanguageSwitcher";
-import { useLanguage } from "../providers/LanguageProvider";
+import LanguageToggle from "../ui/LanguageToggle";
+import { useI18n } from "@/lib/i18n";
 import { AnimatePresence, motion } from "framer-motion";
 
 type NavRoute = "/" | "/news" | "/launcher" | "/roadmap" | "/docs";
@@ -25,7 +25,7 @@ const INDICATOR_TRANSITION =
 
 export default function Navbar() {
   const pathname = usePathname() ?? "/";
-  const { t } = useLanguage();
+  const { t } = useI18n();
   const logoSrc = "/images/icones/logo-small-navbar.webp";
   const navContainerRef = useRef<HTMLDivElement | null>(null);
   const navRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -76,8 +76,15 @@ export default function Navbar() {
     };
   }, [updateIndicator]);
 
+  const isLauncherPage = pathname === "/launcher";
+
   return (
-    <nav className="bg-[#1a1a1a]/95 border-b border-[#3a3a3a] px-6 py-4 sticky top-0 z-50 backdrop-blur-sm">
+    <nav className={clsx(
+      "border-b px-6 py-4 sticky top-0 z-50 backdrop-blur-sm",
+      isLauncherPage
+        ? "bg-black/95 border-[#1a1a1a]"
+        : "bg-[#1a1a1a]/95 border-[#3a3a3a]"
+    )}>
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
           <Image
@@ -133,7 +140,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4">
             <div className="relative z-10">
-              <LanguageSwitcher />
+              <LanguageToggle />
             </div>
             <button
               className="md:hidden text-[#d0d0d0] hover:text-[#ff6b35] transition-colors"
@@ -154,7 +161,12 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="absolute left-0 top-full w-full md:hidden border-b border-[#3a3a3a] bg-[#1a1a1a]/95 backdrop-blur-sm overflow-hidden"
+            className={clsx(
+              "absolute left-0 top-full w-full md:hidden border-b backdrop-blur-sm overflow-hidden",
+              isLauncherPage
+                ? "border-[#1a1a1a] bg-black/95"
+                : "border-[#3a3a3a] bg-[#1a1a1a]/95"
+            )}
           >
             <div className="flex flex-col p-6 space-y-4">
               {NAV_LINKS.map((link) => (
