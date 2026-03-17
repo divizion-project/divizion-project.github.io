@@ -1,36 +1,22 @@
-import type { ReactNode } from "react";
-import type { Metadata } from "next";
-import { Inter, Rajdhani } from "next/font/google";
-import SiteLayout from "@/components/layout/SiteLayout";
-import { I18nProvider } from "@/lib/i18n";
-import "@/styles/globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const rajdhani = Rajdhani({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-display",
-  display: "swap",
-});
+import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "Divizion",
-  description: "Divizion est un serveur Minecraft géopolitique.",
-};
+  title: 'Divizion Launcher - Coming Soon',
+  description: 'Divizion Launcher - A new era of productivity awaits. Coming soon.',
+  icons: {
+    icon: '/favicon.ico',
+  },
+}
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="fr" className={`${inter.variable} ${rajdhani.variable}`}>
-      <body>
-        <I18nProvider>
-          <SiteLayout>{children}</SiteLayout>
-        </I18nProvider>
-      </body>
+    <html lang="fr">
+      <body>{children}</body>
     </html>
-  );
+  )
 }

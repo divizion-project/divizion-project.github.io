@@ -1,0 +1,56 @@
+{
+  "hero": {
+    "badge": "Version 3.1",
+    "title": "Une nouvelle",
+    "titleAccent": "ère",
+    "titleEnd": "commence",
+    "description": "Divizion Launcher 3.1 arrive demain. Redesign complet, performances optimisées, support de Fabric, navigateur de mods intégré, et bien plus encore.",
+    "countdownLabel": "Lancement dans"
+  },
+  "countdown": {
+    "days": "Jours",
+    "hours": "Heures",
+    "minutes": "Minutes",
+    "seconds": "Secondes"
+  },
+  "features": {
+    "fastLaunch": {
+      "title": "Lancement 8× Plus Rapide",
+      "description": "Instances lancées jusqu'à 8 fois plus vite grâce aux optimisations avancées du moteur de lancement"
+    },
+    "fabricForge": {
+      "title": "Support Fabric & Forge",
+      "description": "Installation automatique de Java et support complet des mods Fabric et Forge"
+    },
+    "modsBrowser": {
+      "title": "Navigateur de Mods Intégré",
+      "description": "Parcourez et installez mods, modpacks et dépendances automatiquement"
+    },
+    "responsive": {
+      "title": "Interface Entièrement Responsive",
+      "description": "S'adapte parfaitement à n'importe quelle taille de fenêtre avec barre de titre unifiée"
+    },
+    "multiAccounts": {
+      "title": "Multi-Comptes Supportés",
+      "description": "Compatibilité totale avec les comptes Minecraft Premium et Offline"
+    },
+    "import": {
+      "title": "Import MultiMC/Prism/PolyMC",
+      "description": "Importez facilement vos installations existantes depuis les autres launchers"
+    },
+    "performance": {
+      "title": "Section Performance Avancée",
+      "description": "Contrôle précis sur la mise en cache, validation des fichiers et optimisations Java"
+    },
+    "storage": {
+      "title": "Gestion du Stockage Intelligente",
+      "description": "Analyse d'utilisation du disque, gestion des versions et des composants"
+    }
+  },
+  "footer": {
+    "copyright": "Tous droits réservés.",
+    "legal": "Mentions légales",
+    "privacy": "Confidentialité",
+    "contact": "Contact"
+  }
+}

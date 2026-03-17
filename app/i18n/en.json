@@ -1,0 +1,56 @@
+{
+  "hero": {
+    "badge": "Version 3.1",
+    "title": "A new",
+    "titleAccent": "era",
+    "titleEnd": "begins",
+    "description": "Divizion Launcher 3.1 arrives tomorrow. Complete redesign, optimized performance, Fabric support, integrated mods browser, and much more.",
+    "countdownLabel": "Launch in"
+  },
+  "countdown": {
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds"
+  },
+  "features": {
+    "fastLaunch": {
+      "title": "8× Faster Launching",
+      "description": "Instances launch up to 8 times faster thanks to advanced launch engine optimizations"
+    },
+    "fabricForge": {
+      "title": "Fabric & Forge Support",
+      "description": "Automatic Java installation and full support for Fabric and Forge mods"
+    },
+    "modsBrowser": {
+      "title": "Integrated Mods Browser",
+      "description": "Browse and install mods, modpacks and dependencies automatically"
+    },
+    "responsive": {
+      "title": "Fully Responsive Interface",
+      "description": "Adapts perfectly to any window size with a unified title bar"
+    },
+    "multiAccounts": {
+      "title": "Multi-Account Support",
+      "description": "Full compatibility with Minecraft Premium and Offline accounts"
+    },
+    "import": {
+      "title": "MultiMC/Prism/PolyMC Import",
+      "description": "Easily import your existing installations from other launchers"
+    },
+    "performance": {
+      "title": "Advanced Performance Section",
+      "description": "Precise control over caching, file validation and Java optimizations"
+    },
+    "storage": {
+      "title": "Smart Storage Management",
+      "description": "Disk usage analysis, version and component management"
+    }
+  },
+  "footer": {
+    "copyright": "All rights reserved.",
+    "legal": "Legal Notice",
+    "privacy": "Privacy Policy",
+    "contact": "Contact"
+  }
+}
