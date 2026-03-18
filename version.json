@@ -1,3 +1,37 @@
 {
-  "version": "3.1.0"
+  "version": "3.1.0",
+  "releaseDate": "2026-03-18",
+  "releaseDateFormatted": {
+    "fr": "18 mars 2026",
+    "en": "Mar 18, 2026"
+  },
+  "downloads": {
+    "windows": {
+      "x64": {
+        "filename": "Divizion-Launcher-setup-3.1.0.exe",
+        "size": "162 MB",
+        "sha256": "d16b9502091c47955dc649d9da3d1671dffb318583b35713aecc84a932f37955"
+      }
+    },
+    "mac": {
+      "x64": {
+        "filename": "Divizion-Launcher-setup-3.1.0-x64.dmg",
+        "size": "176 MB",
+        "sha256": "b6c28cbcc92019f75a7d4fe3c54ac240ff870373b32f5e5bd1389b3b223fcd26"
+      },
+      "arm64": {
+        "filename": "Divizion-Launcher-setup-3.1.0-arm64.dmg",
+        "size": "172 MB",
+        "sha256": "2bb6dcb4b166f907f0b47d4c635ff3d0a2e1c2431b8a482c3261925ad73a4460"
+      }
+    },
+    "linux": {
+      "arm64": {
+        "filename": "Divizion-Launcher-3.1.0.AppImage",
+        "size": "159 MB",
+        "sha256": "9640afe713d7807b2db0baa5b9aca5c1887c27b3923988275db65837aedd3bd3"
+      }
+    }
+  },
+  "githubReleaseUrl": "https://github.com/divizion-project/Divizion-Launcher/releases/tag/3.1.0"
 }
