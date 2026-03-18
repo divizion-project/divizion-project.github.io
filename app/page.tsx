@@ -250,22 +250,7 @@ function HomeContent() {
     }
   }, [isFirstVisit])
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % sliderImages.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
-
   const t = translations[locale]
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % sliderImages.length)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length)
-  }
 
   return (
     <>
