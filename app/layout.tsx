@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Divizion Launcher - Coming Soon',
-  description: 'Divizion Launcher - A new era of productivity awaits. Coming soon.',
+  title: 'divizion launcher',
+  description: 'Perfect for content creators, mod developers, and players who just want to play without hassle.',
   icons: {
     icon: '/favicon.ico',
   },
