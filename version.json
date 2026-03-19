@@ -1,35 +1,35 @@
 {
   "version": "3.1.1",
-  "releaseDate": "2026-03-19",
+  "releaseDate": "2026-03-20",
   "releaseDateFormatted": {
-    "fr": "19 mars 2026",
-    "en": "Mar 19, 2026"
+    "fr": "20 mars 2026",
+    "en": "Mar 20, 2026"
   },
   "downloads": {
     "windows": {
       "x64": {
-        "filename": "Divizion-Launcher-setup-3.1.0.exe",
+        "filename": "Divizion-Launcher-setup-3.1.1.exe",
         "size": "162 MB",
-        "sha256": "4e60656cedae36f316b0adc67f2eb8963f01461587a0391699c5c7c5e0258532"
+        "sha256": "bfa3a9a9f19642245aa4fdcbae2b4ce341746e37236ebf372ebef8c410bb7602"
       }
     },
     "mac": {
       "x64": {
-        "filename": "Divizion-Launcher-setup-3.1.0-x64.dmg",
+        "filename": "Divizion-Launcher-setup-3.1.1-x64.dmg",
         "size": "176 MB",
-        "sha256": "bb15a933f78bbb58837322bb4370c5bea3ccee29a1157f09e317da54b634ac88"
+        "sha256": "49789e707c3d03029b177ea65fd8979bec651e5d50e24393468386219d88c91b"
       },
       "arm64": {
-        "filename": "Divizion-Launcher-setup-3.1.0-arm64.dmg",
-        "size": "172 MB",
-        "sha256": "f58eb299df0076b1346bc57af21d22c0145aea5c624c85c52d4c22d39aff3d7d"
+        "filename": "Divizion-Launcher-setup-3.1.1-arm64.dmg",
+        "size": "173 MB",
+        "sha256": "71597d3e2ee7fd2795d97d19f8a4be3ff851289a1a1dd6cdb4f3c941929b5469"
       }
     },
     "linux": {
       "arm64": {
-        "filename": "Divizion-Launcher-3.1.0.AppImage",
+        "filename": "Divizion-Launcher-3.1.1.AppImage",
         "size": "159 MB",
-        "sha256": "1114b9d1cf0074b541e249b9988677c18e8f691322e37446810c059644433edf"
+        "sha256": "d86e9a1938357210016d7bf0e1ea97a3ee00fe19815fa7526bdb9440350cc2c6"
       }
     }
   },
