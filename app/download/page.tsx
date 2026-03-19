@@ -7,7 +7,7 @@ import { usePageTransition } from '../components/PageTransition'
 import { version, downloadsData } from '../lib/version'
 import { 
   Download, X, Monitor, Terminal, Cpu, ChevronRight,
-  ExternalLink, Sparkles
+  ExternalLink, Sparkles, Copy, Check
 } from 'lucide-react'
 
 const translations = {
@@ -62,6 +62,13 @@ const translations = {
       copyright: "Tous droits réservés.",
       legal: "Mentions légales",
       privacy: "Confidentialité"
+    },
+    macCommandPopup: {
+        title: "Information importante pour macOS",
+        description: "Après avoir installé le launcher et avant de le lancer, vous devez ouvrir le Terminal et exécuter la commande suivante :",
+        copyCommand: "Copier la commande",
+        copied: "Copié !",
+        closeBtn: "J'ai compris"
     }
   },
   en: {
@@ -115,6 +122,13 @@ const translations = {
       copyright: "All rights reserved.",
       legal: "Legal Notice",
       privacy: "Privacy Policy"
+    },
+    macCommandPopup: {
+        title: "Important information for macOS",
+        description: "After installing the launcher and before launching it, you must open the Terminal and run the following command:",
+        copyCommand: "Copy command",
+        copied: "Copied!",
+        closeBtn: "I understand"
     }
   }
 }
@@ -157,6 +171,8 @@ function DownloadContent() {
   const [releaseData, setReleaseData] = useState<ReleaseData | null>(null)
   const [activeModal, setActiveModal] = useState<string | null>(null)
   const [detectedOS, setDetectedOS] = useState<string>('')
+  const [showMacCommandModal, setShowMacCommandModal] = useState(false)
+  const [copiedCommand, setCopiedCommand] = useState(false)
   const { isFirstVisit } = usePageTransition()
 
   useEffect(() => {
@@ -480,6 +496,10 @@ function DownloadContent() {
                   <a 
                     href={downloadsData.mac.arm64.url}
                     className="modal-option"
+                    onClick={() => {
+                        closeModal();
+                        setShowMacCommandModal(true);
+                    }}
                   >
                     <div className="modal-option-icon">
                       <Cpu size={20} strokeWidth={1.5} />
@@ -494,6 +514,10 @@ function DownloadContent() {
                   <a 
                     href={downloadsData.mac.x64.url}
                     className="modal-option"
+                    onClick={() => {
+                        closeModal();
+                        setShowMacCommandModal(true);
+                    }}
                   >
                     <div className="modal-option-icon">
                       <Monitor size={20} strokeWidth={1.5} />
@@ -541,6 +565,66 @@ function DownloadContent() {
                   <ChevronRight size={16} className="modal-option-arrow" />
                 </a>
               )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showMacCommandModal && (
+        <div className="modal-overlay visible" onClick={() => setShowMacCommandModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h3 className="modal-title">{t.macCommandPopup.title}</h3>
+              <button className="modal-close" onClick={() => setShowMacCommandModal(false)}>
+                <X size={16} />
+              </button>
+            </div>
+            <div className="modal-body" style={{ padding: '0 24px 24px' }}>
+                <p style={{ color: 'var(--color-gray-500)', marginBottom: '16px', fontSize: '14px', lineHeight: '1.5' }}>
+                    {t.macCommandPopup.description}
+                </p>
+                <div style={{ 
+                    background: 'var(--color-gray-100)', 
+                    padding: '12px 16px', 
+                    border: 'var(--border-thin)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginBottom: '20px'
+                }}>
+                    <code style={{ color: 'var(--color-black)', fontFamily: 'monospace', fontSize: '13px', wordBreak: 'break-all' }}>
+                        xattr -cr /Applications/Divizion\ Launcher.app
+                    </code>
+                    <button 
+                        onClick={(e) => {
+                            e.preventDefault();
+                            navigator.clipboard.writeText("xattr -cr /Applications/Divizion\\ Launcher.app");
+                            setCopiedCommand(true);
+                            setTimeout(() => setCopiedCommand(false), 2000);
+                        }}
+                        style={{
+                            background: 'transparent',
+                            border: 'none',
+                            color: copiedCommand ? 'var(--color-accent)' : 'var(--color-gray-400)',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            marginLeft: '12px',
+                            padding: '4px',
+                            transition: 'color 0.2s ease'
+                        }}
+                        title={t.macCommandPopup.copyCommand}
+                    >
+                        {copiedCommand ? <Check size={16} /> : <Copy size={16} />}
+                    </button>
+                </div>
+                <button 
+                    onClick={() => setShowMacCommandModal(false)}
+                    className="platform-download-btn recommended"
+                    style={{ width: '100%', justifyContent: 'center' }}
+                >
+                    {t.macCommandPopup.closeBtn}
+                </button>
             </div>
           </div>
         </div>
