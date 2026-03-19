@@ -137,6 +137,7 @@ function detectOS(): string {
 }
 
 const previousVersions = [
+  { version: '3.1.0', date: { fr: '18 mars 2026', en: 'Mar 18, 2026' }, os: ['windows', 'mac', 'linux'], tag: { fr: 'Précédente', en: 'Previous' } },
   { version: '3.0.1', date: { fr: '15 nov. 2025', en: 'Nov 15, 2025' }, os: ['windows', 'mac'], tag: { fr: 'Précédente', en: 'Previous' } },
   { version: '3.0.0', date: { fr: '28 oct. 2025', en: 'Oct 28, 2025' }, os: ['windows', 'mac', 'linux'], tag: { fr: 'Majeure', en: 'Major' } },
   { version: '2.5.0', date: { fr: '15 sep. 2025', en: 'Sep 15, 2025' }, os: ['windows', 'mac'], tag: { fr: 'Précédente', en: 'Previous' } },
