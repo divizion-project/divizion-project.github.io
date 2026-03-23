@@ -345,11 +345,11 @@ function HomeContent() {
                       <div className="trailer-video-container">
                         <div className="trailer-video-placeholder">
                           <iframe
-                            src="https://www.youtube.com/embed/5WLQ-RkO2Fc?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&loop=1&playlist=5WLQ-RkO2Fc"
+                            src="https://www.youtube.com/embed/aXHfVidjMoU?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&showinfo=0&loop=1&playlist=aXHfVidjMoU"
                             title="Divizion Launcher 3.1"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
-                            onClick={() => window.open('https://www.youtube.com/watch?v=5WLQ-RkO2Fc', '_blank')}
+                            onClick={() => window.open('https://www.youtube.com/watch?v=aXHfVidjMoU', '_blank')}
                             style={{ cursor: 'pointer' }}
                           />
                         </div>
