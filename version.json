@@ -1,5 +1,5 @@
 {
-  "version": "3.1",
+  "version": "3.1.5",
   "releaseDate": "2026-04-02",
   "releaseDateFormatted": {
     "fr": "2 avril 2026",
@@ -10,36 +10,48 @@
       "x64": {
         "filename": "Divizion-Launcher-setup-3.1.5-x64.zip",
         "size": "182 MB",
-        "sha256": "884fe1d341dde0fb2aa533e880f486c02a35913718a3c7b50106be5b2920551b"
+        "sha256": "884fe1d341dde0fb2aa533e880f486c02a35913718a3c7b50106be5b2920551b",
+        "url": "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.1.5/Divizion-Launcher-setup-3.1.5-x64.zip"
       },
       "arm64": {
         "filename": "Divizion-Launcher-setup-3.1.5-arm64.zip",
         "size": "177 MB",
-        "sha256": "31fceb921607cd459c1c1c8aaf1adf78ebd6f8eb32d3bd9714742a327bbca684"
+        "sha256": "31fceb921607cd459c1c1c8aaf1adf78ebd6f8eb32d3bd9714742a327bbca684",
+        "url": "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.1.5/Divizion-Launcher-setup-3.1.5-arm64.zip"
+      },
+      "exe": {
+        "filename": "Divizion-Launcher-setup-3.1.5.exe",
+        "size": "162 MB",
+        "sha256": "d7f18ba925d49c60c6e66a342ace1e39d915fab86a7ad63151440de61860503b",
+        "url": "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.1.5/Divizion-Launcher-setup-3.1.5.exe"
       }
     },
     "mac": {
       "x64": {
         "filename": "Divizion-Launcher-setup-3.1.5-x64.dmg",
         "size": "176 MB",
-        "sha256": "deaf2af26ea5ba9f65cdeea773eaf44ca3d5b0074c52594d89580bca565abb71"
+        "sha256": "deaf2af26ea5ba9f65cdeea773eaf44ca3d5b0074c52594d89580bca565abb71",
+        "url": "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.1.5/Divizion-Launcher-setup-3.1.5-x64.dmg"
       },
       "arm64": {
         "filename": "Divizion-Launcher-setup-3.1.5-arm64.dmg",
         "size": "173 MB",
-        "sha256": "2db053fc6d4e13c5b36a654490a40059de68deaced5863648e0d791b6e52b7d2"
+        "sha256": "2db053fc6d4e13c5b36a654490a40059de68deaced5863648e0d791b6e52b7d2",
+        "url": "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.1.5/Divizion-Launcher-setup-3.1.5-arm64.dmg"
       }
     },
     "linux": {
       "x64": {
         "filename": "Divizion-Launcher-3.1.5.AppImage",
         "size": "159 MB",
-        "sha256": "2b91562646feb0c51c65c4ed4bdc8dbe6636912bb5ff1418ee989ba1caa64b76"
+        "sha256": "2b91562646feb0c51c65c4ed4bdc8dbe6636912bb5ff1418ee989ba1caa64b76",
+        "url": "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.1.5/Divizion-Launcher-3.1.5.AppImage"
       },
       "arm64": {
         "filename": "Divizion-Launcher-3.1.5.AppImage",
         "size": "159 MB",
-        "sha256": "2b91562646feb0c51c65c4ed4bdc8dbe6636912bb5ff1418ee989ba1caa64b76"
+        "sha256": "2b91562646feb0c51c65c4ed4bdc8dbe6636912bb5ff1418ee989ba1caa64b76",
+        "url": "https://github.com/divizion-project/Divizion-Launcher/releases/download/3.1.5/Divizion-Launcher-3.1.5.AppImage"
       }
     }
   },
