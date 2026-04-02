@@ -2,12 +2,10 @@ import DocDetailClient from './DocDetailClient'
 
 export async function generateStaticParams() {
   const staticSlugs = [
-    'getting-started',
-    'mod-installation',
-    'instances',
-    'performance',
-    'import-export',
-    'troubleshooting'
+    'connexion_microsoft',
+    'installation_issues',
+    'microsoft_connection',
+    'problemes_installation'
   ]
   
   try {
@@ -30,6 +28,7 @@ export async function generateStaticParams() {
   return staticSlugs.map(slug => ({ slug }))
 }
 
-export default function DocDetailPage({ params }: { params: { slug: string } }) {
-  return <DocDetailClient params={params} />
+export default async function DocDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params
+  return <DocDetailClient params={resolvedParams} />
 }

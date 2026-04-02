@@ -1,56 +1,135 @@
 {
-  "hero": {
-    "badge": "Version 3.1",
-    "title": "Une nouvelle",
-    "titleAccent": "ère",
-    "titleEnd": "commence",
-    "description": "Divizion Launcher 3.1 arrive demain. Redesign complet, performances optimisées, support de Fabric, navigateur de mods intégré, et bien plus encore.",
-    "countdownLabel": "Lancement dans"
-  },
-  "countdown": {
-    "days": "Jours",
-    "hours": "Heures",
-    "minutes": "Minutes",
-    "seconds": "Secondes"
-  },
-  "features": {
-    "fastLaunch": {
-      "title": "Lancement 8× Plus Rapide",
-      "description": "Instances lancées jusqu'à 8 fois plus vite grâce aux optimisations avancées du moteur de lancement"
-    },
-    "fabricForge": {
-      "title": "Support Fabric & Forge",
-      "description": "Installation automatique de Java et support complet des mods Fabric et Forge"
-    },
-    "modsBrowser": {
-      "title": "Navigateur de Mods Intégré",
-      "description": "Parcourez et installez mods, modpacks et dépendances automatiquement"
-    },
-    "responsive": {
-      "title": "Interface Entièrement Responsive",
-      "description": "S'adapte parfaitement à n'importe quelle taille de fenêtre avec barre de titre unifiée"
-    },
-    "multiAccounts": {
-      "title": "Multi-Comptes Supportés",
-      "description": "Compatibilité totale avec les comptes Minecraft Premium et Offline"
-    },
-    "import": {
-      "title": "Import MultiMC/Prism/PolyMC",
-      "description": "Importez facilement vos installations existantes depuis les autres launchers"
-    },
-    "performance": {
-      "title": "Section Performance Avancée",
-      "description": "Contrôle précis sur la mise en cache, validation des fichiers et optimisations Java"
-    },
-    "storage": {
-      "title": "Gestion du Stockage Intelligente",
-      "description": "Analyse d'utilisation du disque, gestion des versions et des composants"
-    }
+  "nav": {
+    "home": "Accueil",
+    "features": "Fonctionnalités",
+    "versions": "Versions",
+    "changelog": "Changelog",
+    "documentation": "Documentation",
+    "download": "TÉLÉCHARGER"
   },
   "footer": {
-    "copyright": "Tous droits réservés.",
+    "rights": "Tous droits réservés.",
     "legal": "Mentions légales",
-    "privacy": "Confidentialité",
-    "contact": "Contact"
+    "privacy": "Confidentialité"
+  },
+  "home": {
+    "badge": "VERSION 3.1.5 — DISPONIBLE MAINTENANT",
+    "title": "LE LAUNCHER",
+    "titleAccent": "MINECRAFT",
+    "titleEnd": "ULTIME",
+    "typewriterPrefix": "Le remplaçant direct de",
+    "description": "Gratuit et sans compromis. Installez vos mods, gérez vos instances et jouez — sans friction, sans compte obligatoire.",
+    "cta": "TÉLÉCHARGER",
+    "featuresTitle": "FONCTIONNALITÉS",
+    "featuresSubtitle": "Tout ce dont vous avez besoin pour une expérience Minecraft sans compromis.",
+    "migrationTitle": "TRANSFÉREZ VOS",
+    "migrationTitleAccent": "DONNÉES",
+    "migrationSubtitle": "Importez automatiquement toutes vos instances, mods et configurations depuis votre ancien launcher en quelques clics.",
+    "readyTitle": "PRÊT À",
+    "readyTitleAccent": "JOUER",
+    "readySubtitle": "Téléchargez Divizion Launcher gratuitement et commencez à jouer en quelques secondes.",
+    "readyCta": "TÉLÉCHARGER MAINTENANT",
+    "typewriterLast": "vos anciens launchers",
+    "features": {
+      "activityCenter": "Centre d'Activité",
+      "activityCenterDesc": "C'est ici que tout est centralisé. Dès que le launcher fait quelque chose ce sera affiché ici : une ré-indexation, le téléchargement d'un modpack, le lancement d'une ou plusieurs instances, ou tout autre téléchargement.",
+      "liveLogs": "Logs en direct",
+      "liveLogsDesc": "Zone dédiée pour voir les logs des instances en cours d'exécution.",
+      "freeForAll": "Gratuit et pour tous",
+      "freeForAllDesc": "Tout le monde peut utiliser le launcher, sans compte, ni Minecraft premium. Ce qui veut dire qu'en plus de pouvoir jouer à Minecraft gratuitement, nous ne vous imposerons pas de pubs, de fonctions bridées, ni de comptes obligatoires.",
+      "easyInstall": "Installation simplifiée",
+      "easyInstallDesc": "Vous pouvez installer n'importe quel modpack ou mods en quelques clics. Il s'affichera instantanément sur votre page d'accueil. Suivez le téléchargement de celui-ci comme une application sur votre smartphone.",
+      "quickLaunch": "Lancement Rapide",
+      "quickLaunchDesc": "Avec le raccourci Ctrl + K, vous pouvez lancer n'importe quelle instance instantanément, sans superflu et rapidement, et mettre automatiquement le launcher en tâche de fond.",
+      "multiInstance": "Multi-instances",
+      "multiInstanceDesc": "Visionnez en temps réel le lancement de vos instances ou leur état directement depuis le centre d'activité.",
+      "customUI": "Interface sur mesure",
+      "customUIDesc": "Choisissez parmi les 3 modes de vue que vous préférez pour jouer à vos instances favorites, et utilisez la sidebar pour accéder rapidement aux détails pertinents de votre instance.",
+      "storageManager": "Gestion du stockage",
+      "storageManagerDesc": "Visionnez précisément l'usage de stockage du Divizion Launcher sur votre ordinateur."
+    }
+  },
+  "featuresPage": {
+    "title": "FONCTIONNALITÉS",
+    "subtitle": "Découvrez tout ce que Divizion Launcher a à offrir pour transformer votre expérience Minecraft.",
+    "cat_installMods": "Installation & Mods",
+    "cat_accounts": "Comptes & Accès",
+    "cat_instances": "Gestion des Instances",
+    "cat_performance": "Performance & Rapidité",
+    "cat_interface": "Interface & Design",
+    "cat_activity": "Activité & Monitoring",
+    "cat_storage": "Stockage & Système"
+  },
+  "download": {
+    "title": "TÉLÉCHARGER",
+    "subtitle": "Choisissez votre plateforme pour commencer. Version",
+    "recommended": "RECOMMANDÉ POUR VOUS",
+    "cta": "TÉLÉCHARGER",
+    "otherPlatforms": "AUTRES PLATEFORMES",
+    "downloadFor": "Télécharger pour",
+    "macInfo": "Information importante pour macOS",
+    "macDescription": "Votre téléchargement va démarrer automatiquement. Après avoir installé le launcher et avant de le lancer, vous devez ouvrir le Terminal et exécuter la commande suivante :",
+    "macUnderstood": "J'AI COMPRIS",
+    "windowsName": "Windows",
+    "windowsDesc": "Windows 10/11 (64 bits)",
+    "windowsArchLabel": "Windows x64",
+    "windowsArchDesc": "Pour les PC avec processeur AMD ou Intel (64 bits)",
+    "macName": "macOS",
+    "macDesc": "macOS 11+ (Intel & Apple Silicon)",
+    "macArmLabel": "Apple Silicon (M1/M2/M3/M4)",
+    "macArmDesc": "Pour les Mac sortis après 2020 avec processeur Apple Silicon",
+    "macIntelLabel": "Intel (x64)",
+    "macIntelDesc": "Pour les Mac sortis avant 2020 avec processeur Intel",
+    "linuxName": "Linux",
+    "linuxDesc": "AppImage (ARM64)",
+    "linuxArchLabel": "ARM64",
+    "linuxArchDesc": "Pour les systèmes Linux sur architecture ARM"
+  },
+  "versions": {
+    "title": "VERSIONS",
+    "subtitle": "Retrouvez toutes les versions de Divizion Launcher et téléchargez celle qui correspond à votre système.",
+    "latest": "DERNIÈRE VERSION",
+    "publishedOn": "Publiée le",
+    "previous": "VERSIONS PRÉCÉDENTES",
+    "viewRelease": "VOIR LA RELEASE →",
+    "download": "TÉLÉCHARGER"
+  },
+  "changelog": {
+    "title": "CHANGELOG",
+    "subtitle": "Suivez l'évolution de Divizion Launcher version par version.",
+    "tags": {
+      "new": "Nouveau",
+      "fix": "Correctif",
+      "improve": "Amélioré",
+      "remove": "Retiré"
+    }
+  },
+  "wiki": {
+    "title": "DOCUMENTATION",
+    "subtitle": "Ressources techniques et guides pour maîtriser Divizion Launcher.",
+    "searchPlaceholder": "Rechercher dans la documentation...",
+    "tags": "Tags",
+    "clearAll": "Effacer tout",
+    "loading": "Chargement...",
+    "noResults": "Aucune documentation trouvée",
+    "noResultsHint": "Essayez de modifier vos critères de recherche",
+    "clearFilters": "Effacer les filtres",
+    "readMore": "LIRE L'ARTICLE →"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Page introuvable",
+    "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "backHome": "Retour à l'accueil",
+    "goBack": "Retour en arrière",
+    "helpfulLinks": "Liens utiles",
+    "downloadPage": "Téléchargements",
+    "homePage": "Page d'accueil",
+    "errorDetails": "Erreur 404",
+    "pathLabel": "Chemin demandé",
+    "suggestions": "Suggestions",
+    "suggestion1": "Vérifiez l'orthographe de l'URL",
+    "suggestion2": "Utilisez la navigation ci-dessous",
+    "suggestion3": "Retournez à la page d'accueil"
   }
 }

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import TransitionLink from '../components/TransitionLink'
 import PageWrapper from '../components/PageWrapper'
 import { usePageTransition } from '../components/PageTransition'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const translations = {
   fr: {
@@ -136,23 +137,10 @@ const translations = {
   }
 }
 
-function getBrowserLanguage(): 'fr' | 'en' {
-  if (typeof window === 'undefined') return 'fr'
-  const saved = localStorage.getItem('divizion-locale')
-  if (saved === 'fr' || saved === 'en') return saved
-  const lang = navigator.language || (navigator as any).userLanguage || 'fr'
-  const locale = lang.toLowerCase().split('-')[0]
-  return locale === 'fr' ? 'fr' : 'en'
-}
-
 function PrivacyContent() {
-  const [locale, setLocale] = useState<'fr' | 'en'>('fr')
+  const { locale, setLocale } = useLanguage()
   const { isFirstVisit } = usePageTransition()
   const t = translations[locale]
-
-  useEffect(() => {
-    setLocale(getBrowserLanguage())
-  }, [])
 
   return (
     <div className="page-content visible page-enter">
@@ -169,11 +157,7 @@ function PrivacyContent() {
               <TransitionLink href="/download" className="nav-link" direction="right">{t.nav.download}</TransitionLink>
               <button 
                 className="lang-toggle" 
-                onClick={() => {
-                  const newLocale = locale === 'fr' ? 'en' : 'fr'
-                  setLocale(newLocale)
-                  localStorage.setItem('divizion-locale', newLocale)
-                }}
+                onClick={() => setLocale(locale === 'fr' ? 'en' : 'fr')}
                 title={locale === 'fr' ? 'Switch to English' : 'Passer en français'}
               >
                 {locale === 'fr' ? 'EN' : 'FR'}

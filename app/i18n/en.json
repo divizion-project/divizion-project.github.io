@@ -1,56 +1,135 @@
 {
-  "hero": {
-    "badge": "Version 3.1",
-    "title": "A new",
-    "titleAccent": "era",
-    "titleEnd": "begins",
-    "description": "Divizion Launcher 3.1 arrives tomorrow. Complete redesign, optimized performance, Fabric support, integrated mods browser, and much more.",
-    "countdownLabel": "Launch in"
-  },
-  "countdown": {
-    "days": "Days",
-    "hours": "Hours",
-    "minutes": "Minutes",
-    "seconds": "Seconds"
-  },
-  "features": {
-    "fastLaunch": {
-      "title": "8× Faster Launching",
-      "description": "Instances launch up to 8 times faster thanks to advanced launch engine optimizations"
-    },
-    "fabricForge": {
-      "title": "Fabric & Forge Support",
-      "description": "Automatic Java installation and full support for Fabric and Forge mods"
-    },
-    "modsBrowser": {
-      "title": "Integrated Mods Browser",
-      "description": "Browse and install mods, modpacks and dependencies automatically"
-    },
-    "responsive": {
-      "title": "Fully Responsive Interface",
-      "description": "Adapts perfectly to any window size with a unified title bar"
-    },
-    "multiAccounts": {
-      "title": "Multi-Account Support",
-      "description": "Full compatibility with Minecraft Premium and Offline accounts"
-    },
-    "import": {
-      "title": "MultiMC/Prism/PolyMC Import",
-      "description": "Easily import your existing installations from other launchers"
-    },
-    "performance": {
-      "title": "Advanced Performance Section",
-      "description": "Precise control over caching, file validation and Java optimizations"
-    },
-    "storage": {
-      "title": "Smart Storage Management",
-      "description": "Disk usage analysis, version and component management"
-    }
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "versions": "Versions",
+    "changelog": "Changelog",
+    "documentation": "Documentation",
+    "download": "DOWNLOAD"
   },
   "footer": {
-    "copyright": "All rights reserved.",
+    "rights": "All rights reserved.",
     "legal": "Legal Notice",
-    "privacy": "Privacy Policy",
-    "contact": "Contact"
+    "privacy": "Privacy Policy"
+  },
+  "home": {
+    "badge": "VERSION 3.1.5 — AVAILABLE NOW",
+    "title": "THE ULTIMATE",
+    "titleAccent": "MINECRAFT",
+    "titleEnd": "LAUNCHER",
+    "typewriterPrefix": "The direct replacement for",
+    "description": "Free and uncompromising. Install your mods, manage your instances, and play — no friction, no mandatory account.",
+    "cta": "DOWNLOAD",
+    "featuresTitle": "FEATURES",
+    "featuresSubtitle": "Everything you need for an uncompromising Minecraft experience.",
+    "migrationTitle": "TRANSFER YOUR",
+    "migrationTitleAccent": "DATA",
+    "migrationSubtitle": "Automatically import all your instances, mods and configurations from your old launcher in just a few clicks.",
+    "readyTitle": "READY TO",
+    "readyTitleAccent": "PLAY",
+    "readySubtitle": "Download Divizion Launcher for free and start playing in seconds.",
+    "readyCta": "DOWNLOAD NOW",
+    "typewriterLast": "your old launchers",
+    "features": {
+      "activityCenter": "Activity Center",
+      "activityCenterDesc": "Everything is centralized here. Whenever the launcher does something, it will be displayed here: re-indexing, downloading a modpack, launching one or more instances, or any other download.",
+      "liveLogs": "Live Logs",
+      "liveLogsDesc": "Dedicated area to view logs of running instances.",
+      "freeForAll": "Free for Everyone",
+      "freeForAllDesc": "Everyone can use the launcher, without an account or Minecraft premium. This means that in addition to being able to play Minecraft for free, we won't impose ads, restricted features, or mandatory accounts.",
+      "easyInstall": "Easy Installation",
+      "easyInstallDesc": "You can install any modpack or mods in just a few clicks. It will instantly appear on your home page. Track the download just like an app on your smartphone.",
+      "quickLaunch": "Quick Launch",
+      "quickLaunchDesc": "With the Ctrl + K shortcut, you can launch any instance instantly, without clutter, quickly, and automatically minimize the launcher to the background.",
+      "multiInstance": "Multi-Instance",
+      "multiInstanceDesc": "View the launch of your instances or their status in real time directly from the activity center.",
+      "customUI": "Custom Interface",
+      "customUIDesc": "Choose from 3 view modes to play your favorite instances, and use the sidebar to quickly access relevant details of your instance.",
+      "storageManager": "Storage Management",
+      "storageManagerDesc": "Precisely view the storage usage of Divizion Launcher on your computer."
+    }
+  },
+  "featuresPage": {
+    "title": "FEATURES",
+    "subtitle": "Discover everything Divizion Launcher has to offer to transform your Minecraft experience.",
+    "cat_installMods": "Installation & Mods",
+    "cat_accounts": "Accounts & Access",
+    "cat_instances": "Instance Management",
+    "cat_performance": "Performance & Speed",
+    "cat_interface": "Interface & Design",
+    "cat_activity": "Activity & Monitoring",
+    "cat_storage": "Storage & System"
+  },
+  "download": {
+    "title": "DOWNLOAD",
+    "subtitle": "Choose your platform to get started. Version",
+    "recommended": "RECOMMENDED FOR YOU",
+    "cta": "DOWNLOAD",
+    "otherPlatforms": "OTHER PLATFORMS",
+    "downloadFor": "Download for",
+    "macInfo": "Important information for macOS",
+    "macDescription": "Your download will start automatically. After installing the launcher and before launching it, you must open Terminal and run the following command:",
+    "macUnderstood": "I UNDERSTAND",
+    "windowsName": "Windows",
+    "windowsDesc": "Windows 10/11 (64-bit)",
+    "windowsArchLabel": "Windows x64",
+    "windowsArchDesc": "For PCs with AMD or Intel processor (64-bit)",
+    "macName": "macOS",
+    "macDesc": "macOS 11+ (Intel & Apple Silicon)",
+    "macArmLabel": "Apple Silicon (M1/M2/M3/M4)",
+    "macArmDesc": "For Macs released after 2020 with Apple Silicon processor",
+    "macIntelLabel": "Intel (x64)",
+    "macIntelDesc": "For Macs released before 2020 with Intel processor",
+    "linuxName": "Linux",
+    "linuxDesc": "AppImage (ARM64)",
+    "linuxArchLabel": "ARM64",
+    "linuxArchDesc": "For Linux systems on ARM architecture"
+  },
+  "versions": {
+    "title": "VERSIONS",
+    "subtitle": "Find all Divizion Launcher versions and download the one that matches your system.",
+    "latest": "LATEST VERSION",
+    "publishedOn": "Published on",
+    "previous": "PREVIOUS VERSIONS",
+    "viewRelease": "VIEW RELEASE →",
+    "download": "DOWNLOAD"
+  },
+  "changelog": {
+    "title": "CHANGELOG",
+    "subtitle": "Follow the evolution of Divizion Launcher version by version.",
+    "tags": {
+      "new": "New",
+      "fix": "Fix",
+      "improve": "Improved",
+      "remove": "Removed"
+    }
+  },
+  "wiki": {
+    "title": "DOCUMENTATION",
+    "subtitle": "Technical resources and guides to master Divizion Launcher.",
+    "searchPlaceholder": "Search documentation...",
+    "tags": "Tags",
+    "clearAll": "Clear all",
+    "loading": "Loading...",
+    "noResults": "No documentation found",
+    "noResultsHint": "Try modifying your search criteria",
+    "clearFilters": "Clear filters",
+    "readMore": "READ ARTICLE →"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "backHome": "Back to home",
+    "goBack": "Go back",
+    "helpfulLinks": "Helpful links",
+    "downloadPage": "Downloads",
+    "homePage": "Home page",
+    "errorDetails": "Error 404",
+    "pathLabel": "Requested path",
+    "suggestions": "Suggestions",
+    "suggestion1": "Check the URL spelling",
+    "suggestion2": "Use the navigation below",
+    "suggestion3": "Return to the home page"
   }
 }
