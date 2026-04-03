@@ -3,7 +3,6 @@
     "home": "Accueil",
     "features": "Fonctionnalités",
     "versions": "Versions",
-    "changelog": "Changelog",
     "documentation": "Documentation",
     "download": "TÉLÉCHARGER"
   },
@@ -94,16 +93,7 @@
     "viewRelease": "VOIR LA RELEASE →",
     "download": "TÉLÉCHARGER"
   },
-  "changelog": {
-    "title": "CHANGELOG",
-    "subtitle": "Suivez l'évolution de Divizion Launcher version par version.",
-    "tags": {
-      "new": "Nouveau",
-      "fix": "Correctif",
-      "improve": "Amélioré",
-      "remove": "Retiré"
-    }
-  },
+
   "wiki": {
     "title": "DOCUMENTATION",
     "subtitle": "Ressources techniques et guides pour maîtriser Divizion Launcher.",

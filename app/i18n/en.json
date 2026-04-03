@@ -3,7 +3,6 @@
     "home": "Home",
     "features": "Features",
     "versions": "Versions",
-    "changelog": "Changelog",
     "documentation": "Documentation",
     "download": "DOWNLOAD"
   },
@@ -93,16 +92,6 @@
     "previous": "PREVIOUS VERSIONS",
     "viewRelease": "VIEW RELEASE →",
     "download": "DOWNLOAD"
-  },
-  "changelog": {
-    "title": "CHANGELOG",
-    "subtitle": "Follow the evolution of Divizion Launcher version by version.",
-    "tags": {
-      "new": "New",
-      "fix": "Fix",
-      "improve": "Improved",
-      "remove": "Removed"
-    }
   },
   "wiki": {
     "title": "DOCUMENTATION",

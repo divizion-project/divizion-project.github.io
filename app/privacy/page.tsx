@@ -1,9 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import TransitionLink from '../components/TransitionLink'
-import PageWrapper from '../components/PageWrapper'
-import { usePageTransition } from '../components/PageTransition'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import { useLanguage } from '../i18n/LanguageContext'
 
 const translations = {
@@ -137,37 +135,15 @@ const translations = {
   }
 }
 
-function PrivacyContent() {
-  const { locale, setLocale } = useLanguage()
-  const { isFirstVisit } = usePageTransition()
+export default function PrivacyPage() {
+  const { locale } = useLanguage()
   const t = translations[locale]
 
   return (
-    <div className="page-content visible page-enter">
-      <header className="header">
-        <div className="container">
-          <div className="header-inner">
-            <div className="logo-section">
-              <img src="/divizion-logo.webp" alt="Divizion Launcher" className="logo-image" />
-              <span className="logo-text">Divizion Launcher</span>
-            </div>
-            <nav className="nav-links">
-              <TransitionLink href="/" className="nav-link" direction="right">{t.nav.home}</TransitionLink>
-              <TransitionLink href="/#features" className="nav-link" direction="right">{t.nav.features}</TransitionLink>
-              <TransitionLink href="/download" className="nav-link" direction="right">{t.nav.download}</TransitionLink>
-              <button 
-                className="lang-toggle" 
-                onClick={() => setLocale(locale === 'fr' ? 'en' : 'fr')}
-                title={locale === 'fr' ? 'Switch to English' : 'Passer en français'}
-              >
-                {locale === 'fr' ? 'EN' : 'FR'}
-              </button>
-            </nav>
-          </div>
-        </div>
-      </header>
+    <>
+      <Header />
 
-      <main>
+      <main className="page-content">
         <section className="legal-page">
           <div className="container">
             <div className="legal-header">
@@ -178,82 +154,25 @@ function PrivacyContent() {
             <div className="legal-content">
               <p className="legal-intro">{t.privacy.intro}</p>
 
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.privacy.sections.principle.title}</h2>
-                <p className="legal-section-text">{t.privacy.sections.principle.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.privacy.sections.analytics.title}</h2>
-                <p className="legal-section-text">{t.privacy.sections.analytics.content}</p>
-                <ul className="legal-list">
-                  {t.privacy.sections.analytics.details.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.privacy.sections.discord.title}</h2>
-                <p className="legal-section-text">{t.privacy.sections.discord.content}</p>
-                <ul className="legal-list">
-                  {t.privacy.sections.discord.details.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.privacy.sections.local.title}</h2>
-                <p className="legal-section-text">{t.privacy.sections.local.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.privacy.sections.thirdParty.title}</h2>
-                <p className="legal-section-text">{t.privacy.sections.thirdParty.content}</p>
-                <ul className="legal-list">
-                  {t.privacy.sections.thirdParty.details.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.privacy.sections.control.title}</h2>
-                <p className="legal-section-text">{t.privacy.sections.control.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.privacy.sections.changes.title}</h2>
-                <p className="legal-section-text">{t.privacy.sections.changes.content}</p>
-              </div>
+              {Object.values(t.privacy.sections).map((section, i) => (
+                <div className="legal-section" key={i}>
+                  <h2 className="legal-section-title">{section.title}</h2>
+                  <p className="legal-section-text">{section.content}</p>
+                  {'details' in section && (
+                    <ul className="legal-list">
+                      {(section as { details: string[] }).details.map((item: string, j: number) => (
+                        <li key={j}>{item}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-inner">
-            <div className="footer-seizure">
-              <span className="footer-by">by</span>
-              <img src="/seizure-logo-black.webp" alt="Seizure" className="footer-seizure-logo" />
-            </div>
-            <div className="footer-links">
-              <TransitionLink href="/legal" className="footer-link">{t.footer.legal}</TransitionLink>
-              <TransitionLink href="/privacy" className="footer-link active">{t.footer.privacy}</TransitionLink>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
-}
-
-export default function PrivacyPage() {
-  return (
-    <PageWrapper>
-      <PrivacyContent />
-    </PageWrapper>
+      <Footer />
+    </>
   )
 }

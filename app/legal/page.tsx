@@ -1,9 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import TransitionLink from '../components/TransitionLink'
-import PageWrapper from '../components/PageWrapper'
-import { usePageTransition } from '../components/PageTransition'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import { useLanguage } from '../i18n/LanguageContext'
 
 const translations = {
@@ -213,37 +211,15 @@ const translations = {
   }
 }
 
-function LegalContent() {
-  const { locale, setLocale } = useLanguage()
-  const { isFirstVisit } = usePageTransition()
+export default function LegalPage() {
+  const { locale } = useLanguage()
   const t = translations[locale]
 
   return (
-    <div className="page-content visible page-enter">
-      <header className="header">
-        <div className="container">
-          <div className="header-inner">
-            <div className="logo-section">
-              <img src="/divizion-logo.webp" alt="Divizion Launcher" className="logo-image" />
-              <span className="logo-text">Divizion Launcher</span>
-            </div>
-            <nav className="nav-links">
-              <TransitionLink href="/" className="nav-link" direction="right">{t.nav.home}</TransitionLink>
-              <TransitionLink href="/#features" className="nav-link" direction="right">{t.nav.features}</TransitionLink>
-              <TransitionLink href="/download" className="nav-link" direction="right">{t.nav.download}</TransitionLink>
-              <button 
-                className="lang-toggle" 
-                onClick={() => setLocale(locale === 'fr' ? 'en' : 'fr')}
-                title={locale === 'fr' ? 'Switch to English' : 'Passer en français'}
-              >
-                {locale === 'fr' ? 'EN' : 'FR'}
-              </button>
-            </nav>
-          </div>
-        </div>
-      </header>
+    <>
+      <Header />
 
-      <main>
+      <main className="page-content">
         <section className="legal-page">
           <div className="container">
             <div className="legal-header">
@@ -252,137 +228,18 @@ function LegalContent() {
             </div>
 
             <div className="legal-content">
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.objet.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.objet.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.editeur.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.editeur.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.hebergement.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.hebergement.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.acceptation.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.acceptation.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.age.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.age.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.minecraft.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.minecraft.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.comptes.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.comptes.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.fonctionnement.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.fonctionnement.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.sources.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.sources.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.interdictions.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.interdictions.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.abus.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.abus.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.donnees.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.donnees.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.donneesLocales.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.donneesLocales.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.contributions.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.contributions.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.propriete.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.propriete.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.garantie.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.garantie.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.responsabilite.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.responsabilite.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.modification.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.modification.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.droit.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.droit.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.litiges.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.litiges.content}</p>
-              </div>
-
-              <div className="legal-section">
-                <h2 className="legal-section-title">{t.legal.sections.contact.title}</h2>
-                <p className="legal-section-text">{t.legal.sections.contact.content}</p>
-              </div>
+              {Object.values(t.legal.sections).map((section, i) => (
+                <div className="legal-section" key={i}>
+                  <h2 className="legal-section-title">{section.title}</h2>
+                  <p className="legal-section-text">{section.content}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-inner">
-            <div className="footer-seizure">
-              <span className="footer-by">by</span>
-              <img src="/seizure-logo-black.webp" alt="Seizure" className="footer-seizure-logo" />
-            </div>
-            <div className="footer-links">
-              <TransitionLink href="/legal" className="footer-link active">{t.footer.legal}</TransitionLink>
-              <TransitionLink href="/privacy" className="footer-link">{t.footer.privacy}</TransitionLink>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
-}
-
-export default function LegalPage() {
-  return (
-    <PageWrapper>
-      <LegalContent />
-    </PageWrapper>
+      <Footer />
+    </>
   )
 }

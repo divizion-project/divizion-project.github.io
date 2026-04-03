@@ -14,7 +14,6 @@ export default function Header() {
     { href: '/', label: t('nav.home') },
     { href: '/features', label: t('nav.features') },
     { href: '/versions', label: t('nav.versions') },
-    { href: '/changelog', label: t('nav.changelog') },
     { href: '/wiki', label: t('nav.documentation') },
   ]
 
