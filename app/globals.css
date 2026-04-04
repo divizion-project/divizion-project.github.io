@@ -1552,13 +1552,18 @@ img, video {
   color: #000;
 }
 
+.download-btn-main,
+.download-btn-dropdown {
+  min-height: 48px;
+}
+
 .download-btn-dropdown {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: var(--accent);
   color: #000;
-  padding: 16px 16px;
+  padding: 16px 20px;
   font-size: 13px;
   font-weight: 700;
   border: none;

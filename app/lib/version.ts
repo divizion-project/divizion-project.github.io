@@ -9,7 +9,17 @@ export interface VersionInfo {
   };
   downloads: {
     windows: {
+      exe: {
+        filename: string;
+        size: string;
+        sha256: string;
+      };
       x64: {
+        filename: string;
+        size: string;
+        sha256: string;
+      };
+      arm64: {
         filename: string;
         size: string;
         sha256: string;
@@ -44,10 +54,20 @@ export const BASE_URL = `https://github.com/divizion-project/Divizion-Launcher/r
 
 export const downloadsData: Record<string, Record<string, { url: string; size: string; sha: string }>> = {
   windows: {
+    exe: {
+      url: `${BASE_URL}/${version.downloads.windows.exe.filename}`,
+      size: version.downloads.windows.exe.size,
+      sha: version.downloads.windows.exe.sha256
+    },
     x64: {
       url: `${BASE_URL}/${version.downloads.windows.x64.filename}`,
       size: version.downloads.windows.x64.size,
       sha: version.downloads.windows.x64.sha256
+    },
+    arm64: {
+      url: `${BASE_URL}/${version.downloads.windows.arm64.filename}`,
+      size: version.downloads.windows.arm64.size,
+      sha: version.downloads.windows.arm64.sha256
     }
   },
   mac: {

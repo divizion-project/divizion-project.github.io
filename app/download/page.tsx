@@ -41,10 +41,22 @@ export default function DownloadPage() {
       description: t('download.windowsDesc'),
       archs: [
         {
+          label: t('download.windowsExeLabel'),
+          desc: t('download.windowsExeDesc'),
+          size: downloadsData.windows.exe.size,
+          url: downloadsData.windows.exe.url,
+        },
+        {
           label: t('download.windowsArchLabel'),
           desc: t('download.windowsArchDesc'),
           size: downloadsData.windows.x64.size,
           url: downloadsData.windows.x64.url,
+        },
+        {
+          label: t('download.windowsArmLabel'),
+          desc: t('download.windowsArmDesc'),
+          size: downloadsData.windows.arm64.size,
+          url: downloadsData.windows.arm64.url,
         },
       ],
     },
@@ -160,7 +172,7 @@ export default function DownloadPage() {
                 <>
                   <button
                     className="download-btn-main"
-                    onClick={() => handleDownload(detectedOS)}
+                    onClick={() => handleArchSelect(detectedOS, currentPlatform.archs[0].url)}
                   >
                     <Download size={16} />
                     {t('download.cta')}
@@ -180,7 +192,7 @@ export default function DownloadPage() {
                     </button>
                     {showArchDropdown && (
                       <div className="download-dropdown-menu">
-                        {currentPlatform.archs.map((arch, i) => (
+                        {currentPlatform.archs.slice(1).map((arch, i) => (
                           <a
                             key={i}
                             href={arch.url}
