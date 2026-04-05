@@ -6,6 +6,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import ImageLightbox from './components/ImageLightbox'
 import { useLanguage } from './i18n/LanguageContext'
+import { MessageCircle, Download, ExternalLink } from 'lucide-react'
 
 const featureKeys = [
   { media: '/homesceensources/activitymanager.webp', type: 'image' as const, titleKey: 'activityCenter', descKey: 'activityCenterDesc', gridClass: 'portrait', ratio: '339/629' },
@@ -39,6 +40,22 @@ export default function HomePage() {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null)
   const [lightboxAlt, setLightboxAlt] = useState('')
   const lightboxRef = useRef<HTMLImageElement | null>(null)
+  const [totalDownloads, setTotalDownloads] = useState<number | null>(null)
+
+  useEffect(() => {
+    fetch('https://api.github.com/repos/divizion-project/Divizion-Launcher/releases')
+      .then(res => res.json())
+      .then((releases: Array<{ assets: Array<{ download_count: number }> }>) => {
+        let count = 0
+        for (const release of releases) {
+          for (const asset of release.assets) {
+            count += asset.download_count
+          }
+        }
+        setTotalDownloads(count)
+      })
+      .catch(() => setTotalDownloads(0))
+  }, [])
 
   useEffect(() => {
     const currentName = launcherNames[nameIndex]
@@ -175,6 +192,52 @@ export default function HomePage() {
                 <p className="migration-card-desc">{launcher.desc}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* ===== COMMUNITY & STATS SECTION ===== */}
+        <section className="section" id="community">
+          <div className="community-stats-grid">
+            {/* Discord Card */}
+            <div className="community-card discord-card">
+              <div className="community-card-icon">
+                <svg width="48" height="48" viewBox="0 0 127.14 96.36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53.07S36,40.45,42.45,40.45s11.56,5.78,11.43,12.62S48.86,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53.07s5-12.62,11.44-12.62S96.23,47.18,96.1,53.07,91,65.69,84.69,65.69Z" fill="currentColor"/>
+                </svg>
+              </div>
+              <h3 className="community-card-title">{t('home.communityTitle')} <span className="accent">{t('home.communityTitleAccent')}</span></h3>
+              <p className="community-card-desc">{t('home.communitySubtitle')}</p>
+              <p className="community-card-members">
+                <MessageCircle size={14} />
+                {t('home.communityMembers')}
+              </p>
+              <a
+                href="https://discord.gg/h4JPfGNGhc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="community-card-btn discord-btn"
+              >
+                {t('home.communityJoin')}
+                <ExternalLink size={14} />
+              </a>
+            </div>
+
+            {/* Download Stats Card */}
+            <div className="community-card stats-card">
+              <div className="community-card-icon">
+                <Download size={48} strokeWidth={1.5} />
+              </div>
+              <h3 className="community-card-title">{t('home.downloadsTitle')} <span className="accent">{t('home.downloadsTitleAccent')}</span></h3>
+              <p className="community-card-desc">{t('home.downloadsSubtitle')}</p>
+              <div className="stats-number">
+                {totalDownloads !== null ? (
+                  <span className="stats-count">{totalDownloads.toLocaleString()}</span>
+                ) : (
+                  <span className="stats-loading">{t('home.downloadsLoading')}</span>
+                )}
+              </div>
+              <p className="stats-label">{t('home.downloadsCount')}</p>
+            </div>
           </div>
         </section>
 

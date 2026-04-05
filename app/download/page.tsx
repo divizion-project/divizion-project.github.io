@@ -29,10 +29,26 @@ export default function DownloadPage() {
   const [showMacPopup, setShowMacPopup] = useState(false)
   const [macDownloadUrl, setMacDownloadUrl] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
+  const [totalDownloads, setTotalDownloads] = useState<number | null>(null)
   const { t } = useLanguage()
 
   useEffect(() => {
     setDetectedOS(detectOS())
+  }, [])
+
+  useEffect(() => {
+    fetch('https://api.github.com/repos/divizion-project/Divizion-Launcher/releases')
+      .then(res => res.json())
+      .then((releases: Array<{ assets: Array<{ download_count: number }> }>) => {
+        let count = 0
+        for (const release of releases) {
+          for (const asset of release.assets) {
+            count += asset.download_count
+          }
+        }
+        setTotalDownloads(count)
+      })
+      .catch(() => setTotalDownloads(0))
   }, [])
 
   const platformData: Record<string, { name: string; description: string; archs: ArchOption[] }> = {
@@ -148,6 +164,17 @@ export default function DownloadPage() {
             {t('download.subtitle')} {version.version}
           </p>
         </section>
+
+        {/* ===== DOWNLOAD STATS ===== */}
+        <div className="download-stats-banner">
+          <div className="download-stats-inner">
+            <Download size={20} />
+            <span className="download-stats-label">{t('downloadStats.totalDownloads')}</span>
+            <span className="download-stats-value">
+              {totalDownloads !== null ? totalDownloads.toLocaleString() : t('downloadStats.loading')}
+            </span>
+          </div>
+        </div>
 
         <div className="download-content">
           {/* ===== PRIMARY DOWNLOAD (Detected OS) ===== */}

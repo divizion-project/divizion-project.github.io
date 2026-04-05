@@ -24,6 +24,16 @@
     "migrationTitle": "TRANSFÉREZ VOS",
     "migrationTitleAccent": "DONNÉES",
     "migrationSubtitle": "Importez automatiquement toutes vos instances, mods et configurations depuis votre ancien launcher en quelques clics.",
+    "communityTitle": "REJOIGNEZ LA",
+    "communityTitleAccent": "COMMUNAUTÉ",
+    "communitySubtitle": "Rejoignez notre serveur Discord pour discuter, obtenir de l'aide et suivre les dernières nouveautés du projet.",
+    "communityMembers": "Rejoignez la communauté Divizion",
+    "communityJoin": "REJOINDRE LE DISCORD",
+    "downloadsTitle": "NOMBRE DE",
+    "downloadsTitleAccent": "TÉLÉCHARGEMENTS",
+    "downloadsSubtitle": "Nombre total de téléchargements du Divizion Launcher.",
+    "downloadsCount": "téléchargements",
+    "downloadsLoading": "Chargement...",
     "readyTitle": "PRÊT À",
     "readyTitleAccent": "JOUER",
     "readySubtitle": "Téléchargez Divizion Launcher gratuitement et commencez à jouer en quelques secondes.",
@@ -87,6 +97,11 @@
     "linuxDesc": "AppImage (ARM64)",
     "linuxArchLabel": "ARM64",
     "linuxArchDesc": "Pour les systèmes Linux sur architecture ARM"
+  },
+  "downloadStats": {
+    "title": "STATISTIQUES",
+    "totalDownloads": "Nombre de téléchargements",
+    "loading": "Chargement..."
   },
   "versions": {
     "title": "VERSIONS",
