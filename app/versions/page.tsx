@@ -7,6 +7,7 @@ import { useLanguage } from '../i18n/LanguageContext'
 import { version, downloadsData, BASE_URL } from '../lib/version'
 
 const previousVersions = [
+  { version: '3.1.8', date: { fr: '14 avril 2026', en: 'Apr 14, 2026' } },
   { version: '3.1.6', date: { fr: '5 avril 2026', en: 'Apr 5, 2026' } },
   { version: '3.1.4', date: { fr: '18 mars 2026', en: 'March 18, 2026' } },
   { version: '3.1.3', date: { fr: '2 mars 2026', en: 'March 2, 2026' } },
