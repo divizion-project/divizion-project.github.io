@@ -13,7 +13,6 @@ export default function Header() {
   const navLinks = [
     { href: '/', label: t('nav.home') },
     { href: '/features', label: t('nav.features') },
-    { href: '/versions', label: t('nav.versions') },
     { href: '/wiki', label: t('nav.documentation') },
   ]
 

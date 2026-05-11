@@ -1,0 +1,7 @@
+- [ ] `releases.json` : la `latest` release est en version 3.1.10 avec la bonne date (`2026-05-11`), le bon `githubReleaseUrl`, tous les downloads avec les bons noms de fichiers, URLs, tailles et SHA256
+- [ ] `releases.json` : le tableau `history` est vide (`[]`)
+- [ ] `app/versions/page.tsx` : le fichier est supprimé
+- [ ] `app/components/Header.tsx` : le lien `/versions` est retiré du tableau `navLinks`
+- [ ] La page `/download` affiche les bons liens de téléchargement pointant vers les assets 3.1.10
+- [ ] La page `/download` affiche le numéro de version 3.1.10
+- [ ] Aucune erreur TypeScript ou d'import liée à la suppression de `app/versions/page.tsx`
