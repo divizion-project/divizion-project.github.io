@@ -1,4 +1,8 @@
 {
+  "site": {
+    "title": "Divizion Launcher — Le launcher Minecraft ultime",
+    "description": "Divizion Launcher est le launcher Minecraft gratuit et sans compromis. Installez vos modpacks facilement, gérez vos instances et lancez Minecraft en un clic."
+  },
   "nav": {
     "home": "Accueil",
     "features": "Fonctionnalités",
@@ -39,6 +43,29 @@
     "readySubtitle": "Téléchargez Divizion Launcher gratuitement et commencez à jouer en quelques secondes.",
     "readyCta": "TÉLÉCHARGER MAINTENANT",
     "typewriterLast": "vos anciens launchers",
+    "modrinthTitle": "MODRINTH",
+    "modrinthTitleAccent": "INTÉGRÉ NATIVEMENT",
+    "modrinthSubtitle": "Modrinth est intégré directement dans le launcher. Installez n'importe quel contenu en quelques clics, de manière entièrement automatisée.",
+    "modrinthNative": "INTÉGRATION NATIVE",
+    "modrinthShowcaseTitle": "Tout Modrinth, directement dans votre launcher",
+    "modrinthShowcaseDesc": "Plus besoin d'aller chercher vos mods ailleurs. Tout est accessible en quelques clics depuis Divizion.",
+    "modrinthFeature": {
+      "mods": "Mods",
+      "modsDesc": "Des milliers de mods compatibles",
+      "maps": "Maps",
+      "mapsDesc": "Aventures et mondes personnalisés",
+      "resourcePacks": "Resource Packs",
+      "resourcePacksDesc": "Textures et sons personnalisés",
+      "shaders": "Shaders",
+      "shadersDesc": "Effets visuels époustouflants",
+      "dataPacks": "Data Packs",
+      "dataPacksDesc": "Logique et mécaniques de jeu personnalisées"
+    },
+    "modrinthFewClicks": "Quelques clics",
+    "modrinthDemoTitle": "Divizion — Modrinth",
+    "modrinthSearchPlaceholder": "Rechercher sur Modrinth...",
+    "modrinthDemoMeta": "Compatible • Modrinth",
+    "modrinthInstall": "Installer",
     "features": {
       "activityCenter": "Centre d'Activité",
       "activityCenterDesc": "C'est ici que tout est centralisé. Dès que le launcher fait quelque chose ce sera affiché ici : une ré-indexation, le téléchargement d'un modpack, le lancement d'une ou plusieurs instances, ou tout autre téléchargement.",

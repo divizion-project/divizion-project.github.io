@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google'
 import './globals.css'
 import LoadingScreen from './components/LoadingScreen'
 import { LanguageProvider } from './i18n/LanguageContext'
+import DocumentTitle from './i18n/DocumentTitle'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -74,6 +75,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className={poppins.className}>
         <LanguageProvider>
+          <DocumentTitle />
           <LoadingScreen />
           <div className="page-wrapper">
             {children}

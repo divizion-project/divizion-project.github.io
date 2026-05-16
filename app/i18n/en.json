@@ -1,4 +1,8 @@
 {
+  "site": {
+    "title": "Divizion Launcher — The Ultimate Minecraft Launcher",
+    "description": "Divizion Launcher is the free and uncompromising Minecraft launcher. Install your modpacks easily, manage your instances and launch Minecraft in one click."
+  },
   "nav": {
     "home": "Home",
     "features": "Features",
@@ -39,6 +43,29 @@
     "readySubtitle": "Download Divizion Launcher for free and start playing in seconds.",
     "readyCta": "DOWNLOAD NOW",
     "typewriterLast": "your old launchers",
+    "modrinthTitle": "MODRINTH",
+    "modrinthTitleAccent": "NATIVELY INTEGRATED",
+    "modrinthSubtitle": "Modrinth is built directly into the launcher. Install any content in just a few clicks, fully automated.",
+    "modrinthNative": "NATIVE INTEGRATION",
+    "modrinthShowcaseTitle": "All of Modrinth, right in your launcher",
+    "modrinthShowcaseDesc": "No need to look for your mods elsewhere. Everything is accessible in a few clicks from Divizion.",
+    "modrinthFeature": {
+      "mods": "Mods",
+      "modsDesc": "Thousands of compatible mods",
+      "maps": "Maps",
+      "mapsDesc": "Adventures and custom worlds",
+      "resourcePacks": "Resource Packs",
+      "resourcePacksDesc": "Custom textures and sounds",
+      "shaders": "Shaders",
+      "shadersDesc": "Stunning visual effects",
+      "dataPacks": "Data Packs",
+      "dataPacksDesc": "Custom game logic and mechanics"
+    },
+    "modrinthFewClicks": "Few clicks",
+    "modrinthDemoTitle": "Divizion — Modrinth",
+    "modrinthSearchPlaceholder": "Search on Modrinth...",
+    "modrinthDemoMeta": "Compatible • Modrinth",
+    "modrinthInstall": "Install",
     "features": {
       "activityCenter": "Activity Center",
       "activityCenterDesc": "Everything is centralized here. Whenever the launcher does something, it will be displayed here: re-indexing, downloading a modpack, launching one or more instances, or any other download.",

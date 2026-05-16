@@ -6,7 +6,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import ImageLightbox from './components/ImageLightbox'
 import { useLanguage } from './i18n/LanguageContext'
-import { MessageCircle, Download, ExternalLink } from 'lucide-react'
+import { MessageCircle, Download, ExternalLink, Package, Map, Paintbrush, Sparkles, Database } from 'lucide-react'
 
 const featureKeys = [
   { media: '/homesceensources/activitymanager.webp', type: 'image' as const, titleKey: 'activityCenter', descKey: 'activityCenterDesc', gridClass: 'portrait', ratio: '339/629' },
@@ -41,6 +41,12 @@ export default function HomePage() {
   const [lightboxAlt, setLightboxAlt] = useState('')
   const lightboxRef = useRef<HTMLImageElement | null>(null)
   const [totalDownloads, setTotalDownloads] = useState<number | null>(null)
+
+  const [modrinthActiveIndex, setModrinthActiveIndex] = useState(0)
+  const [modrinthHoverIndex, setModrinthHoverIndex] = useState<number | null>(null)
+  const [modrinthProgress, setModrinthProgress] = useState(0)
+  const [modrinthInstalledIndex, setModrinthInstalledIndex] = useState<number | null>(null)
+  const modrinthTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     fetch('https://api.github.com/repos/divizion-project/Divizion-Launcher/releases')
@@ -86,6 +92,49 @@ export default function HomePage() {
 
     return () => clearTimeout(timeout)
   }, [charIndex, isDeleting, nameIndex])
+
+  useEffect(() => {
+    const cycleDuration = 3000
+    const progressDuration = 1500
+    const progressSteps = 30
+    const stepInterval = progressDuration / progressSteps
+
+    const cycle = () => {
+      setModrinthProgress(0)
+      setModrinthInstalledIndex(null)
+
+      let step = 0
+      const progressTimer = setInterval(() => {
+        step++
+        setModrinthProgress(Math.min((step / progressSteps) * 100, 100))
+        if (step >= progressSteps) {
+          clearInterval(progressTimer)
+          setModrinthInstalledIndex(modrinthActiveIndex)
+          modrinthTimerRef.current = setTimeout(() => {
+            setModrinthActiveIndex((prev) => (prev + 1) % 5)
+          }, 800)
+        }
+      }, stepInterval)
+
+      return () => clearInterval(progressTimer)
+    }
+
+    const cleanup = cycle()
+
+    return () => {
+      cleanup()
+      if (modrinthTimerRef.current) clearTimeout(modrinthTimerRef.current)
+    }
+  }, [modrinthActiveIndex])
+
+  useEffect(() => {
+    if (modrinthHoverIndex !== null) {
+      setModrinthActiveIndex(modrinthHoverIndex)
+      setModrinthProgress(0)
+      setModrinthInstalledIndex(null)
+      if (modrinthTimerRef.current) clearTimeout(modrinthTimerRef.current)
+    }
+  }, [modrinthHoverIndex])
 
   return (
     <>
@@ -172,6 +221,113 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* ===== MODRINTH NATIVE INTEGRATION ===== */}
+        <section className="section modrinth-section" id="modrinth">
+          <div className="section-header">
+            <h2 className="section-title">{t('home.modrinthTitle')} <span className="modrinth-accent">{t('home.modrinthTitleAccent')}</span></h2>
+            <p className="section-subtitle">
+              {t('home.modrinthSubtitle')}
+            </p>
+            <div className="section-divider modrinth-divider" />
+          </div>
+
+          <div className="modrinth-showcase">
+            <div className="modrinth-showcase-left">
+              <div className="modrinth-native-badge">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" fill="#1bd96a"/>
+                  <path d="M12 6l-5 2.8v5.6L12 17.2l5-2.8V8.8L12 6z" fill="#000"/>
+                </svg>
+                {t('home.modrinthNative')}
+              </div>
+              <h3 className="modrinth-showcase-title">{t('home.modrinthShowcaseTitle')}</h3>
+              <p className="modrinth-showcase-desc">{t('home.modrinthShowcaseDesc')}</p>
+
+              <div className="modrinth-features-list">
+                {[
+                  { icon: Package, key: 'mods' },
+                  { icon: Map, key: 'maps' },
+                  { icon: Paintbrush, key: 'resourcePacks' },
+                  { icon: Sparkles, key: 'shaders' },
+                  { icon: Database, key: 'dataPacks' },
+                ].map((item, i) => (
+                  <div
+                    key={item.key}
+                    className={`modrinth-feature-item ${modrinthActiveIndex === i ? 'active' : ''}`}
+                    onMouseEnter={() => setModrinthHoverIndex(i)}
+                    onMouseLeave={() => setModrinthHoverIndex(null)}
+                  >
+                    <div className="modrinth-feature-icon">
+                      <item.icon size={20} />
+                    </div>
+                    <div className="modrinth-feature-text">
+                      <span className="modrinth-feature-name">{t(`home.modrinthFeature.${item.key}`)}</span>
+                      <span className="modrinth-feature-desc">{t(`home.modrinthFeature.${item.key}Desc`)}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="modrinth-showcase-right">
+              <div className="modrinth-install-demo">
+                <div className="modrinth-demo-header">
+                  <div className="modrinth-demo-dots">
+                    <span /><span /><span />
+                  </div>
+                  <span className="modrinth-demo-title">{t('home.modrinthDemoTitle')}</span>
+                </div>
+                <div className="modrinth-demo-body">
+                  <div className="modrinth-demo-search">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    <span className="modrinth-demo-search-placeholder">{t('home.modrinthSearchPlaceholder')}</span>
+                  </div>
+                  <div className="modrinth-demo-results">
+                    {[0, 1, 2, 3, 4].map((i) => {
+                      const items = [
+                        { icon: Package, name: t('home.modrinthFeature.mods'), color: '#1bd96a' },
+                        { icon: Map, name: t('home.modrinthFeature.maps'), color: '#1bd96a' },
+                        { icon: Paintbrush, name: t('home.modrinthFeature.resourcePacks'), color: '#1bd96a' },
+                        { icon: Sparkles, name: t('home.modrinthFeature.shaders'), color: '#1bd96a' },
+                        { icon: Database, name: t('home.modrinthFeature.dataPacks'), color: '#1bd96a' },
+                      ]
+                      const item = items[i]
+                      const isActive = modrinthActiveIndex === i
+                      return (
+                        <div
+                          key={i}
+                          className={`modrinth-demo-result ${isActive ? 'installing' : ''} ${modrinthInstalledIndex === i ? 'installed' : ''}`}
+                        >
+                          <div className="modrinth-demo-result-icon" style={{ borderColor: isActive ? item.color : undefined }}>
+                            <item.icon size={16} color={isActive ? item.color : undefined} />
+                          </div>
+                          <div className="modrinth-demo-result-info">
+                            <span className="modrinth-demo-result-name">{item.name}</span>
+                            <span className="modrinth-demo-result-meta">{t('home.modrinthDemoMeta')}</span>
+                          </div>
+                          <div className="modrinth-demo-result-action">
+                            {modrinthInstalledIndex === i ? (
+                              <span className="modrinth-demo-installed">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1bd96a" strokeWidth="3"><path d="M20 6L9 17l-5-5"/></svg>
+                              </span>
+                            ) : isActive ? (
+                              <div className="modrinth-demo-progress">
+                                <div className="modrinth-demo-progress-bar" style={{ width: `${modrinthProgress}%` }} />
+                              </div>
+                            ) : (
+                              <span className="modrinth-demo-install-btn">{t('home.modrinthInstall')}</span>
+                            )}
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
