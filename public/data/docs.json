@@ -1,0 +1,1706 @@
+[
+  {
+    "meta": {
+      "id": "microsoft-auth-connexion-v1",
+      "title": "Résoudre le problème de connexion à Microsoft sur le Launcher",
+      "subtitle": "Guide complet pour configurer Microsoft Authenticator",
+      "description": "Documentation expliquant comment résoudre l'erreur 400 lors de la connexion à votre compte Microsoft sur le Divizion Launcher, en utilisant l'application Microsoft Authenticator.",
+      "coverImage": "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Hero-Desktop-M365-Premium-FY26HOL:VP5-1920x600",
+      "author": "Team Divizion",
+      "lastUpdated": "2025-12-23",
+      "tags": [
+        "microsoft",
+        "connexion",
+        "authenticator",
+        "dépannage",
+        "launcher"
+      ]
+    },
+    "blocks": [
+      {
+        "type": "heading",
+        "level": 1,
+        "text": "Problème de connexion au compte Microsoft"
+      },
+      {
+        "type": "alert",
+        "variant": "warning",
+        "title": "Erreur 400 - Connexion refusée",
+        "content": [
+          {
+            "text": "Cette erreur survient car Microsoft exige désormais des méthodes de connexion à sécurité renforcée pour les applications tierces."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "url": "https://raw.githubusercontent.com/divizion-project/divizion-docu/refs/heads/main/images/Microsoft%20error%20400.webp",
+        "alt": "Capture d'écran de l'erreur Microsoft 400",
+        "caption": "Figure 1 : Message d'erreur lors de la tentative de connexion",
+        "width": "full"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Comprendre l'origine du problème"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Microsoft a récemment pris la décision de renforcer la sécurité des connexions pour les petites applications. Il est maintenant "
+          },
+          {
+            "text": "obligatoire",
+            "bold": true
+          },
+          {
+            "text": " d'utiliser des méthodes de connexion avec sécurité renforcée."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Microsoft n'autorise plus l'utilisation de mots de passe simples pour permettre aux utilisateurs de se connecter via des applications tierces. Les seules méthodes acceptées sont :"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "• Code de confirmation par SMS ou email"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "• Application "
+          },
+          {
+            "text": "Microsoft Authenticator",
+            "bold": true
+          },
+          {
+            "text": " (méthode recommandée)"
+          }
+        ]
+      },
+      {
+        "type": "alert",
+        "variant": "info",
+        "title": "Déjà configuré ?",
+        "content": [
+          {
+            "text": "Si vous avez déjà configuré Microsoft Authenticator sur votre compte, vous pouvez directement passer à l'Étape 2 : Connexion au Launcher."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 1,
+        "text": "Étape 1 : Configuration de Microsoft Authenticator"
+      },
+      {
+        "type": "step_list",
+        "title": "Installation et configuration de l'application",
+        "description": "Suivez ces étapes pour configurer Microsoft Authenticator sur votre compte Microsoft.",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Télécharger Microsoft Authenticator",
+            "description": "Installez l'application Microsoft Authenticator depuis l'App Store (iOS) ou le Google Play Store (Android)."
+          },
+          {
+            "step_number": 2,
+            "title": "Ouvrir l'application",
+            "description": "Une fois l'application téléchargée et installée, ouvrez-la sur votre appareil mobile."
+          },
+          {
+            "step_number": 3,
+            "title": "Lier votre compte Microsoft",
+            "description": "Connectez votre compte Microsoft à l'application et activez la connexion depuis l'app."
+          }
+        ]
+      },
+      {
+        "type": "button_group",
+        "alignment": "center",
+        "buttons": [
+          {
+            "type": "text_icon",
+            "label": "Télécharger sur Google Play",
+            "icon": "android",
+            "action": "https://play.google.com/store/apps/details?id=com.azure.authenticator&hl=fr",
+            "variant": "primary"
+          },
+          {
+            "type": "text_icon",
+            "label": "Télécharger sur App Store",
+            "icon": "apple",
+            "action": "https://apps.apple.com/fr/app/microsoft-authenticator/id983156458",
+            "variant": "primary"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Configuration alternative depuis le site Microsoft"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "En cas d'échec de la configuration via l'application, vous pouvez configurer l'authentification directement depuis le "
+          },
+          {
+            "text": "panneau de sécurité Microsoft",
+            "link": "https://account.live.com/proofs/manage",
+            "color": "#3b82f6"
+          },
+          {
+            "text": "."
+          }
+        ]
+      },
+      {
+        "type": "step_list",
+        "title": "Procédure via le site Microsoft",
+        "description": "Suivez ces étapes si la configuration via l'application ne fonctionne pas.",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Accéder au panneau de sécurité",
+            "description": "Rendez-vous sur le site de gestion de compte Microsoft, puis dans Sécurité > Autres options de sécurité."
+          },
+          {
+            "step_number": 2,
+            "title": "Ajouter une méthode de connexion",
+            "description": "Cliquez sur le bouton « Ajoutez un autre moyen de vous connecter à votre compte »."
+          },
+          {
+            "step_number": 3,
+            "title": "Sélectionner l'application",
+            "description": "Dans la popup qui apparaît, cliquez sur « Utiliser une application » puis « Approuvez rapidement les notifications de connexion sur votre téléphone »."
+          },
+          {
+            "step_number": 4,
+            "title": "Suivre les instructions",
+            "description": "Une fenêtre va s'ouvrir vous expliquant comment configurer l'application Microsoft Authenticator. Suivez les instructions à l'écran."
+          }
+        ]
+      },
+      {
+        "type": "button_group",
+        "alignment": "left",
+        "buttons": [
+          {
+            "type": "text_icon",
+            "label": "Accéder au panneau de sécurité Microsoft",
+            "icon": "external-link",
+            "action": "https://account.live.com/proofs/manage",
+            "variant": "outline"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 1,
+        "text": "Étape 2 : Connexion au Launcher"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Une fois Microsoft Authenticator configuré, suivez ces étapes pour vous connecter au Divizion Launcher."
+          }
+        ]
+      },
+      {
+        "type": "step_list",
+        "title": "Procédure de connexion",
+        "description": "Connectez-vous à votre compte Microsoft via le launcher en utilisant l'authentification à deux facteurs.",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Lancer le processus de connexion",
+            "description": "Cliquez sur le bouton de connexion Microsoft dans le Divizion Launcher et entrez votre adresse email."
+          },
+          {
+            "step_number": 2,
+            "title": "Éviter la saisie du mot de passe",
+            "description": "Si une fenêtre vous invite à entrer votre mot de passe, NE L'ENTREZ PAS. La probabilité que cela fonctionne est très faible."
+          },
+          {
+            "step_number": 3,
+            "title": "Choisir l'authentification par application",
+            "description": "Cliquez sur l'un des intitulés suivants : « Utiliser mon application Microsoft », « Utiliser Microsoft Authenticator », ou « Autre moyen de connexion »."
+          },
+          {
+            "step_number": 4,
+            "title": "Sélectionner Microsoft Authenticator",
+            "description": "Si vous avez cliqué sur « Autre moyen de connexion », sélectionnez « Connexion avec Authenticator » dans la liste des options."
+          },
+          {
+            "step_number": 5,
+            "title": "Valider le code",
+            "description": "Un code va apparaître à l'écran. Ouvrez l'application Microsoft Authenticator sur votre téléphone, entrez le même code et validez."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "url": "https://raw.githubusercontent.com/divizion-project/divizion-docu/refs/heads/main/images/Use%20MSAUTHAPP.webp",
+        "alt": "Sélection de l'option Microsoft Authenticator",
+        "caption": "Figure 2 : Sélectionnez l'option pour utiliser Microsoft Authenticator",
+        "width": "full"
+      },
+      {
+        "type": "image",
+        "url": "https://raw.githubusercontent.com/divizion-project/divizion-docu/refs/heads/main/images/Use%20MSAUTHAPPCONFIRMWINDOW.webp",
+        "alt": "Fenêtre de confirmation avec code",
+        "caption": "Figure 3 : Entrez ce code dans votre application Microsoft Authenticator",
+        "width": "full"
+      },
+      {
+        "type": "alert",
+        "variant": "info",
+        "title": "Autres méthodes de connexion",
+        "content": [
+          {
+            "text": "Si l'option Microsoft Authenticator n'est pas disponible, vous pouvez utiliser d'autres méthodes similaires comme la connexion avec un code reçu sur votre téléphone ou par email. Ces options ont de grandes chances de fonctionner également."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Connexion réussie !"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Une fois le code validé dans l'application Microsoft Authenticator, la connexion devrait s'effectuer automatiquement et vous serez connecté à votre compte Microsoft dans le Divizion Launcher."
+          }
+        ]
+      },
+      {
+        "type": "alert",
+        "variant": "success",
+        "title": "Astuce de sécurité",
+        "content": [
+          {
+            "text": "Nous vous recommandons fortement de ne jamais entrer votre mot de passe sur des programmes inconnus. Privilégiez toujours l'authentification à deux facteurs via une application ou par message. Cela permet de contourner les keyloggers présents dans les programmes malveillants et de protéger votre compte."
+          }
+        ]
+      }
+    ],
+    "_path": "docs/connexion_microsoft.json"
+  },
+  {
+    "meta": {
+      "id": "installation-troubleshooting-v1-en",
+      "title": "Divizion Launcher Installation Issues",
+      "subtitle": "Resolving security blocks on macOS and Windows",
+      "description": "Is your system blocking the installation or launch of the Divizion Launcher? This guide explains how to resolve Gatekeeper (macOS) and SmartScreen (Windows) error messages.",
+      "coverImage": "/assets/images/docs/cover-installation.jpg",
+      "author": "Team Divizion",
+      "lastUpdated": "2025-12-25",
+      "tags": [
+        "installation",
+        "troubleshooting",
+        "macOS",
+        "Windows",
+        "security"
+      ]
+    },
+    "blocks": [
+      {
+        "type": "heading",
+        "level": 1,
+        "text": "🍎 macOS - \"The application is damaged\""
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "The Problem"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "When first launching the Divizion Launcher on macOS, you may see one of these error messages:"
+          }
+        ]
+      },
+      {
+        "type": "alert",
+        "variant": "warning",
+        "title": "Error Message",
+        "content": [
+          {
+            "text": "\"Divizion Launcher.app\" is damaged and can't be opened. You should move it to the Trash."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "or"
+          }
+        ]
+      },
+      {
+        "type": "alert",
+        "variant": "warning",
+        "title": "Alternative Error Message",
+        "content": [
+          {
+            "text": "\"Divizion Launcher.app\" cannot be opened because Apple cannot verify that it doesn't contain malicious software."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Why does this happen?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "macOS includes a security system called "
+          },
+          {
+            "text": "Gatekeeper",
+            "bold": true
+          },
+          {
+            "text": " that verifies applications are:"
+          }
+        ]
+      },
+      {
+        "type": "step_list",
+        "title": "Gatekeeper Checks",
+        "description": "",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Signed",
+            "description": "With a valid Apple Developer certificate"
+          },
+          {
+            "step_number": 2,
+            "title": "Notarized",
+            "description": "Verified by Apple for absence of malware"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "The Divizion Launcher is not currently signed with an official Apple Developer certificate, which triggers these security warnings. "
+          },
+          {
+            "text": "This does not mean the application is actually corrupted or dangerous",
+            "bold": true
+          },
+          {
+            "text": " - it's simply an Apple security measure."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Solution"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Method 1: Via Terminal (Recommended)"
+      },
+      {
+        "type": "step_list",
+        "title": "Terminal Procedure",
+        "description": "This method is the most reliable way to resolve the issue.",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Open Terminal",
+            "description": "Press Cmd + Space to open Spotlight, type \"Terminal\" and press Enter"
+          },
+          {
+            "step_number": 2,
+            "title": "Run the command",
+            "description": "Copy-paste the appropriate command depending on the application location"
+          },
+          {
+            "step_number": 3,
+            "title": "Launch the application",
+            "description": "Double-click the application to launch it normally"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "If the application is in the ",
+            "bold": true
+          },
+          {
+            "text": "Applications",
+            "bold": true
+          },
+          {
+            "text": " folder:"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "language": "bash",
+        "content": "xattr -cr /Applications/Divizion\\ Launcher.app",
+        "showCopyButton": true
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "If the application is in the ",
+            "bold": true
+          },
+          {
+            "text": "Downloads",
+            "bold": true
+          },
+          {
+            "text": " folder:"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "language": "bash",
+        "content": "xattr -cr ~/Downloads/Divizion\\ Launcher.app",
+        "showCopyButton": true
+      },
+      {
+        "type": "alert",
+        "variant": "info",
+        "title": "Command Explanation",
+        "content": [
+          {
+            "text": "xattr: Program to manipulate extended file attributes • -c: Removes all extended attributes • -r: Applies recursively to all files in the application. This command removes the \"quarantine\" applied by macOS to downloaded files."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Method 2: Via System Preferences"
+      },
+      {
+        "type": "step_list",
+        "title": "System Preferences Procedure",
+        "description": "",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Try to open the application",
+            "description": "The error message will appear"
+          },
+          {
+            "step_number": 2,
+            "title": "Open System Preferences",
+            "description": "Or System Settings on macOS Ventura+"
+          },
+          {
+            "step_number": 3,
+            "title": "Go to \"Privacy & Security\"",
+            "description": "Scroll down - you'll see a message indicating that \"DivizionLauncher\" was blocked"
+          },
+          {
+            "step_number": 4,
+            "title": "Click \"Open Anyway\"",
+            "description": "Enter your password if prompted and confirm by clicking \"Open\""
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Method 3: Right-click"
+      },
+      {
+        "type": "step_list",
+        "title": "Right-click Procedure",
+        "description": "If other methods don't work.",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Locate the application",
+            "description": "In Finder"
+          },
+          {
+            "step_number": 2,
+            "title": "Hold the Control key",
+            "description": "And click on the application (or right-click)"
+          },
+          {
+            "step_number": 3,
+            "title": "Select \"Open\"",
+            "description": "From the context menu"
+          },
+          {
+            "step_number": 4,
+            "title": "Click \"Open\"",
+            "description": "In the warning dialog"
+          }
+        ]
+      },
+      {
+        "type": "alert",
+        "variant": "info",
+        "title": "Note",
+        "content": [
+          {
+            "text": "This procedure is only necessary once. Once the application has been opened for the first time, macOS will remember it and you can launch it normally."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 1,
+        "text": "🪟 Windows - SmartScreen blocks the application"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "The Problem"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "When first launching the Divizion Launcher on Windows, you may see a blue screen with the message:"
+          }
+        ]
+      },
+      {
+        "type": "alert",
+        "variant": "warning",
+        "title": "Windows protected your PC",
+        "content": [
+          {
+            "text": "Microsoft Defender SmartScreen prevented an unrecognized app from starting. Running this app might put your PC at risk."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Why does this happen?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Windows SmartScreen",
+            "bold": true
+          },
+          {
+            "text": " is a protection system that analyzes downloaded files and compares them to a database of known files. It blocks applications that:"
+          }
+        ]
+      },
+      {
+        "type": "step_list",
+        "title": "SmartScreen Blocking Criteria",
+        "description": "",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Are not signed",
+            "description": "With a code signing certificate"
+          },
+          {
+            "step_number": 2,
+            "title": "Don't have \"reputation\"",
+            "description": "Not enough downloads to be considered safe by Microsoft"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Code signing certificates cost several hundred euros per year, and reputation builds over time with the number of downloads. "
+          },
+          {
+            "text": "The Divizion Launcher is safe",
+            "bold": true
+          },
+          {
+            "text": ", but SmartScreen doesn't recognize it yet."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Solution"
+      },
+      {
+        "type": "step_list",
+        "title": "Steps to Bypass SmartScreen",
+        "description": "",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "When the SmartScreen screen appears",
+            "description": "Don't click \"Don't run\""
+          },
+          {
+            "step_number": 2,
+            "title": "Click \"More info\"",
+            "description": "This link is in small text below the main warning message"
+          },
+          {
+            "step_number": 3,
+            "title": "Click \"Run anyway\"",
+            "description": "Installation/launch will continue normally"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "If you don't see \"More info\""
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "In some cases (especially on Windows in S mode or with enterprise restrictions), the option may not appear. Try:"
+          }
+        ]
+      },
+      {
+        "type": "step_list",
+        "title": "Alternative Method",
+        "description": "",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Right-click on the installation file",
+            "description": ""
+          },
+          {
+            "step_number": 2,
+            "title": "Select \"Properties\"",
+            "description": ""
+          },
+          {
+            "step_number": 3,
+            "title": "In the \"General\" tab",
+            "description": "Look for the \"Unblock\" checkbox at the bottom"
+          },
+          {
+            "step_number": 4,
+            "title": "Check \"Unblock\"",
+            "description": "And click \"Apply\""
+          },
+          {
+            "step_number": 5,
+            "title": "Restart the installation",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 1,
+        "text": "❓ Frequently Asked Questions"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Is the application really safe?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Yes.",
+            "bold": true
+          },
+          {
+            "text": " The Divizion Launcher is developed by a trusted team. The security warnings are not due to the presence of malware, but simply because the application is not signed with an official certificate (which costs several hundred euros per year)."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Why not sign the application?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Code signing requires:"
+          }
+        ]
+      },
+      {
+        "type": "step_list",
+        "title": "Signing Costs",
+        "description": "",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "On macOS",
+            "description": "An Apple Developer account (€99/year) + notarization process"
+          },
+          {
+            "step_number": 2,
+            "title": "On Windows",
+            "description": "An EV (Extended Validation) code signing certificate costing €300-500/year"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "These costs are significant for a free community project."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Are these workarounds safe?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Yes, these workarounds only tell the operating system that you trust this specific application. They don't disable security protections for other applications."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Do I need to do this for every update?"
+      },
+      {
+        "type": "step_list",
+        "title": "Behavior by OS",
+        "description": "",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "macOS",
+            "description": "Generally no, once the application is unblocked, automatic updates should not cause the issue again."
+          },
+          {
+            "step_number": 2,
+            "title": "Windows",
+            "description": "This may happen again during a major update if the installation file changes significantly."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 1,
+        "text": "🔗 References"
+      },
+      {
+        "type": "button_group",
+        "alignment": "left",
+        "buttons": [
+          {
+            "type": "text_icon",
+            "label": "Apple Gatekeeper Documentation",
+            "icon": "external-link",
+            "action": "https://support.apple.com/en-us/HT202491",
+            "variant": "outline"
+          },
+          {
+            "type": "text_icon",
+            "label": "Microsoft SmartScreen Documentation",
+            "icon": "external-link",
+            "action": "https://support.microsoft.com/en-us/microsoft-edge/what-is-smartscreen-and-how-can-it-help-protect-me-1c9a874a-6826-be5e-45b1-67fa445a74c8",
+            "variant": "outline"
+          }
+        ]
+      }
+    ],
+    "_path": "docs/installation_issues.json"
+  },
+  {
+    "meta": {
+      "id": "microsoft-auth-connection-v1",
+      "title": "Fixing Microsoft Connection Issues on the Launcher",
+      "subtitle": "Complete Guide to Set Up Microsoft Authenticator",
+      "description": "Documentation explaining how to resolve error 400 when connecting to your Microsoft account on the Divizion Launcher, using the Microsoft Authenticator app.",
+      "coverImage": "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Hero-Desktop-M365-Premium-FY26HOL:VP5-1920x600",
+      "author": "Team Divizion",
+      "lastUpdated": "2025-12-23",
+      "tags": [
+        "microsoft",
+        "connection",
+        "authenticator",
+        "troubleshooting",
+        "launcher"
+      ]
+    },
+    "blocks": [
+      {
+        "type": "heading",
+        "level": 1,
+        "text": "Microsoft Account Connection Issue"
+      },
+      {
+        "type": "alert",
+        "variant": "warning",
+        "title": "Error 400 - Connection Refused",
+        "content": [
+          {
+            "text": "This error occurs because Microsoft now requires enhanced security authentication methods for third-party applications."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "url": "https://raw.githubusercontent.com/divizion-project/divizion-docu/refs/heads/main/images/Microsoft%20error%20400.webp",
+        "alt": "Screenshot of Microsoft error 400",
+        "caption": "Figure 1: Error message when attempting to connect",
+        "width": "full"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Understanding the Issue"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Microsoft recently decided to enforce enhanced security for connections to smaller applications. It is now "
+          },
+          {
+            "text": "mandatory",
+            "bold": true
+          },
+          {
+            "text": " to use authentication methods with enhanced security."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Microsoft no longer allows the use of simple passwords for users to connect via third-party applications. The only accepted methods are:"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "• Confirmation code via SMS or email"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "• "
+          },
+          {
+            "text": "Microsoft Authenticator",
+            "bold": true
+          },
+          {
+            "text": " app (recommended method)"
+          }
+        ]
+      },
+      {
+        "type": "alert",
+        "variant": "info",
+        "title": "Already configured?",
+        "content": [
+          {
+            "text": "If you have already configured Microsoft Authenticator on your account, you can skip directly to Step 2: Connecting to the Launcher."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 1,
+        "text": "Step 1: Setting Up Microsoft Authenticator"
+      },
+      {
+        "type": "step_list",
+        "title": "Installing and configuring the app",
+        "description": "Follow these steps to configure Microsoft Authenticator on your Microsoft account.",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Download Microsoft Authenticator",
+            "description": "Install the Microsoft Authenticator app from the App Store (iOS) or Google Play Store (Android)."
+          },
+          {
+            "step_number": 2,
+            "title": "Open the app",
+            "description": "Once the app is downloaded and installed, open it on your mobile device."
+          },
+          {
+            "step_number": 3,
+            "title": "Link your Microsoft account",
+            "description": "Connect your Microsoft account to the app and enable sign-in from the app."
+          }
+        ]
+      },
+      {
+        "type": "button_group",
+        "alignment": "center",
+        "buttons": [
+          {
+            "type": "text_icon",
+            "label": "Download on Google Play",
+            "icon": "android",
+            "action": "https://play.google.com/store/apps/details?id=com.azure.authenticator&hl=en",
+            "variant": "primary"
+          },
+          {
+            "type": "text_icon",
+            "label": "Download on App Store",
+            "icon": "apple",
+            "action": "https://apps.apple.com/app/microsoft-authenticator/id983156458",
+            "variant": "primary"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Alternative Configuration via Microsoft Website"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "If configuration via the app fails, you can configure authentication directly from the "
+          },
+          {
+            "text": "Microsoft security panel",
+            "link": "https://account.live.com/proofs/manage",
+            "color": "#3b82f6"
+          },
+          {
+            "text": "."
+          }
+        ]
+      },
+      {
+        "type": "step_list",
+        "title": "Procedure via Microsoft website",
+        "description": "Follow these steps if configuration via the app doesn't work.",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Access the security panel",
+            "description": "Go to the Microsoft account management site, then navigate to Security > More security options."
+          },
+          {
+            "step_number": 2,
+            "title": "Add a sign-in method",
+            "description": "Click on the button \"Add a new way to sign in or verify\"."
+          },
+          {
+            "step_number": 3,
+            "title": "Select the app",
+            "description": "In the popup that appears, click on \"Use an app\" then \"Quickly approve sign-in notifications on your phone\"."
+          },
+          {
+            "step_number": 4,
+            "title": "Follow the instructions",
+            "description": "A window will open explaining how to configure the Microsoft Authenticator app. Follow the on-screen instructions."
+          }
+        ]
+      },
+      {
+        "type": "button_group",
+        "alignment": "left",
+        "buttons": [
+          {
+            "type": "text_icon",
+            "label": "Access Microsoft Security Panel",
+            "icon": "external-link",
+            "action": "https://account.live.com/proofs/manage",
+            "variant": "outline"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 1,
+        "text": "Step 2: Connecting to the Launcher"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Once Microsoft Authenticator is configured, follow these steps to connect to the Divizion Launcher."
+          }
+        ]
+      },
+      {
+        "type": "step_list",
+        "title": "Connection procedure",
+        "description": "Connect to your Microsoft account via the launcher using two-factor authentication.",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Start the connection process",
+            "description": "Click on the Microsoft sign-in button in the Divizion Launcher and enter your email address."
+          },
+          {
+            "step_number": 2,
+            "title": "Avoid entering your password",
+            "description": "If a window prompts you to enter your password, DO NOT ENTER IT. The probability that it will work is very low."
+          },
+          {
+            "step_number": 3,
+            "title": "Choose app authentication",
+            "description": "Click on one of the following options: \"Use my Microsoft app\", \"Use Microsoft Authenticator\", or \"Other way to sign in\"."
+          },
+          {
+            "step_number": 4,
+            "title": "Select Microsoft Authenticator",
+            "description": "If you clicked on \"Other way to sign in\", select \"Sign in with Authenticator\" from the list of options."
+          },
+          {
+            "step_number": 5,
+            "title": "Validate the code",
+            "description": "A code will appear on screen. Open the Microsoft Authenticator app on your phone, enter the same code and validate."
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "url": "https://raw.githubusercontent.com/divizion-project/divizion-docu/refs/heads/main/images/Use%20MSAUTHAPP.webp",
+        "alt": "Selecting the Microsoft Authenticator option",
+        "caption": "Figure 2: Select the option to use Microsoft Authenticator",
+        "width": "full"
+      },
+      {
+        "type": "image",
+        "url": "https://raw.githubusercontent.com/divizion-project/divizion-docu/refs/heads/main/images/Use%20MSAUTHAPPCONFIRMWINDOW.webp",
+        "alt": "Confirmation window with code",
+        "caption": "Figure 3: Enter this code in your Microsoft Authenticator app",
+        "width": "full"
+      },
+      {
+        "type": "alert",
+        "variant": "info",
+        "title": "Other sign-in methods",
+        "content": [
+          {
+            "text": "If the Microsoft Authenticator option is not available, you can use other similar methods such as signing in with a code received on your phone or by email. These options are also very likely to work."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Connection Successful!"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Once the code is validated in the Microsoft Authenticator app, the connection should complete automatically and you will be signed in to your Microsoft account in the Divizion Launcher."
+          }
+        ]
+      },
+      {
+        "type": "alert",
+        "variant": "success",
+        "title": "Security Tip",
+        "content": [
+          {
+            "text": "We strongly recommend never entering your password in unknown programs. Always prefer two-factor authentication via an app or message. This helps bypass keyloggers in malicious programs and protects your account."
+          }
+        ]
+      }
+    ],
+    "_path": "docs/microsoft_connection.json"
+  },
+  {
+    "meta": {
+      "id": "installation-troubleshooting-v1",
+      "title": "Problèmes d'installation du Divizion Launcher",
+      "subtitle": "Résoudre les blocages de sécurité sur macOS et Windows",
+      "description": "Votre système bloque l'installation ou le lancement du Divizion Launcher ? Ce guide vous explique comment résoudre les messages d'erreur de Gatekeeper (macOS) et SmartScreen (Windows).",
+      "coverImage": "/assets/images/docs/cover-installation.jpg",
+      "author": "Team Divizion",
+      "lastUpdated": "2025-12-25",
+      "tags": [
+        "installation",
+        "dépannage",
+        "macOS",
+        "Windows",
+        "sécurité"
+      ]
+    },
+    "blocks": [
+      {
+        "type": "heading",
+        "level": 1,
+        "text": "🍎 macOS - \"L'application est endommagée\""
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Le problème"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Lors du premier lancement du Divizion Launcher sur macOS, vous pouvez voir l'un de ces messages d'erreur :"
+          }
+        ]
+      },
+      {
+        "type": "alert",
+        "variant": "warning",
+        "title": "Message d'erreur",
+        "content": [
+          {
+            "text": "\"Divizion Launcher.app\" est endommagé et ne peut pas être ouvert. Vous devriez le déplacer vers la Corbeille."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "ou"
+          }
+        ]
+      },
+      {
+        "type": "alert",
+        "variant": "warning",
+        "title": "Message d'erreur alternatif",
+        "content": [
+          {
+            "text": "\"Divizion Launcher.app\" ne peut pas être ouvert car Apple n'a pas pu vérifier qu'il ne contient pas de logiciels malveillants."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Pourquoi cela se produit ?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "macOS intègre un système de sécurité appelé "
+          },
+          {
+            "text": "Gatekeeper",
+            "bold": true
+          },
+          {
+            "text": " qui vérifie que les applications sont :"
+          }
+        ]
+      },
+      {
+        "type": "step_list",
+        "title": "Vérifications de Gatekeeper",
+        "description": "",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Signées",
+            "description": "Avec un certificat de développeur Apple valide"
+          },
+          {
+            "step_number": 2,
+            "title": "Notarisées",
+            "description": "Vérifiées par Apple pour l'absence de logiciels malveillants"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Le Divizion Launcher n'est actuellement pas signé avec un certificat Apple Developer officiel, ce qui déclenche ces avertissements de sécurité. "
+          },
+          {
+            "text": "Cela ne signifie pas que l'application est réellement corrompue ou dangereuse",
+            "bold": true
+          },
+          {
+            "text": " - c'est simplement une mesure de sécurité d'Apple."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Solution"
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Méthode 1 : Via le Terminal (Recommandée)"
+      },
+      {
+        "type": "step_list",
+        "title": "Procédure via Terminal",
+        "description": "Cette méthode est la plus fiable pour résoudre le problème.",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Ouvrez le Terminal",
+            "description": "Appuyez sur Cmd + Espace pour ouvrir Spotlight, tapez \"Terminal\" et appuyez sur Entrée"
+          },
+          {
+            "step_number": 2,
+            "title": "Exécutez la commande",
+            "description": "Copiez-collez la commande appropriée selon l'emplacement de l'application"
+          },
+          {
+            "step_number": 3,
+            "title": "Lancez l'application",
+            "description": "Double-cliquez sur l'application pour la lancer normalement"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Si l'application est dans le dossier ",
+            "bold": true
+          },
+          {
+            "text": "Applications",
+            "bold": true
+          },
+          {
+            "text": " :"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "language": "bash",
+        "content": "xattr -cr /Applications/Divizion\\ Launcher.app",
+        "showCopyButton": true
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Si l'application est dans le dossier ",
+            "bold": true
+          },
+          {
+            "text": "Téléchargements",
+            "bold": true
+          },
+          {
+            "text": " :"
+          }
+        ]
+      },
+      {
+        "type": "code",
+        "language": "bash",
+        "content": "xattr -cr ~/Downloads/Divizion\\ Launcher.app",
+        "showCopyButton": true
+      },
+      {
+        "type": "alert",
+        "variant": "info",
+        "title": "Explication de la commande",
+        "content": [
+          {
+            "text": "xattr : Programme pour manipuler les attributs étendus des fichiers • -c : Supprime tous les attributs étendus • -r : Applique récursivement à tous les fichiers de l'application. Cette commande supprime la \"quarantaine\" appliquée par macOS aux fichiers téléchargés."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Méthode 2 : Via les Préférences Système"
+      },
+      {
+        "type": "step_list",
+        "title": "Procédure via Préférences Système",
+        "description": "",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Essayez d'ouvrir l'application",
+            "description": "Le message d'erreur apparaîtra"
+          },
+          {
+            "step_number": 2,
+            "title": "Ouvrez les Préférences Système",
+            "description": "Ou Réglages Système sur macOS Ventura+"
+          },
+          {
+            "step_number": 3,
+            "title": "Allez dans \"Confidentialité et sécurité\"",
+            "description": "Faites défiler vers le bas - vous verrez un message indiquant que \"DivizionLauncher\" a été bloqué"
+          },
+          {
+            "step_number": 4,
+            "title": "Cliquez sur \"Ouvrir quand même\"",
+            "description": "Entrez votre mot de passe si demandé et confirmez en cliquant sur \"Ouvrir\""
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Méthode 3 : Clic droit"
+      },
+      {
+        "type": "step_list",
+        "title": "Procédure via clic droit",
+        "description": "Si les autres méthodes ne fonctionnent pas.",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Localisez l'application",
+            "description": "Dans le Finder"
+          },
+          {
+            "step_number": 2,
+            "title": "Maintenez la touche Control",
+            "description": "Et cliquez sur l'application (ou clic droit)"
+          },
+          {
+            "step_number": 3,
+            "title": "Sélectionnez \"Ouvrir\"",
+            "description": "Dans le menu contextuel"
+          },
+          {
+            "step_number": 4,
+            "title": "Cliquez sur \"Ouvrir\"",
+            "description": "Dans la boîte de dialogue d'avertissement"
+          }
+        ]
+      },
+      {
+        "type": "alert",
+        "variant": "info",
+        "title": "Note",
+        "content": [
+          {
+            "text": "Cette procédure n'est nécessaire qu'une seule fois. Une fois l'application ouverte pour la première fois, macOS s'en souviendra et vous pourrez la lancer normalement."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 1,
+        "text": "🪟 Windows - SmartScreen bloque l'application"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Le problème"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Lors du premier lancement du Divizion Launcher sur Windows, vous pouvez voir un écran bleu avec le message :"
+          }
+        ]
+      },
+      {
+        "type": "alert",
+        "variant": "warning",
+        "title": "Windows a protégé votre ordinateur",
+        "content": [
+          {
+            "text": "Microsoft Defender SmartScreen a empêché le démarrage d'une application non reconnue. L'exécution de cette application peut mettre votre ordinateur en danger."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Pourquoi cela se produit ?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Windows SmartScreen",
+            "bold": true
+          },
+          {
+            "text": " est un système de protection qui analyse les fichiers téléchargés et les compare à une base de données de fichiers connus. Il bloque les applications qui :"
+          }
+        ]
+      },
+      {
+        "type": "step_list",
+        "title": "Critères de blocage SmartScreen",
+        "description": "",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Ne sont pas signées",
+            "description": "Avec un certificat de signature de code"
+          },
+          {
+            "step_number": 2,
+            "title": "N'ont pas de \"réputation\"",
+            "description": "Pas assez de téléchargements pour être considérées comme sûres par Microsoft"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Les certificats de signature de code coûtent plusieurs centaines d'euros par an, et la réputation se construit au fil du temps avec le nombre de téléchargements. "
+          },
+          {
+            "text": "Le Divizion Launcher est sûr",
+            "bold": true
+          },
+          {
+            "text": ", mais SmartScreen ne le reconnaît pas encore."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Solution"
+      },
+      {
+        "type": "step_list",
+        "title": "Étapes pour contourner SmartScreen",
+        "description": "",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Lorsque l'écran SmartScreen apparaît",
+            "description": "Ne cliquez pas sur \"Ne pas exécuter\""
+          },
+          {
+            "step_number": 2,
+            "title": "Cliquez sur \"Informations complémentaires\"",
+            "description": "Ce lien est en petit sous le message d'avertissement principal"
+          },
+          {
+            "step_number": 3,
+            "title": "Cliquez sur \"Exécuter quand même\"",
+            "description": "L'installation/lancement continuera normalement"
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 3,
+        "text": "Si vous ne voyez pas \"Informations complémentaires\""
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Dans certains cas (notamment sur Windows en mode S ou avec des restrictions d'entreprise), l'option peut ne pas apparaître. Essayez :"
+          }
+        ]
+      },
+      {
+        "type": "step_list",
+        "title": "Méthode alternative",
+        "description": "",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Clic droit sur le fichier d'installation",
+            "description": ""
+          },
+          {
+            "step_number": 2,
+            "title": "Sélectionnez \"Propriétés\"",
+            "description": ""
+          },
+          {
+            "step_number": 3,
+            "title": "Dans l'onglet \"Général\"",
+            "description": "Cherchez la case \"Débloquer\" en bas"
+          },
+          {
+            "step_number": 4,
+            "title": "Cochez \"Débloquer\"",
+            "description": "Et cliquez sur \"Appliquer\""
+          },
+          {
+            "step_number": 5,
+            "title": "Relancez l'installation",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 1,
+        "text": "❓ Questions fréquentes"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "L'application est-elle vraiment sûre ?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Oui.",
+            "bold": true
+          },
+          {
+            "text": " Le Divizion Launcher est développé par une équipe de confiance. Les avertissements de sécurité ne sont pas dus à la présence de logiciels malveillants, mais simplement au fait que l'application n'est pas signée avec un certificat officiel (qui coûte plusieurs centaines d'euros par an)."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Pourquoi ne pas signer l'application ?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "La signature de code nécessite :"
+          }
+        ]
+      },
+      {
+        "type": "step_list",
+        "title": "Coûts de signature",
+        "description": "",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "Sur macOS",
+            "description": "Un compte Apple Developer (99€/an) + processus de notarisation"
+          },
+          {
+            "step_number": 2,
+            "title": "Sur Windows",
+            "description": "Un certificat de signature de code EV (Extended Validation) coûtant 300-500€/an"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Ces coûts sont significatifs pour un projet communautaire gratuit."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Ces manipulations sont-elles sûres ?"
+      },
+      {
+        "type": "paragraph",
+        "content": [
+          {
+            "text": "Oui, ces manipulations ne font que dire au système d'exploitation que vous faites confiance à cette application spécifique. Elles ne désactivent pas les protections de sécurité pour les autres applications."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Dois-je faire cela à chaque mise à jour ?"
+      },
+      {
+        "type": "step_list",
+        "title": "Comportement selon l'OS",
+        "description": "",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "macOS",
+            "description": "Généralement non, une fois l'application débloquée, les mises à jour automatiques ne devraient pas reposer le problème."
+          },
+          {
+            "step_number": 2,
+            "title": "Windows",
+            "description": "Cela peut se reproduire lors d'une mise à jour majeure si le fichier d'installation change significativement."
+          }
+        ]
+      },
+      {
+        "type": "heading",
+        "level": 1,
+        "text": "🔗 Références"
+      },
+      {
+        "type": "button_group",
+        "alignment": "left",
+        "buttons": [
+          {
+            "type": "text_icon",
+            "label": "Documentation Apple sur Gatekeeper",
+            "icon": "external-link",
+            "action": "https://support.apple.com/fr-fr/HT202491",
+            "variant": "outline"
+          },
+          {
+            "type": "text_icon",
+            "label": "Documentation Microsoft sur SmartScreen",
+            "icon": "external-link",
+            "action": "https://support.microsoft.com/fr-fr/microsoft-edge/qu-est-ce-que-smartscreen-et-comment-peut-il-m-aider-%C3%A0-me-prot%C3%A9ger-1c9a874a-6826-be5e-45b1-67fa445a74c8",
+            "variant": "outline"
+          }
+        ]
+      }
+    ],
+    "_path": "docs/problemes_installation.json"
+  }
+]

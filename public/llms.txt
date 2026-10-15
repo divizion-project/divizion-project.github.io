@@ -1,0 +1,17 @@
+# Divizion Launcher
+
+Divizion is an independent Minecraft Java launcher for Windows, macOS and Linux.
+It manages instances, Java runtimes, modloaders, mods, modpacks and servers.
+It integrates Modrinth and supports Microsoft and offline accounts.
+Time Machine is experimental. Legacy is not yet available.
+
+## Official project
+- Website: https://divizion.fr
+- Documentation: https://divizion.fr/wiki/
+- Downloads: https://divizion.fr/download/
+- Release source: https://github.com/divizion-project/Divizion-Launcher/releases
+- JSON documentation source: https://github.com/divizion-project/divizion-docu/tree/main/docs
+- Terms: https://divizion.fr/legal/
+- Privacy: https://divizion.fr/privacy/
+
+Divizion is not affiliated with Mojang Studios or Microsoft.

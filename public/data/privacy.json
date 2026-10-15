@@ -1,0 +1,114 @@
+[
+  {
+    "type": "h1",
+    "text": "Politique de confidentialité"
+  },
+  {
+    "type": "p",
+    "text": "Dernière mise à jour : Mars 2026"
+  },
+  {
+    "type": "p",
+    "text": "Nous accordons une grande importance à votre vie privée. Cette politique explique quelles données sont collectées par Divizion Launcher et comment elles sont utilisées."
+  },
+  {
+    "type": "h2",
+    "text": "Notre principe"
+  },
+  {
+    "type": "p",
+    "text": "Divizion Launcher est conçu pour respecter votre vie privée. Nous ne collectons aucune donnée personnelle identifiable. Aucune information sensible n'est stockée sur nos serveurs."
+  },
+  {
+    "type": "h2",
+    "text": "Google Analytics"
+  },
+  {
+    "type": "p",
+    "text": "Le launcher utilise Google Analytics avec nos propres balises personnalisées. Ces données sont exclusivement utilisées à des fins statistiques internes et non à des fins publicitaires."
+  },
+  {
+    "type": "li",
+    "text": "Nous mesurons uniquement le nombre de lancements du launcher et des instances"
+  },
+  {
+    "type": "li",
+    "text": "Aucune donnée personnelle ou identifiable n'est collectée"
+  },
+  {
+    "type": "li",
+    "text": "Les statistiques sont totalement anonymisées"
+  },
+  {
+    "type": "li",
+    "text": "Aucun profil utilisateur n'est créé"
+  },
+  {
+    "type": "li",
+    "text": "Aucune publicité ciblée n'est diffusée"
+  },
+  {
+    "type": "h2",
+    "text": "Discord RPC"
+  },
+  {
+    "type": "p",
+    "text": "Le launcher intègre le support Discord RPC (Rich Presence) pour afficher votre activité Minecraft sur votre profil Discord. Cette fonctionnalité est optionnelle et peut être désactivée dans les paramètres."
+  },
+  {
+    "type": "li",
+    "text": "La communication s'effectue uniquement entre votre ordinateur et Discord"
+  },
+  {
+    "type": "li",
+    "text": "Aucune donnée n'est transmise à nos serveurs"
+  },
+  {
+    "type": "li",
+    "text": "Vous gardez le contrôle total sur cette fonctionnalité"
+  },
+  {
+    "type": "h2",
+    "text": "Données locales"
+  },
+  {
+    "type": "p",
+    "text": "Toutes vos données de jeu, configurations et instances sont stockées exclusivement sur votre ordinateur. Rien n'est synchronisé ou envoyé vers des serveurs externes sans votre consentement explicite."
+  },
+  {
+    "type": "h2",
+    "text": "Services tiers"
+  },
+  {
+    "type": "p",
+    "text": "Le launcher peut interagir avec des services tiers pour fonctionner correctement :"
+  },
+  {
+    "type": "li",
+    "text": "Mojang / Microsoft pour l'authentification Minecraft (uniquement si vous utilisez un compte officiel)"
+  },
+  {
+    "type": "li",
+    "text": "Modrinth, CurseForge et autres plateformes pour le téléchargement de mods et modpacks"
+  },
+  {
+    "type": "li",
+    "text": "GitHub pour les mises à jour du launcher"
+  },
+  {
+    "type": "h2",
+    "text": "Votre contrôle"
+  },
+  {
+    "type": "p",
+    "text": "Vous avez un contrôle total sur vos données. Vous pouvez à tout moment désactiver les statistiques anonymes et Discord RPC depuis les paramètres du launcher."
+  },
+  {
+    "type": "h2",
+    "text": "Modifications"
+  },
+  {
+    "type": "p",
+    "text": "Cette politique de confidentialité peut être mise à jour occasionnellement. Les modifications seront notifiées via le launcher ou notre GitHub."
+  }
+]

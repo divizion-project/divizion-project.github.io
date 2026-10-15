@@ -1,56 +1,23 @@
-import type { MetadataRoute } from 'next'
-
-const siteUrl = 'https://divizion.fr'
-
+import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/config";
+import { docSlug, type Doc } from "@/lib/docs";
+import docs from "@/public/data/docs.json";
+export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    {
-      url: siteUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${siteUrl}/download`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/features`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/wiki`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: `${siteUrl}/versions`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
+    ...["/", "/download/", "/wiki/", "/releases/", "/legal/", "/privacy/"].map(
+      (path) => ({
+        url: `${SITE_URL}${path}`,
+        changeFrequency: (path === "/releases/" ? "weekly" : "monthly") as
+          "weekly" | "monthly",
+        priority: path === "/" ? 1 : 0.7,
+      }),
+    ),
+    ...(docs as Doc[]).map((d) => ({
+      url: `${SITE_URL}/wiki/${docSlug(d)}/`,
+      lastModified: d.meta.lastUpdated,
+      changeFrequency: "monthly" as const,
       priority: 0.6,
-    },
-    {
-      url: `${siteUrl}/beta`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.5,
-    },
-    {
-      url: `${siteUrl}/legal`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${siteUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-  ]
+    })),
+  ];
 }

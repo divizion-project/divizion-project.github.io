@@ -1,0 +1,178 @@
+[
+  {
+    "type": "h1",
+    "text": "Terms of Use"
+  },
+  {
+    "type": "p",
+    "text": "Last updated: March 21, 2026"
+  },
+  {
+    "type": "h2",
+    "text": "1. Purpose"
+  },
+  {
+    "type": "p",
+    "text": "These Terms of Use govern the use of the Divizion launcher, its associated website and services related to the Divizion project. Divizion is a third-party launcher that manages instances, settings, downloads and launches related to the Divizion project."
+  },
+  {
+    "type": "h2",
+    "text": "2. Publisher"
+  },
+  {
+    "type": "p",
+    "text": "Divizion Launcher is published by Maxence SCHAFFERT. Status: personal project, not yet registered as a business. Contact email: redflyhd@aol.com."
+  },
+  {
+    "type": "h2",
+    "text": "3. Hosting"
+  },
+  {
+    "type": "p",
+    "text": "The website is hosted through GitHub."
+  },
+  {
+    "type": "h2",
+    "text": "4. Acceptance"
+  },
+  {
+    "type": "p",
+    "text": "Using Divizion implies full acceptance of these Terms of Use. If you do not accept these terms, you must not use the launcher or its associated services."
+  },
+  {
+    "type": "h2",
+    "text": "5. Minimum age"
+  },
+  {
+    "type": "p",
+    "text": "Divizion is intended for people aged 15 or over. Minors must obtain any necessary permission from their legal guardian when required."
+  },
+  {
+    "type": "h2",
+    "text": "6. Relationship with Minecraft / Microsoft / Mojang"
+  },
+  {
+    "type": "p",
+    "text": "Divizion is an independent third-party launcher. It is not affiliated with, approved by or published by Mojang Studios, Microsoft or their affiliates. Using Minecraft through Divizion remains subject to the applicable rules, terms and requirements of Mojang, Microsoft and Minecraft."
+  },
+  {
+    "type": "h2",
+    "text": "7. Accounts"
+  },
+  {
+    "type": "p",
+    "text": "Normal use of some features may require a premium Minecraft account. An offline mode may also be used. An offline account may be deleted when the launcher closes. Some local data may remain on your device, including instances, settings, launcher configuration and, where applicable, Microsoft account information that you have saved locally."
+  },
+  {
+    "type": "h2",
+    "text": "8. Launcher operation"
+  },
+  {
+    "type": "p",
+    "text": "The launcher can operate independently of a game server. It may download or update files needed for its operation, including Java and content related to the project. Some resources may come from the project’s GitHub repository or third-party services used by Divizion."
+  },
+  {
+    "type": "h2",
+    "text": "9. Third-party sources and content"
+  },
+  {
+    "type": "p",
+    "text": "Divizion may use resources, mods or modpacks from third-party services, including the Modrinth API. Downloaded content may remain subject to its authors’ terms, licences and rights. Divizion does not claim ownership of third-party content."
+  },
+  {
+    "type": "h2",
+    "text": "10. Prohibited uses"
+  },
+  {
+    "type": "p",
+    "text": "It is strictly prohibited to attempt to hack the launcher; steal data; bypass security measures; decompile or reverse engineer the launcher; modify and redistribute it without permission; republish a modified version without permission; or use Divizion maliciously or fraudulently."
+  },
+  {
+    "type": "h2",
+    "text": "11. Measures in the event of abuse"
+  },
+  {
+    "type": "p",
+    "text": "No automatic penalty schedule is currently in place. Divizion nevertheless reserves the right to take any technical, temporary or permanent measures necessary to protect the launcher, website, files, infrastructure or users in the event of abusive, dangerous or malicious use."
+  },
+  {
+    "type": "h2",
+    "text": "12. Data and privacy"
+  },
+  {
+    "type": "p",
+    "text": "Divizion does not currently provide a payment system. It collects only limited technical information necessary for operation or overall project monitoring. The launcher may send status information to Discord Rich Presence, including the current instance name and play time. The project may also measure anonymous overall statistics, including launcher opens and launches, through Google Analytics. No anti-cheat system or detailed log collection is currently announced."
+  },
+  {
+    "type": "h2",
+    "text": "13. Local data"
+  },
+  {
+    "type": "p",
+    "text": "Some data is stored locally on your computer to ensure that the launcher operates correctly. Deleting the launcher and its local files ends that local retention, subject to any data stored by third-party services that you use."
+  },
+  {
+    "type": "h2",
+    "text": "14. Community contributions"
+  },
+  {
+    "type": "p",
+    "text": "Community suggestions are permitted. Proposals, feedback or contributions may be posted on Discord or GitHub. Unless stated otherwise, voluntarily submitting a suggestion authorizes Divizion to consider, adapt, use or decline it, without any obligation to provide compensation."
+  },
+  {
+    "type": "h2",
+    "text": "15. Intellectual property"
+  },
+  {
+    "type": "p",
+    "text": "The Divizion name, visual identity, interface, code, graphics, text, files and original project content are protected by applicable rights. Without prior written permission, original Divizion content may not be copied, reproduced, redistributed, modified, exploited or publicly reused."
+  },
+  {
+    "type": "h2",
+    "text": "16. No warranty"
+  },
+  {
+    "type": "p",
+    "text": "Divizion is provided as is. No warranty is given regarding the absence of bugs, interruptions, errors, incompatibilities or unavailability. You use the launcher at your own risk."
+  },
+  {
+    "type": "h2",
+    "text": "17. Liability"
+  },
+  {
+    "type": "p",
+    "text": "Divizion cannot be held liable for indirect damages, data loss, software incompatibilities, download errors, temporary unavailability or failures related to third-party services, your environment or misuse. You remain responsible for your device, files, Minecraft/Microsoft account and use."
+  },
+  {
+    "type": "h2",
+    "text": "18. Changes to the terms"
+  },
+  {
+    "type": "p",
+    "text": "These Terms of Use may be changed at any time. The applicable version is the one published on the website or provided with the launcher on the date of use."
+  },
+  {
+    "type": "h2",
+    "text": "19. Applicable law"
+  },
+  {
+    "type": "p",
+    "text": "These Terms of Use are governed by French law."
+  },
+  {
+    "type": "h2",
+    "text": "20. Disputes"
+  },
+  {
+    "type": "p",
+    "text": "In the event of a dispute, an amicable resolution will be sought first. Failing that, the dispute will be brought before the courts with territorial jurisdiction under ordinary legal rules."
+  },
+  {
+    "type": "h2",
+    "text": "21. Contact"
+  },
+  {
+    "type": "p",
+    "text": "For questions about these Terms of Use: redflyhd@aol.com."
+  }
+]
